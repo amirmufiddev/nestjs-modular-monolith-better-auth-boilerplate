@@ -1,0 +1,39 @@
+---
+description: Configuration management - centralized, validated env, no hardcoded URLs, .env.example
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Konfigurasi & Lingkungan
+
+## Centralized & Validated at Boot
+
+- **JANGAN** akses `process.env` mentah tersebar di banyak file.
+- Deklarasikan schema validasi (Joi/Zod/class-validator) dan validasi sekali di main.ts/app boot.
+
+```typescript
+// src/config/env.validation.ts (sketsa)
+export const envValidationSchema = Joi.object({
+  NODE_ENV: Joi.string().valid('dev', 'prod').required(),
+  DATABASE_URL: Joi.string().uri().required(),
+  JWT_SECRET: Joi.string().min(32).required(),
+  // ...
+});
+```
+
+```typescript
+// main.ts
+import { envValidationSchema } from './config/env.validation';
+const env = envValidationSchema.validate(process.env, { abortEarly: false });
+if (env.error) throw env.error;
+```
+
+## No Hardcoded URLs
+
+- Host, parameter integrasi eksternal WAJIB via env variable.
+- **JANGAN** hardcode `http://localhost:3000` atau `https://api.example.com` di source.
+
+## Dokumentasi .env.example
+
+- WAJIB sediakan `.env.example` lengkap dengan deskripsi tiap variabel.
+- Jangan isi nilai rahasia asli di `.env.example`; gunakan placeholder.

@@ -1,0 +1,54 @@
+---
+description: Error handling - typed errors, async rejection handling, global filters
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Penanganan Kesalahan
+
+## Catch Block
+
+- **JANGAN gunakan empty catch.** Selalu log konteks + handle atau re-throw.
+- **JANGAN swallow exception.**
+
+```typescript
+// ❌ BAD
+try {
+  await fetchData();
+} catch (e) {}
+
+// ✅ GOOD
+try {
+  await fetchData();
+} catch (e) {
+  logger.error('Failed to fetch data', { error: e, context });
+  throw new DataFetchError('Unable to retrieve data', { cause: e });
+}
+```
+
+## Typed Errors
+
+- **JANGAN gunakan generic error.** Buat custom typed exception dengan kode + metadata.
+
+```typescript
+// ❌ BAD
+throw new Error('Not found');
+
+// ✅ GOOD
+throw new ResourceNotFoundError('User', { userId, traceId });
+```
+
+## Async Rejection
+
+- **JANGAN fire-and-forget async** tanpa penangkap rejection.
+- Bungkus dengan `try/catch` atau gunakan `Promise.allSettled()`.
+
+## Respons Konsisten
+
+- Tangkap exception lewat **global exception filter** (NestJS: `@Catch()`).
+- Jaga kontrak JSON error response terpadu untuk klien.
+
+## Null vs Throw
+
+- Jika "tidak ditemukan" adalah hasil bisnis valid → kembalikan `null`.
+- Jika kesalahan DB murni → throw untuk alerting sistem monitoring.

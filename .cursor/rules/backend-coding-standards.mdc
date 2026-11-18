@@ -1,0 +1,35 @@
+---
+description: Backend coding standards overview - always applies to backend TypeScript code
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Backend Coding Standards (Ringkasan)
+
+Rule ini adalah **indeks** untuk standar pengembangan backend. Lihat file spesifik untuk detail lengkap:
+
+| Topik                       | File                        |
+| --------------------------- | --------------------------- |
+| SOLID & Clean Code          | `solid-principles.mdc`      |
+| Modular Monolith & Layering | `modular-architecture.mdc`  |
+| DB Performance & N+1        | `database-performance.mdc`  |
+| Security                    | `security.mdc`              |
+| Error Handling              | `error-handling.mdc`        |
+| Testing                     | `testing.mdc`               |
+| REST API Design             | `api-design.mdc`            |
+| Configuration & Env         | `configuration.mdc`         |
+| Logging & Observability     | `logging-observability.mdc` |
+
+## Daftar Periksa Cepat
+
+Sebelum commit/push kode backend, pastikan:
+
+- [ ] Tidak ada `console.log` (pakai Logger)
+- [ ] Tidak ada `process.env` mentah (pakai validated config)
+- [ ] Tidak ada query di dalam loop
+- [ ] Tidak ada hardcoded URL/secret
+- [ ] Semua endpoint protected dengan guard
+- [ ] Error handling typed (bukan generic `Error`)
+- [ ] Response dibungkus DTO (bukan entity raw)
+- [ ] Test menggunakan mock, bukan DB nyata
+- [ ] Soft delete via `deletedAt`, bukan hard delete

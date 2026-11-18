@@ -1,0 +1,39 @@
+---
+description: Logging and observability - structured logger, correlation IDs, no console.log, health endpoints
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Logging & Observability
+
+## No console.log
+
+- **JANGAN** pakai `console.log` di kode produksi.
+- Gunakan **Logger terpusat** (Pino/Winston/NestJS Logger) dengan level: `debug`, `info`, `warn`, `error`.
+- Sertakan stack trace untuk error fatal sistem internal.
+
+```typescript
+// ❌ BAD
+console.log('User created:', userId);
+
+// ✅ GOOD
+this.logger.log({ userId, traceId }, 'User created');
+```
+
+## Correlation/Trace ID
+
+- Setiap request HTTP WAJIB dapat Correlation ID/Trace ID (UUID).
+- ID ini harus mengalir dari middleware → log → DB call → response.
+- Pakai AsyncLocalStorage atau library context propagation.
+
+## Health Check Endpoints
+
+Sediakan endpoint independen:
+
+- `/health/liveness` — proses hidup?
+- `/health/readiness` — dependency (DB, cache, external API) siap?
+
+## Metrics
+
+- Integrasikan metrik: hit counter, histogram durasi transaksi.
+- Identifikasi operasi lambat lewat histogram di endpoint kritis.

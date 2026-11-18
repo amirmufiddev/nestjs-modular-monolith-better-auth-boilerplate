@@ -1,0 +1,116 @@
+---
+description: Meta-rule governing HOW the agent works - skill invocation priority, workflow order, and integration with backend standards
+globs: **/*
+alwaysApply: true
+---
+
+# Agent Workflow Constitution
+
+Rule ini adalah **konstitusi proses** yang mengatur **BAGAIMANA** agent bekerja. Untuk standar **APA** yang harus dipenuhi (SOLID, security, testing, dll), lihat file di `.cursor/rules/`.
+
+## Hirarki Sumber (WAJIB dipatuhi)
+
+1. **User instructions eksplisit** — prioritas tertinggi
+2. **Superpowers skills** (via `Skill` tool) — override default behavior
+3. **`.cursor/rules/*.mdc`** — standar backend yang harus dipenuhi saat menyentuh kode TS
+4. **Default behavior** — hanya jika di atas tidak mengatur
+
+## Workflow Wajib untuk Setiap Task
+
+### 1. Skill Check (WAJIB, sebelum apapun)
+
+Sebelum merespons — termasuk klarifikasi — invoke skill yang relevan via `Skill` tool:
+
+| Sinyal Task                          | Skill Wajib                                  |
+| ------------------------------------ | -------------------------------------------- |
+| Brainstorming / fitur baru           | `superpowers:brainstorming`                  |
+| Bug / test gagal / error tak terduga | `superpowers:systematic-debugging`           |
+| Implementasi fitur / bugfix          | `superpowers:test-driven-development`        |
+| Plan multi-step                      | `superpowers:writing-plans`                  |
+| Task besar dg sub-tasks independen   | `superpowers:dispatching-parallel-agents`    |
+| Review kode / audit                  | `superpowers:requesting-code-review`         |
+| Menerima code review feedback        | `superpowers:receiving-code-review`          |
+| Klaim selesai / fix selesai          | `superpowers:verification-before-completion` |
+
+> "Even a 1% chance a skill might apply → invoke it." — bukan opsional.
+
+### 2. Eksplorasi Kode (graphify-first)
+
+Sebelum `Read`/`Grep`/`Glob` ke codebase:
+
+- `graphify query "<question>"` — subgraph scoped untuk pertanyaan arsitektur
+- `graphify path "<A>" "<B>"` — dependency path antar simbol
+- `graphify explain "<concept>"` — node terkait konsep
+
+Gunakan `Read`/`Grep` langsung hanya jika (a) graphify sudah mengarahkan dan butuh lihat baris spesifik, atau (b) `graphify-out/graph.json` belum ada.
+
+### 3. Implementasi (TDD bila applicable)
+
+Untuk fitur baru / bugfix:
+
+1. **Test dulu** (TDD) — lihat `superpowers:test-driven-development`
+2. Tulis kode yang lolos test
+3. Refactor
+4. Pastikan **SEMUA** standar backend terpenuhi (lihat tabel di bawah)
+
+### 4. Verifikasi Sebelum Klaim Selesai
+
+Sebelum menyatakan "done" / "fixed" / "passing":
+
+- [ ] Tests benar-benar dijalankan dan **PASS** (bukan diasumsikan)
+- [ ] Output diverifikasi secara langsung
+- [ ] Semua standar backend yang relevan dicek ulang
+- [ ] Tidak ada `console.log`, `process.env` mentah, query dalam loop, hardcoded secret
+- [ ] Response DTO (bukan entity raw), guard di endpoint sensitif
+- [ ] Error typed, soft delete via `deletedAt`
+
+Gunakan skill `superpowers:verification-before-completion`.
+
+## Integrasi dengan Standar Backend
+
+Saat menyentuh `**/*.ts` di backend, agent HARUS otomatis patuhi rule spesifik berikut:
+
+| Topik              | Rule File                                    |
+| ------------------ | -------------------------------------------- |
+| SOLID & Clean Code | `.cursor/rules/solid-principles.mdc`         |
+| Modular Monolith   | `.cursor/rules/modular-architecture.mdc`     |
+| DB & N+1           | `.cursor/rules/database-performance.mdc`     |
+| Security           | `.cursor/rules/security.mdc`                 |
+| Error Handling     | `.cursor/rules/error-handling.mdc`           |
+| Testing            | `.cursor/rules/testing.mdc`                  |
+| REST API           | `.cursor/rules/api-design.mdc`               |
+| Config & Env       | `.cursor/rules/configuration.mdc`            |
+| Logging            | `.cursor/rules/logging-observability.mdc`    |
+| Checklist cepat    | `.cursor/rules/backend-coding-standards.mdc` |
+
+## Bahasa & Etika
+
+- **Respons dalam Bahasa Indonesia** (sesuai user rule).
+- **JANGAN** menjalankan server tanpa konfirmasi eksplisit (`bun start`, `bun start:dev`, `bun dev`, dll).
+- Sopan tunjukkan pelanggaran standar; sertakan solusi yang diperbaiki, bukan sekadar kritik.
+
+## Referensi Lintas-Dokumen
+
+Saat menangani topik terkait, agent WAJIB merujuk juga ke dokumentasi detail di luar `.cursor/rules/`:
+
+### Docs/ (Referensi Substansi)
+
+| Topik                        | File                              | Kapan Rujuk                                                    |
+| ---------------------------- | --------------------------------- | -------------------------------------------------------------- |
+| Anti-pattern detail & contoh | `docs/anti-patterns-reference.md` | Rerefaktor, code review, identifikasi bau kode                 |
+| Aturan pengembangan lengkap  | `docs/rules.md`                   | Klarifikasi/exception dari standar ringkas di `.cursor/rules/` |
+| Arsitektur modular monolith  | `docs/modular-monolith.md`        | Merancang modul baru, dependency injection, layer violation    |
+
+> **Catatan:** Jika ada konflik antara `.cursor/rules/*.mdc` (ringkas) dan `docs/*.md` (detail), agent harus mengemukakan konflik tersebut ke user, **JANGAN** memutuskan sendiri.
+
+## Larangan Keras
+
+- ❌ Skip skill check karena task "terlihat sederhana"
+- ❌ Klaim selesai tanpa verifikasi
+- ❌ Bypass standar backend dengan alasan "tidak relevan untuk kasus ini"
+- ❌ Fire-and-forget async tanpa rejection handler
+- ❌ Hardcoded URL, secret, atau nilai `process.env` mentah
+- ❌ Empty catch / swallow exception
+- ❌ Query di dalam loop (N+1)
+- ❌ **Menghapus** plan file atau mengubah histori plan (`[x] → [ ]`) tanpa izin
+- ❌ Memutuskan konflik rule vs docs secara sepihak tanpa konfirmasi

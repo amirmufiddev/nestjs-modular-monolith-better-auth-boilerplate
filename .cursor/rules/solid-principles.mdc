@@ -1,0 +1,40 @@
+---
+description: SOLID principles and clean code standards for backend TypeScript
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Prinsip Kode Bersih & SOLID
+
+## Tanggung Jawab Tunggal (SRP)
+
+- Kelas tidak boleh berisi lebih dari satu alasan untuk berubah.
+- Peringatan: kelas > 300 baris atau > 5 metode publik = bau kode.
+- Hindari "God Class/Function".
+
+## Prinsip SOLID Lainnya
+
+- **OCP:** Terbuka untuk ekstensi, tertutup untuk modifikasi. Waspadai `switch`/`if-else` berlebihan untuk type checking.
+- **LSP:** Subclass harus bisa diganti dengan base type. Override tidak boleh melempar exception tak terduga.
+- **ISP:** Interface kecil dan terfokus (idealnya < 5 metode).
+- **DIP:** Modul tingkat tinggi tidak bergantung pada modul tingkat rendah; keduanya bergantung pada abstraksi. Logika bisnis TIDAK boleh mengimpor kelas konkret langsung.
+
+## Kompleksitas Fungsi
+
+- Pisahkan fungsi > 30 baris.
+- Cyclomatic complexity < 10.
+- Maks 4 parameter; jika lebih, gunakan DTO/parameter object.
+- Hindari nesting > 3 level.
+
+## Konvensi Penamaan
+
+- **Kelas:** PascalCase, Kata Benda (`UserRepository`).
+- **Fungsi:** camelCase, Kata Kerja (`getUserById()`).
+- **Boolean:** Prefix `is`, `has`, `can` (`isActive`, `hasPermission`).
+- **Konstanta:** UPPER_SNAKE_CASE (`MAX_RETRY_COUNT`).
+
+## Anti-Pattern
+
+- **Primitive Obsession:** Gunakan Value Objects untuk konsep domain (kelas `Email` bukan string).
+- **Magic Numbers/Strings:** Selalu gunakan konstanta bernama.
+- **Duplikasi:** Buat modul/utilitas/middleware bersama untuk logika berulang.

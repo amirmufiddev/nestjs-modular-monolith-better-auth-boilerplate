@@ -1,0 +1,467 @@
+# Graph Report - sevima  (2026-11-18)
+
+## Corpus Check
+- 311 files · ~84,189 words
+- Verdict: corpus is large enough that graph structure adds value.
+
+## Summary
+- 1622 nodes · 2956 edges · 91 communities (83 shown, 8 thin omitted)
+- Extraction: 99% EXTRACTED · 1% INFERRED · 0% AMBIGUOUS · INFERRED: 18 edges (avg confidence: 0.78)
+- Token cost: 0 input · 0 output
+
+## Community Hubs (Navigation)
+- [[_COMMUNITY_rbac.module.ts|rbac.module.ts]]
+- [[_COMMUNITY_member.controller.ts|member.controller.ts]]
+- [[_COMMUNITY_main.ts|main.ts]]
+- [[_COMMUNITY_RegionalDataDto|RegionalDataDto]]
+- [[_COMMUNITY_BusinessError|BusinessError]]
+- [[_COMMUNITY_permissions.controller.ts|permissions.controller.ts]]
+- [[_COMMUNITY_organization-invitation.template.ts|organization-invitation.template.ts]]
+- [[_COMMUNITY_dependencies|dependencies]]
+- [[_COMMUNITY_index.ts|index.ts]]
+- [[_COMMUNITY_API Conventions|API Conventions]]
+- [[_COMMUNITY_Role-Based Access Control (RBAC) — Dynamic & Granular|Role-Based Access Control (RBAC) — Dynamic & Granular]]
+- [[_COMMUNITY_json|json]]
+- [[_COMMUNITY_Logging & Observability|Logging & Observability]]
+- [[_COMMUNITY_Testing|Testing]]
+- [[_COMMUNITY_Error Handling — Pola & Best Practice|Error Handling — Pola & Best Practice]]
+- [[_COMMUNITY_Database — Best Practice|Database — Best Practice]]
+- [[_COMMUNITY_app.module.ts|app.module.ts]]
+- [[_COMMUNITY_auth.ts|auth.ts]]
+- [[_COMMUNITY_🚀 Cara Pakai|🚀 Cara Pakai]]
+- [[_COMMUNITY_Deployment & Configuration|Deployment & Configuration]]
+- [[_COMMUNITY_Performance — N+1 Query & Eager Loading|Performance — N+1 Query & Eager Loading]]
+- [[_COMMUNITY_AppLoggerService|AppLoggerService]]
+- [[_COMMUNITY_template.module.ts|template.module.ts]]
+- [[_COMMUNITY_sse.controller.ts|sse.controller.ts]]
+- [[_COMMUNITY_BaseRepository|BaseRepository]]
+- [[_COMMUNITY_Clean Code — Panduan Prinsip SOLID & Standar Kode|Clean Code — Panduan Prinsip SOLID & Standar Kode]]
+- [[_COMMUNITY_compilerOptions|compilerOptions]]
+- [[_COMMUNITY_realtime.gateway.ts|realtime.gateway.ts]]
+- [[_COMMUNITY_health.controller.ts|health.controller.ts]]
+- [[_COMMUNITY_email.service.spec.ts|email.service.spec.ts]]
+- [[_COMMUNITY_Notifikasi — Panduan & Pattern|Notifikasi — Panduan & Pattern]]
+- [[_COMMUNITY_devDependencies|devDependencies]]
+- [[_COMMUNITY_scripts|scripts]]
+- [[_COMMUNITY_cache.service.ts|cache.service.ts]]
+- [[_COMMUNITY_README|README.md]]
+- [[_COMMUNITY_CacheService|CacheService]]
+- [[_COMMUNITY_jest|jest]]
+- [[_COMMUNITY_NestJS 11 REST API Boilerplate|NestJS 11 REST API Boilerplate]]
+- [[_COMMUNITY_logger.service.ts|logger.service.ts]]
+- [[_COMMUNITY_Testing Anti-Patterns|Testing Anti-Patterns]]
+- [[_COMMUNITY_Checklist Security Review|Checklist Security Review]]
+- [[_COMMUNITY_eslint.config.mjs|eslint.config.mjs]]
+- [[_COMMUNITY_HttpMetricsInterceptor|HttpMetricsInterceptor]]
+- [[_COMMUNITY_Logging & Observability Anti-Patterns|Logging & Observability Anti-Patterns]]
+- [[_COMMUNITY_Anti-Patterns Reference|Anti-Patterns Reference]]
+- [[_COMMUNITY_Kekuatan Boilerplate (yang perlu dipertahankan)|Kekuatan Boilerplate (yang perlu dipertahankan)]]
+- [[_COMMUNITY_Error Handling Anti-Patterns|Error Handling Anti-Patterns]]
+- [[_COMMUNITY_Security Anti-Patterns|Security Anti-Patterns]]
+- [[_COMMUNITY_Dependency Health Anti-Patterns|Dependency Health Anti-Patterns]]
+- [[_COMMUNITY_API Design Anti-Patterns|API Design Anti-Patterns]]
+- [[_COMMUNITY_Security Guidelines|Security Guidelines]]
+- [[_COMMUNITY_domain-event.base.ts|domain-event.base.ts]]
+- [[_COMMUNITY_no-cross-module-import|no-cross-module-import]]
+- [[_COMMUNITY_Database Schema Anti-Patterns|Database Schema Anti-Patterns]]
+- [[_COMMUNITY_N+1 Query Anti-Patterns|N+1 Query Anti-Patterns]]
+- [[_COMMUNITY_Configuration Anti-Patterns|Configuration Anti-Patterns]]
+- [[_COMMUNITY_Konfigurasi Integrasi Opsional|Konfigurasi Integrasi Opsional]]
+- [[_COMMUNITY_package.json|package.json]]
+- [[_COMMUNITY_Modular Monolith Anti-Patterns|Modular Monolith Anti-Patterns]]
+- [[_COMMUNITY_Clean Code Anti-Patterns|Clean Code Anti-Patterns]]
+- [[_COMMUNITY_Arsitektur Backend — NestJS 11 Boilerplate|Arsitektur Backend — NestJS 11 Boilerplate]]
+- [[_COMMUNITY_Strategi baseline migrasi Drizzle|Strategi baseline migrasi Drizzle]]
+- [[_COMMUNITY_Modular Monolith — Boilerplate|Modular Monolith — Boilerplate]]
+- [[_COMMUNITY_Modul contoh (WhatsApp & AI)|Modul contoh (WhatsApp & AI)]]
+- [[_COMMUNITY_Modul Sample Opsional|Modul Sample Opsional]]
+- [[_COMMUNITY_PII & Sensitive Logging|PII & Sensitive Logging]]
+- [[_COMMUNITY_nest-cli.json|nest-cli.json]]
+- [[_COMMUNITY_DomainError|DomainError]]
+- [[_COMMUNITY_domain-event-registry.ts|domain-event-registry.ts]]
+- [[_COMMUNITY_Duplication Anti-Patterns|Duplication Anti-Patterns]]
+- [[_COMMUNITY_Tier modul Core vs Optional|Tier modul: Core vs Optional]]
+- [[_COMMUNITY_Pemeliharaan dependensi (depcheck)|Pemeliharaan dependensi (depcheck)]]
+- [[_COMMUNITY_Multi-Tenant Isolation (RLS)|Multi-Tenant Isolation (RLS)]]
+- [[_COMMUNITY_CorrelationIdMiddleware|CorrelationIdMiddleware]]
+- [[_COMMUNITY_Modul `_template` (scaffold)|Modul `_template` (scaffold)]]
+- [[_COMMUNITY_Pengembangan lokal|Pengembangan lokal]]
+- [[_COMMUNITY_Authentication & Authorization|Authentication & Authorization]]
+- [[_COMMUNITY_Module Isolation (ESLint)|Module Isolation (ESLint)]]
+- [[_COMMUNITY_CORS & Transport|CORS & Transport]]
+- [[_COMMUNITY_Hardcoded Credentials|Hardcoded Credentials]]
+- [[_COMMUNITY_SQL Injection|SQL Injection]]
+- [[_COMMUNITY_patch.util.spec.ts|patch.util.spec.ts]]
+- [[_COMMUNITY_geo.util.ts|geo.util.ts]]
+- [[_COMMUNITY_transform|transform]]
+- [[_COMMUNITY_coordinate.util.ts|coordinate.util.ts]]
+- [[_COMMUNITY_crypto.util.ts|crypto.util.ts]]
+- [[_COMMUNITY_tsconfig.build.json|tsconfig.build.json]]
+
+## God Nodes (most connected - your core abstractions)
+1. `AppLoggerService` - 55 edges
+2. `BusinessError` - 30 edges
+3. `RegionalDataDto` - 23 edges
+4. `compilerOptions` - 21 edges
+5. `API Conventions` - 21 edges
+6. `BaseRepository` - 19 edges
+7. `escapeHtml()` - 18 edges
+8. `PermissionScopeService` - 18 edges
+9. `Anti-Patterns Reference` - 17 edges
+10. `scripts` - 16 edges
+
+## Surprising Connections (you probably didn't know these)
+- `buildPluginsConfig()` --calls--> `Organization`  [INFERRED]
+  src/modules/auth/auth.ts → src/database/schema/better-auth-organization.ts
+- `buildPluginsConfig()` --calls--> `TwoFactor`  [INFERRED]
+  src/modules/auth/auth.ts → src/database/schema/better-auth-two-factor.ts
+- `bootstrap()` --indirect_call--> `AppLoggerService`  [INFERRED]
+  src/main.ts → src/logger/logger.service.ts
+- `configureOpenApi()` --references--> `json`  [EXTRACTED]
+  src/bootstrap/openapi.config.ts → src/__mocks__/express.mock.ts
+- `buildAdminRoleDbPayload()` --references--> `json`  [EXTRACTED]
+  src/modules/rbac/constants/admin-role-db-payload.ts → src/__mocks__/express.mock.ts
+
+## Import Cycles
+- None detected.
+
+## Communities (91 total, 8 thin omitted)
+
+### Community 0 - "rbac.module.ts"
+Cohesion: 0.06
+Nodes (25): AuditTrailLog, NewAuditTrailLog, NewRbacRoleTemplate, RbacRoleTemplate, PermissionScope, getParamDecoratorFactory(), TestClass, RequirePermission() (+17 more)
+
+### Community 1 - "member.controller.ts"
+Cohesion: 0.07
+Nodes (28): PaginatedResponseDto, PaginationMetaDto, Item, PaginationDto, buildPaginated(), buildPaginatedFromResult(), paginateList(), PaginationLike (+20 more)
+
+### Community 2 - "main.ts"
+Cohesion: 0.06
+Nodes (41): AppModule, configureCompress(), assertProductionCorsAllowed(), configureCors(), configureHelmet(), configureMultipart(), configureOpenApi(), registerFastifyPlugin() (+33 more)
+
+### Community 3 - "RegionalDataDto"
+Cohesion: 0.08
+Nodes (18): NewRegionalAddress, RegionalAddress, regionalAddresses, regionalLevelEnum, RegionalDataDto, REGIONAL_API, RegionalApi, CHILD_LEVEL_LABEL (+10 more)
+
+### Community 4 - "BusinessError"
+Cohesion: 0.08
+Nodes (19): BusinessError, buildUploadConfig(), UploadConfig, UploadResponseDto, isBucketMissing(), isObjectMissing(), S3ObjectStorageService, MIME_MAP (+11 more)
+
+### Community 5 - "permissions.controller.ts"
+Cohesion: 0.09
+Nodes (18): NewRbacPermission, RbacPermission, PermissionsController, mockCatalog, CreateRbacPermissionDto, ActionDto, PermissionCodeDto, PermissionCodesResponseDto (+10 more)
+
+### Community 6 - "organization-invitation.template.ts"
+Cohesion: 0.12
+Nodes (26): humanizeTemplateKey(), isValidEmail(), resolveSubject(), wrapAsHtml(), buildEmailVerificationEmail(), buildOrganizationInvitationEmail(), renderEmailButton(), renderEmailFooter() (+18 more)
+
+### Community 7 - "dependencies"
+Cohesion: 0.04
+Nodes (47): dependencies, argon2, @aws-sdk/client-s3, better-auth, @better-auth/i18n, @better-auth/redis-storage, bullmq, cache-manager (+39 more)
+
+### Community 8 - "index.ts"
+Cohesion: 0.08
+Nodes (24): auditTrailLogs, baseColumns, baseIndexes(), Account, NewAccount, NewInvitation, Member, NewMember (+16 more)
+
+### Community 9 - "API Conventions"
+Cohesion: 0.05
+Nodes (41): API Conventions, API Design Red Flags, API Versioning, Autentikasi, Auth, Base URL, Checklist API Design, Contoh Lengkap (+33 more)
+
+### Community 10 - "Role-Based Access Control (RBAC) — Dynamic & Granular"
+Cohesion: 0.05
+Nodes (41): 1. Permission Resource:Action, 2. Scope Hierarchy (Prioritas Tertinggi ke Terendah), 3. System vs Organization Roles, Alur Logging, Arsitektur, Audit Trail, Autentikasi — Better Auth, Background Jobs (+33 more)
+
+### Community 11 - "json"
+Cohesion: 0.12
+Nodes (11): OrganizationRole, json, Router, urlencoded, InviteMemberInput, OrganizationRolesController, OrganizationRoleResponseDto, UpsertOrganizationRoleDto (+3 more)
+
+### Community 12 - "Logging & Observability"
+Cohesion: 0.05
+Nodes (37): Anti-Pattern, Anti-Pattern: console.log, Audit, Audit Log Pattern, Audit Log vs Application Log, Cara Pakai, Checklist Correlation ID, Checklist Health Checks (+29 more)
+
+### Community 13 - "Testing"
+Cohesion: 0.05
+Nodes (37): Checklist Testing, Coverage, Coverage Red Flags, Coverage Target, Daftar Isi, `describe` & `it` Naming, Deteksi Source File Tanpa Test, Domain event — pakai `EventEmitter2` mock atau in-memory (+29 more)
+
+### Community 14 - "Error Handling — Pola & Best Practice"
+Cohesion: 0.06
+Nodes (35): 1. Repository Lempar Error Mentah, 2. Service Tangkap & Transform, 3. Controller Tidak Tangkap, Async, Async Error Propagation, Async Function Caller — Wajib `await` atau `.catch()`, Bentuk Response Standar, Boundary (+27 more)
+
+### Community 15 - "Database — Best Practice"
+Cohesion: 0.06
+Nodes (34): Aturan Wajib, Base Repository & Soft Delete, Checklist Schema, Composite Indexes, Constraints, Daftar Isi, Database — Best Practice, Detail (+26 more)
+
+### Community 16 - "app.module.ts"
+Cohesion: 0.10
+Nodes (15): BETTER_AUTH_REDIS_CLIENT, BETTER_AUTH_SECONDARY_STORAGE, BetterAuthCacheModule, ResponseEnvelopeInterceptor, DatabaseModule, getSharedPool(), i18nOptionsFactory(), I18nPaths (+7 more)
+
+### Community 17 - "auth.ts"
+Cohesion: 0.13
+Nodes (20): normalizePhone(), prepareWhatsappNumber(), toWahaChatId(), WhatsappNumberResult, Invitation, assignWhatsappNumber(), buildEmailAndPasswordConfig(), buildEmailVerificationConfig() (+12 more)
+
+### Community 18 - "🚀 Cara Pakai"
+Cohesion: 0.07
+Nodes (30): 1. Domain Event Bus, 2. Multi-Tenant RLS (Row Level Security), 3. Server-Sent Events (SSE) untuk Realtime, 4. Firebase Cloud Messaging (FCM) Push Notification, 5. ESLint Custom Rule: `no-cross-module-import`, Aktivasi di ESLint Config, Aturan, 🚨 Aturan Penggunaan (+22 more)
+
+### Community 19 - "Deployment & Configuration"
+Cohesion: 0.07
+Nodes (29): Aturan, Boolean Parsing, Centralized Config, Checklist Configuration, Config Namespace, Configuration Red Flags, Contoh Namespace Config, Daftar Isi (+21 more)
+
+### Community 20 - "Performance — N+1 Query & Eager Loading"
+Cohesion: 0.07
+Nodes (27): Apa itu N+1 Query, Batch Endpoint, Ceklist Performa Query, Contoh 1: Eager Load dengan `with` (Drizzle relational query), Contoh 2: Batch Find dengan `inArray`, Contoh 3: Aggregation (COUNT, SUM) di Database, Contoh 4: Bulk Insert dengan Drizzle, Daftar Isi (+19 more)
+
+### Community 21 - "AppLoggerService"
+Cohesion: 0.12
+Nodes (4): AllExceptionsFilter, AppLoggerService, FcmAdapter, PushPayload
+
+### Community 22 - "template.module.ts"
+Cohesion: 0.20
+Nodes (9): TemplateItemDto, TEMPLATE_API, TemplateApi, TemplateService, TemplateFacade, TemplateRepository, TemplateResponseDto, TemplateController (+1 more)
+
+### Community 23 - "sse.controller.ts"
+Cohesion: 0.18
+Nodes (7): ErrorResponseDto, SseHealthDto, REALTIME_EVENT_PUBLISHER, RealtimeChannel, RealtimeEvent, SseController, SseService
+
+### Community 24 - "BaseRepository"
+Cohesion: 0.13
+Nodes (7): BaseRepository, DummyNoSoftDeleteRepository, DummyRepository, dummyTable, dummyTableNoSoftDelete, TableData, Tx
+
+### Community 25 - "Clean Code — Panduan Prinsip SOLID & Standar Kode"
+Cohesion: 0.08
+Nodes (24): Aturan Anti-Duplikasi, Catatan, Checklist Code Review, Clean Code, Clean Code — Panduan Prinsip SOLID & Standar Kode, Code Duplication, Contoh Before/After, Contoh: Extract Method (+16 more)
+
+### Community 26 - "compilerOptions"
+Cohesion: 0.08
+Nodes (23): compilerOptions, allowSyntheticDefaultImports, baseUrl, declaration, emitDecoratorMetadata, experimentalDecorators, forceConsistentCasingInFileNames, incremental (+15 more)
+
+### Community 27 - "realtime.gateway.ts"
+Cohesion: 0.21
+Nodes (6): RealtimeAuthContext, resolveRealtimeAuth(), organizationRoom(), userRoom(), RealtimeGateway, RealtimePublisherService
+
+### Community 28 - "health.controller.ts"
+Cohesion: 0.20
+Nodes (7): RedisHealthIndicator, DatabaseHealthIndicator, HealthCheckDetailDto, LivenessResponseDto, ReadinessResponseDto, HealthController, HealthModule
+
+### Community 29 - "email.service.spec.ts"
+Cohesion: 0.13
+Nodes (7): AuthDependencies, EmailService, SendEmailOptions, EmailTestConfig, TransporterMock, maskEmail(), maskPhone()
+
+### Community 30 - "Notifikasi — Panduan & Pattern"
+Cohesion: 0.11
+Nodes (18): Alur Verifikasi, Channel Adapters, Contoh Implementasi, Driver Token, FCM Push Notification Foundation, Flow, Foundation Layer Status (P1), Komponen (+10 more)
+
+### Community 31 - "devDependencies"
+Cohesion: 0.12
+Nodes (17): devDependencies, depcheck, drizzle-kit, eslint, @eslint/eslintrc, @eslint/js, jest, @nestjs/cli (+9 more)
+
+### Community 33 - "scripts"
+Cohesion: 0.12
+Nodes (16): scripts, build, db:generate, db:migrate, db:seed, db:seed:org-invitations, db:seed:org-members, db:seed:regional (+8 more)
+
+### Community 34 - "cache.service.ts"
+Cohesion: 0.20
+Nodes (6): GlobalCacheModule, RlsContext, RlsStore, storage, RlsInterceptor, SessionWithOrg
+
+### Community 35 - "README.md"
+Cohesion: 0.20
+Nodes (5): Checklist boundary, Opsi (a): salin `_template`, Opsi (b): Nest CLI lalu restructure, Scaffold modul baru, Custom ESLint Rules
+
+### Community 37 - "jest"
+Cohesion: 0.15
+Nodes (13): jest, collectCoverageFrom, coverageDirectory, extensionsToTreatAsEsm, moduleFileExtensions, moduleNameMapper, rootDir, setupFiles (+5 more)
+
+### Community 38 - "NestJS 11 REST API Boilerplate"
+Cohesion: 0.15
+Nodes (13): API docs (development only), Dokumentasi, Knowledge graph, Mengapa boilerplate ini, Modul baru, Modular boundary (ESLint), Module tiers, NestJS 11 REST API Boilerplate (+5 more)
+
+### Community 39 - "logger.service.ts"
+Cohesion: 0.20
+Nodes (5): LoggingInterceptor, color, levelColors, levelLabels, LogContext
+
+### Community 40 - "Testing Anti-Patterns"
+Cohesion: 0.18
+Nodes (11): 10. Mock yang Salah, 1. Test yang Hit Real External Resources, 2. Shared State Between Tests, 3. Test Tanpa Assertion, 4. Missing Edge Cases, 5. Brittle Tests, 6. Sleep/Delay Anti-Pattern, 7. Test Naming yang Buruk (+3 more)
+
+### Community 41 - "Checklist Security Review"
+Cohesion: 0.18
+Nodes (11): Auth & Authz, Checklist Security Review, CORS & Transport, Credentials, FCM / Push, Input Validation, Logging, Module Isolation (+3 more)
+
+### Community 42 - "eslint.config.mjs"
+Cohesion: 0.27
+Nodes (6): compat, __dirname, __filename, rule, createMockContext(), runRule()
+
+### Community 43 - "HttpMetricsInterceptor"
+Cohesion: 0.31
+Nodes (3): HttpMetricsInterceptor, httpDurationHistogramProvider, MetricsModule
+
+### Community 44 - "Logging & Observability Anti-Patterns"
+Cohesion: 0.22
+Nodes (9): 1. console.log di Production Code, 2. Missing Correlation ID, 3. Wrong Log Level, 4. Logging Sensitive Data, 5. No Metrics for Critical Operations, 6. Missing Health Check, 7. High-Volume Logging Tanpa Sampling, 8. Cross-Module Logging Leak (+1 more)
+
+### Community 45 - "Anti-Patterns Reference"
+Cohesion: 0.22
+Nodes (9): 1. Direct Cross-Module Import, 2. Empty Catch / Swallow Exception, 3. Query di Loop (N+1), 4. Missing `RlsContext.run` (Tenant Leak), Anti-Patterns Reference, Detection Commands, Foundation Layer Anti-Patterns, Foundation Layer Status (P1) (+1 more)
+
+### Community 46 - "Kekuatan Boilerplate (yang perlu dipertahankan)"
+Cohesion: 0.22
+Nodes (9): Auth, org, RBAC, Data & errors, Global cross-cutting, Kekuatan Boilerplate (yang perlu dipertahankan), Modular monolith, Observability & health, Pola wajib untuk modul baru, Stack & bootstrap (+1 more)
+
+### Community 47 - "Error Handling Anti-Patterns"
+Cohesion: 0.25
+Nodes (8): 1. Empty Catch Block, 2. Generic Error Throws, 3. Error Type Loss, 4. Async Error Swallowing, 5. Inconsistent Error Response, 6. Catch-and-Return-Null, 7. Promise Rejection di Event Emitter, Error Handling Anti-Patterns
+
+### Community 48 - "Security Anti-Patterns"
+Cohesion: 0.25
+Nodes (8): 1. Hardcoded Secrets, 2. SQL Injection, 3. Missing Authentication/Authorization, 4. Sensitive Data Exposure, 5. Unsafe Eval / Dynamic Code, 6. Weak Cryptography, 7. Missing Input Validation, Security Anti-Patterns
+
+### Community 49 - "Dependency Health Anti-Patterns"
+Cohesion: 0.25
+Nodes (8): 1. Outdated Major Versions, 2. Dev Dependencies in Production, 3. Unused Dependencies, 4. Deprecated Packages, 5. Security Vulnerabilities, 6. Multiple Versions Installed, 7. Wildcard Versions, Dependency Health Anti-Patterns
+
+### Community 50 - "API Design Anti-Patterns"
+Cohesion: 0.25
+Nodes (8): 1. Unpaginated List Endpoint, 2. Returning Raw Entity, 3. Wrong HTTP Method, 4. Inconsistent Response Shape, 5. No API Versioning, 6. Missing OpenAPI/Swagger Documentation, 7. Inconsistent REST Naming, API Design Anti-Patterns
+
+### Community 51 - "Security Guidelines"
+Cohesion: 0.25
+Nodes (8): Aturan, Contoh, Daftar Isi, Foundation Layer Status (P1), Random & Crypto, Referensi, Security Guidelines, Security Red Flags
+
+### Community 52 - "domain-event.base.ts"
+Cohesion: 0.36
+Nodes (4): DomainEvent, EventMetadata, DummyEvent, withMetadata()
+
+### Community 53 - "no-cross-module-import"
+Cohesion: 0.25
+Nodes (8): ✅ Correct, Examples, Implementation Details, ❌ Incorrect (violations), no-cross-module-import, Options, Rule Details, When Not To Use It
+
+### Community 54 - "Database Schema Anti-Patterns"
+Cohesion: 0.29
+Nodes (7): 1. Missing Index on Queryable Columns, 2. Missing Foreign Key Constraint, 3. Inconsistent Soft Delete, 4. Wrong Index Order, 5. No Migration Discipline, 6. Storing JSON Without Validation, Database Schema Anti-Patterns
+
+### Community 55 - "N+1 Query Anti-Patterns"
+Cohesion: 0.29
+Nodes (7): 1. Query dalam Loop, 2. Lazy Loading Trap, 3. Sequential Async Operations, 4. Missing Batch Operations, 5. Nested N+1, 6. Count dalam Loop, N+1 Query Anti-Patterns
+
+### Community 56 - "Configuration Anti-Patterns"
+Cohesion: 0.29
+Nodes (7): 1. Scattered process.env Access, 2. No Env Validation at Startup, 3. Hardcoded URLs/Hosts, 4. Default Values for Secrets, 5. Type Coercion Issues, 6. Missing .env.example, Configuration Anti-Patterns
+
+### Community 57 - "Konfigurasi Integrasi Opsional"
+Cohesion: 0.29
+Nodes (7): AI assistant, BullMQ / broadcast queue, Firebase Cloud Messaging (push), Inventory reconciliation cron, Konfigurasi Integrasi Opsional, Referensi, WhatsApp (WAHA)
+
+### Community 58 - "package.json"
+Cohesion: 0.29
+Nodes (6): description, keywords, name, packageManager, private, version
+
+### Community 59 - "Modular Monolith Anti-Patterns"
+Cohesion: 0.33
+Nodes (6): 1. Distributed Monolith, 2. Shared Database Table, 3. Circular Dependencies, 4. Anemic Domain Model, 5. Leaky Abstraction, Modular Monolith Anti-Patterns
+
+### Community 60 - "Clean Code Anti-Patterns"
+Cohesion: 0.33
+Nodes (6): 1. God Class / God Function, 2. Feature Envy, 3. Primitive Obsession, 4. Long Parameter List, 5. Magic Numbers / Strings, Clean Code Anti-Patterns
+
+### Community 61 - "Arsitektur Backend — NestJS 11 Boilerplate"
+Cohesion: 0.33
+Nodes (6): Arsitektur Backend — NestJS 11 Boilerplate, Foundation Layer, Layering, Referensi, Stack Utama, Startup default (`AppModule`)
+
+### Community 62 - "Strategi baseline migrasi Drizzle"
+Cohesion: 0.33
+Nodes (6): Audit singkat, Deploy existing MyApp / domain lama, Opsi A: baseline baru (fork bersih), Opsi B: pertahankan historis (default clone repo), Strategi baseline migrasi Drizzle, Tidak dieksekusi otomatis
+
+### Community 63 - "Modular Monolith — Boilerplate"
+Cohesion: 0.33
+Nodes (6): Komunikasi antar modul, Modul default (core), Modul sample (opsional), Modular Monolith — Boilerplate, Shared foundation, Struktur internal modul
+
+### Community 64 - "Modul contoh (WhatsApp & AI)"
+Cohesion: 0.33
+Nodes (6): Jika ekstraksi dilakukan nanti, Keputusan produk, Kriteria ekstraksi (go/no-go), Modul contoh (WhatsApp & AI), Opsi penempatan, Rekomendasi default
+
+### Community 65 - "Modul Sample Opsional"
+Cohesion: 0.33
+Nodes (6): Boundary modul, Core (terdaftar di `AppModule`), Menambahkan AI assistant, Menambahkan WhatsApp ke `AppModule`, Modul Sample Opsional, Opsional (registrasi manual)
+
+### Community 66 - "PII & Sensitive Logging"
+Cohesion: 0.33
+Nodes (6): Aturan Logging, Contoh, Data yang Wajib Di-Redact, FCM Push Token Encryption (Wajib di P5), Helper Masking, PII & Sensitive Logging
+
+### Community 67 - "nest-cli.json"
+Cohesion: 0.33
+Nodes (5): collection, compilerOptions, assets, deleteOutDir, sourceRoot
+
+### Community 69 - "domain-event-registry.ts"
+Cohesion: 0.47
+Nodes (4): DomainEventMap, EventName, EventPayload, TestEventName
+
+### Community 70 - "Duplication Anti-Patterns"
+Cohesion: 0.40
+Nodes (5): 1. Copy-Paste Programming, 2. Similar But Different, 3. Repeated Validation, 4. Shotgun Surgery, Duplication Anti-Patterns
+
+### Community 71 - "Tier modul: Core vs Optional"
+Cohesion: 0.40
+Nodes (5): Core (default `AppModule`), Database, Memutuskan fork minimal, Tidak termuat di repo default, Tier modul: Core vs Optional
+
+### Community 72 - "Pemeliharaan dependensi (depcheck)"
+Cohesion: 0.40
+Nodes (5): Aturan aman, CI (opsional), Kandidat yang sering “unused” setelah fork minimal, Menjalankan depcheck, Pemeliharaan dependensi (depcheck)
+
+### Community 73 - "Multi-Tenant Isolation (RLS)"
+Cohesion: 0.40
+Nodes (5): Anti-Pattern: Query Tanpa Context, Mekanisme, Multi-Tenant Isolation (RLS), Pola Wajib di Background Job / Cron, Pola Wajib di Service Layer
+
+### Community 75 - "Modul `_template` (scaffold)"
+Cohesion: 0.40
+Nodes (4): Modul `_template` (scaffold), Referensi, Setelah salin, Urutan kerja (salin dari `regional`)
+
+### Community 76 - "Pengembangan lokal"
+Cohesion: 0.50
+Nodes (4): Knowledge graph (graphify), Pengembangan lokal, Quality gates, Scaffold modul
+
+### Community 77 - "Authentication & Authorization"
+Cohesion: 0.50
+Nodes (4): Aturan, Authentication & Authorization, Contoh Salah & Benar, Yang Wajib Diperiksa Saat Review
+
+### Community 78 - "Module Isolation (ESLint)"
+Cohesion: 0.50
+Nodes (4): Aturan, Contoh Violation & Fix, Mengapa Penting untuk Security, Module Isolation (ESLint)
+
+### Community 79 - "CORS & Transport"
+Cohesion: 0.50
+Nodes (4): Aturan CORS, Contoh, CORS & Transport, HTTPS & Cookies
+
+### Community 80 - "Hardcoded Credentials"
+Cohesion: 0.50
+Nodes (4): Aturan Utama, Contoh Salah & Benar, Hardcoded Credentials, Lokasi yang Wajib Diperiksa
+
+### Community 81 - "SQL Injection"
+Cohesion: 0.50
+Nodes (4): Aturan Utama, Contoh, Drizzle Raw SQL — Hati-hati, SQL Injection
+
+### Community 84 - "transform"
+Cohesion: 0.67
+Nodes (3): transform, ^.+\\.mjs$, ^.+\\.(t|j)s$
+
+## Knowledge Gaps
+- **669 isolated node(s):** `__filename`, `__dirname`, `compat`, `collection`, `sourceRoot` (+664 more)
+  These have ≤1 connection - possible missing edges or undocumented components.
+- **8 thin communities (<3 nodes) omitted from report** — run `graphify query` to explore isolated nodes.
+
+## Suggested Questions
+_Questions this graph is uniquely positioned to answer:_
+
+- **Why does `AppLoggerService` connect `AppLoggerService` to `member.controller.ts`, `main.ts`, `cache.service.ts`, `BusinessError`, `CacheService`, `logger.service.ts`, `index.ts`, `app.module.ts`, `auth.ts`, `sse.controller.ts`, `realtime.gateway.ts`, `health.controller.ts`, `email.service.spec.ts`?**
+  _High betweenness centrality (0.096) - this node is a cross-community bridge._
+- **Why does `Anti-Patterns Reference` connect `Anti-Patterns Reference` to `testing.md`, `Duplication Anti-Patterns`, `Testing Anti-Patterns`, `Logging & Observability Anti-Patterns`, `Error Handling Anti-Patterns`, `Security Anti-Patterns`, `Dependency Health Anti-Patterns`, `API Design Anti-Patterns`, `Database Schema Anti-Patterns`, `N+1 Query Anti-Patterns`, `Configuration Anti-Patterns`, `Modular Monolith Anti-Patterns`, `Clean Code Anti-Patterns`?**
+  _High betweenness centrality (0.080) - this node is a cross-community bridge._
+- **Why does `Security Guidelines` connect `Security Guidelines` to `testing.md`, `PII & Sensitive Logging`, `Checklist Security Review`, `Multi-Tenant Isolation (RLS)`, `Authentication & Authorization`, `Module Isolation (ESLint)`, `CORS & Transport`, `Hardcoded Credentials`, `SQL Injection`?**
+  _High betweenness centrality (0.070) - this node is a cross-community bridge._
+- **What connects `__filename`, `__dirname`, `compat` to the rest of the system?**
+  _669 weakly-connected nodes found - possible documentation gaps or missing edges._
+- **Should `rbac.module.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.06421052631578947 - nodes in this community are weakly interconnected._
+- **Should `member.controller.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.06702702702702702 - nodes in this community are weakly interconnected._
+- **Should `main.ts` be split into smaller, more focused modules?**
+  _Cohesion score 0.05555555555555555 - nodes in this community are weakly interconnected._

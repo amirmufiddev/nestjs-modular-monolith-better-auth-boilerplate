@@ -1,0 +1,47 @@
+---
+description: Database performance, N+1 prevention, indexing, and schema design rules
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Kinerja Basis Data & Schema
+
+## Cegah N+1 Query
+
+- **JANGAN jalankan query di dalam loop** (`for`, `forEach`, `map`).
+- Selalu gunakan eager loading (`include`, `join`) atau batch fetch.
+
+```typescript
+// ❌ BAD
+for (const user of users) {
+  const orders = await orderRepo.findByUserId(user.id);
+}
+
+// ✅ GOOD
+const users = await userRepo.find({ include: { orders: true } });
+```
+
+- Waspadai lazy loading ORM di template/serialisasi. Paksa eager loading upfront.
+- Gunakan `insertMany`/`updateMany` untuk operasi bulk, jangan insert satu-satu.
+- Hati-hati nested N+1: manfaatkan nested include dengan bijak.
+
+## Asinkron Paralel
+
+```typescript
+// ❌ BAD - Sequential await
+const a = await fetchA();
+const b = await fetchB();
+
+// ✅ GOOD - Parallel
+const [a, b] = await Promise.all([fetchA(), fetchB()]);
+// Untuk yang toleran gagal:
+const results = await Promise.allSettled([fetchA(), fetchB()]);
+```
+
+## Skema & Index
+
+- Tetapkan index pada kolom filter `WHERE` dan `ORDER BY` yang sering dipakai.
+- JANGAN buat composite index tanpa analisis arah query.
+- Gunakan Foreign Key + Cascade constraint untuk mencegah orphan record.
+- Soft delete seragam: field `deletedAt` (timestamp), jangan hard-delete kecuali kepatuhan murni.
+- JANGAN share/akses langsung tabel antar modul berbeda (lihat `modular-architecture.mdc`).

@@ -1,0 +1,35 @@
+// Bun Snapshot v1, https://bun.sh/docs/test/snapshots
+
+exports[`buildEmailVerificationEmail should match snapshot with deterministic year=2024 1`] = `
+"<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Verifikasi Email MyApp</title>
+</head>
+<body style="margin:0;padding:24px;background:#F3F4F6;font-family:Arial, Helvetica, sans-serif;color:#1F2937;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="background:#F3F4F6;">
+<tr>
+<td align="center">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0" style="max-width:600px;background:#FFFFFF;border:1px solid #E5E7EB;border-radius:8px;">
+<tr>
+<td style="padding:32px;">
+<table role="presentation" width="100%" cellspacing="0" cellpadding="0" border="0">
+<tr><td align="center" style="padding:0 0 24px 0;"><p style="margin:0;font-size:18px;font-weight:700;color:#1F2937;font-family:Arial, Helvetica, sans-serif;">MyApp</p></td></tr>
+<tr>
+<td style="padding:0;">
+<h1 style="margin:0 0 16px 0;font-size:20px;font-weight:700;color:#1F2937;font-family:Arial, Helvetica, sans-serif;">Verifikasi Email Anda</h1><p style="margin:0 0 16px 0;font-size:14px;line-height:1.6;color:#1F2937;font-family:Arial, Helvetica, sans-serif;">Halo Budi Santoso,</p><p style="margin:0 0 16px 0;font-size:14px;line-height:1.6;color:#1F2937;font-family:Arial, Helvetica, sans-serif;">Terima kasih telah mendaftar di MyApp!</p><p style="margin:0 0 8px 0;font-size:14px;line-height:1.6;color:#1F2937;font-family:Arial, Helvetica, sans-serif;">Silakan verifikasi alamat email Anda dengan mengklik tombol di bawah:</p><table role="presentation" cellspacing="0" cellpadding="0" border="0" style="margin:24px auto;"><tr><td align="center" bgcolor="#0066CC" style="border-radius:6px;"><a href="https://example.com/verify-email?token=xyz123abc" target="_blank" style="display:inline-block;padding:14px 32px;font-family:Arial, Helvetica, sans-serif;font-size:16px;font-weight:700;color:#FFFFFF;text-decoration:none;border-radius:6px;background-color:#0066CC;">Verifikasi Email</a></td></tr></table><p style="margin:16px 0 0 0;font-size:12px;line-height:1.5;color:#6B7280;word-break:break-all;font-family:Arial, Helvetica, sans-serif;">Jika tombol tidak berfungsi, salin tautan berikut ke browser Anda:<br/><a href="https://example.com/verify-email?token=xyz123abc" style="color:#0066CC;">https://example.com/verify-email?token=xyz123abc</a></p>
+</td>
+</tr>
+<tr><td style="padding:24px 0 0 0;border-top:1px solid #E5E7EB;"><p style="margin:0 0 8px 0;font-size:12px;line-height:1.5;color:#6B7280;font-family:Arial, Helvetica, sans-serif;">Email otomatis dari MyApp. Mohon tidak membalas email ini.</p><p style="margin:0;font-size:12px;color:#6B7280;font-family:Arial, Helvetica, sans-serif;">© 2024 MyApp</p></td></tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</body>
+</html>"
+`;

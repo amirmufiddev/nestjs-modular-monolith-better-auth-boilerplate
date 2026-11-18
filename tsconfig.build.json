@@ -1,0 +1,13 @@
+{
+  "extends": "./tsconfig.json",
+  "exclude": [
+    "node_modules",
+    "test",
+    "dist",
+    "examples",
+    "drizzle-legacy",
+    "scripts",
+    "**/*spec.ts",
+    "**/*.spec.ts"
+  ]
+}

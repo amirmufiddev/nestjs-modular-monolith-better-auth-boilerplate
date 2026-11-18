@@ -1,0 +1,45 @@
+---
+description: Testing standards - isolated unit tests, clean state, real assertions, no sleeps
+globs: backend/**/*.spec.ts,backend/**/__tests__/**/*.ts
+alwaysApply: false
+---
+
+# Standar Pengujian
+
+## Isolasi Resource
+
+- **Unit test TIDAK BOLEH** depend on DB nyata, HTTP/network nyata, atau file system nyata.
+- WAJIB mock dependency secara ketat (Mock Repository, mock external API).
+
+```typescript
+// ❌ BAD - Real DB call di unit test
+const user = await prisma.user.findUnique({ where: { id } });
+
+// ✅ GOOD - Mocked repo
+const userRepoMock = { findById: jest.fn().mockResolvedValue(mockUser) };
+const user = await userRepoMock.findById(id);
+```
+
+## State Tes Bersih
+
+- **JANGAN** pakai global state antar test.
+- WAJIB setup state terpisah di `beforeEach` per test.
+
+## Asersi Bermakna
+
+- Test WAJIB memverifikasi behavior/output dengan `expect(...)` yang nyata.
+- **JANGAN** test hanya berdasarkan console log atau baris yang dieksekusi.
+
+## Edge Cases
+
+- Tutupi tidak hanya happy path, tapi juga:
+  - Payload kosong/null
+  - Nilai negatif
+  - Input berulang
+  - String sangat panjang
+  - Partial failure
+
+## Hindari Sleep
+
+- **JANGAN** pakai `setTimeout`/`sleep` di async test (flaky).
+- Gunakan `waitFor` helper atau library polling sampai kondisi terpenuhi.

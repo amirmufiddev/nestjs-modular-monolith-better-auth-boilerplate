@@ -1,0 +1,85 @@
+# compiled output
+/dist
+/node_modules
+/build
+
+# Bun is the package manager of record — commit bun.lock; ignore other lockfiles.
+yarn.lock
+.yarn/
+.pnp.*
+package-lock.json
+pnpm-lock.yaml
+
+# Logs
+logs
+*.log
+npm-debug.log*
+bun-debug.log*
+bun-debug.log*
+bun-error.log*
+lerna-debug.log*
+
+# OS
+.DS_Store
+
+# Tests
+/coverage
+/.nyc_output
+
+# IDEs and editors
+/.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# dotenv environment variable files
+.env
+.env.local
+.env.development
+.env.development.local
+.env.test
+.env.test.local
+.env.production
+.env.production.local
+
+# Firebase Admin SDK / FCM private keys — never commit
+/keys/
+
+# temp directory
+.temp
+.tmp
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Diagnostic reports (https://nodejs.org/api/report.html)
+report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json
+report.html
+
+
+.bun
+graphify-out/cache
+testsprite_tests/tmp
+testsprite_tests/__pycache__
+
+Makefile
+
+uploads/
+logs/
+
+.superpowers
+
+graphify-out/cache

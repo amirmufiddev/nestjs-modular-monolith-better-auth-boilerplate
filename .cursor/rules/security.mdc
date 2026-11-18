@@ -1,0 +1,50 @@
+---
+description: Security standards - secrets, SQL injection, auth, input validation, redaction
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Standar Keamanan
+
+## Secrets & Credentials
+
+- **JANGAN hardcode** kredensial, API key, token di codebase.
+- Selalu baca dari env variable yang tervalidasi (lihat `configuration.mdc`).
+- Saat logging, REDACT password, token, PII (no kartu kredit, dll).
+
+## SQL Injection
+
+- WAJIB gunakan parameterized query atau ORM (Prisma/Drizzle/TypeORM).
+- JANGAN interpolasi user input langsung ke SQL string.
+
+## Authentication & Authorization
+
+- TIDAK ADA endpoint/controller yang boleh terekspos tanpa guard.
+- Semua endpoint sensitif WAJIB pakai `@UseGuards()`.
+
+```typescript
+// ❌ BAD - Endpoint tanpa guard
+@Controller('users')
+export class UserController {
+  @Get('admin')
+  getAdminData() { ... }
+}
+
+// ✅ GOOD
+@Controller('users')
+@UseGuards(JwtAuthGuard, RolesGuard)
+export class UserController {
+  @Get('admin')
+  @Roles('admin')
+  getAdminData() { ... }
+}
+```
+
+## Input Validation
+
+- SEMUA payload request WAJIB divalidasi di controller/DTO dengan `class-validator`/`Zod`/`Joi`.
+- Tolak request yang tidak sesuai schema sebelum sampai ke service.
+
+## Eksekusi Tidak Aman
+
+- **DILARANG KERAS:** `eval()`, `new Function()`, atau eksekusi kode dari user input.

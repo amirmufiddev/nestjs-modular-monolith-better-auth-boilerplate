@@ -1,0 +1,56 @@
+---
+description: REST API design rules - HTTP methods, DTO responses, pagination, versioning, OpenAPI
+globs: backend/**/*.ts
+alwaysApply: false
+---
+
+# Desain API & Kontrak REST
+
+## Aturan RESTful
+
+| Method        | Tujuan                             |
+| ------------- | ---------------------------------- |
+| `POST`        | Create baru                        |
+| `PUT`/`PATCH` | Update                             |
+| `GET`         | Read only (tidak boleh ubah state) |
+| `DELETE`      | Hapus                              |
+
+JANGAN campur rute dan metode (mis. `GET /delete-user/:id`).
+
+## Response Shape
+
+- **JANGAN** ekspos entity/database model RAW ke klien (bocor detail internal).
+- WAJIB bungkus dalam DTO/Response DTO.
+
+```typescript
+// ❌ BAD
+@Get(':id')
+async findOne(@Param('id') id: string): Promise<UserEntity> {
+  return this.userService.findById(id);
+}
+
+// ✅ GOOD
+@Get(':id')
+async findOne(@Param('id') id: string): Promise<UserResponseDto> {
+  const user = await this.userService.findById(id);
+  return UserResponseDto.fromEntity(user);
+}
+```
+
+## Pagination
+
+- **JANGAN** kembalikan array besar tanpa pagination.
+- Data list WAJIB gunakan response ter-paginated (page, limit, total, items).
+
+## API Versioning
+
+- Gunakan URL versioning: `/v1/`, `/v2/`.
+- Jangan breaking change pada versi yang sudah didistribusikan.
+
+## OpenAPI/Swagger
+
+- Setiap endpoint publik WAJIB punya dekorator lengkap:
+  - `@ApiOperation({ summary })`
+  - `@ApiResponse({ status, type })`
+  - `@ApiBody({ type })`
+  - Dokumentasikan juga error response schema.
