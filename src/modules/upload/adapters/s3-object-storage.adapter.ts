@@ -1,4 +1,4 @@
-import { Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, OnModuleInit, Optional } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   CreateBucketCommand,
@@ -47,12 +47,13 @@ export class S3ObjectStorageAdapter
   constructor(
     private readonly configService: ConfigService,
     private readonly logger: AppLoggerService,
-    s3Client?: S3Client,
+    @Optional() s3Client?: S3Client,
   ) {
-    const upload = this.uploadConfig;
-    this.s3 =
-      s3Client ??
-      new S3Client({
+    if (s3Client) {
+      this.s3 = s3Client;
+    } else {
+      const upload = this.uploadConfig;
+      this.s3 = new S3Client({
         endpoint: upload.endpoint,
         region: upload.region,
         credentials: {
@@ -61,6 +62,7 @@ export class S3ObjectStorageAdapter
         },
         forcePathStyle: upload.forcePathStyle,
       });
+    }
   }
 
   private get uploadConfig(): UploadConfig {

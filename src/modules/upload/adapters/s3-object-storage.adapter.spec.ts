@@ -42,6 +42,45 @@ describe('S3ObjectStorageAdapter', () => {
     } as unknown as S3Client);
   });
 
+  describe('constructor', () => {
+    it('should use provided s3Client and not access uploadConfig during instantiation', () => {
+      const getSpy = jest.fn();
+      const emptyConfigService = { get: getSpy } as unknown as ConfigService;
+      const customClient = { send: jest.fn() } as unknown as S3Client;
+
+      const instance = new S3ObjectStorageAdapter(
+        emptyConfigService,
+        mockLogger,
+        customClient,
+      );
+
+      expect(instance).toBeDefined();
+      expect(getSpy).not.toHaveBeenCalled();
+    });
+
+    it('should initialize S3Client from configService when s3Client is not provided', () => {
+      const instance = new S3ObjectStorageAdapter(
+        mockConfigService,
+        mockLogger,
+      );
+
+      expect(instance).toBeDefined();
+      expect(mockConfigService.get).toHaveBeenCalledWith('upload', {
+        infer: true,
+      });
+    });
+
+    it('should throw error when uploadConfig is not found and s3Client is not provided', () => {
+      const emptyConfigService = {
+        get: jest.fn().mockReturnValue(undefined),
+      } as unknown as ConfigService;
+
+      expect(
+        () => new S3ObjectStorageAdapter(emptyConfigService, mockLogger),
+      ).toThrow('Upload config tidak tersedia');
+    });
+  });
+
   describe('onModuleInit', () => {
     it('should ensure bucket exists on module init', async () => {
       send.mockResolvedValueOnce({});
