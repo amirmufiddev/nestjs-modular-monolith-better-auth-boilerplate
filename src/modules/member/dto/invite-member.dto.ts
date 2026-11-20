@@ -8,7 +8,8 @@ export class InviteMemberDto {
 
   @ApiProperty({
     example: 'member',
-    description: 'Nama role dari katalog organisasi (mis. member, admin, supervisor)',
+    description:
+      'Nama role dari katalog organisasi (mis. member, admin, supervisor)',
   })
   @IsString()
   @MinLength(1)

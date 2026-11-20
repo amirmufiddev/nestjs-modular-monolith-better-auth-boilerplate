@@ -8,22 +8,16 @@ import {
   pendingMemberLinks,
   type PendingMemberLink,
 } from './pending-member-link.schema';
-import type { ListMembersOptions } from '../api/dto/member.dto';
-
-export interface RawMemberRow {
-  id: string;
-  organizationId: string;
-  userId: string;
-  role: string;
-  createdAt: Date;
-  name: string;
-  email: string;
-  phone: string | null;
-  image: string | null;
-}
+import type { ListMembersOptions } from '../dto/member.dto';
+import type { ListMemberQueryDto } from '../dto/list-member-query.dto';
+import { MemberResponseDto } from '../dto/member-response.dto';
+import type {
+  IMemberRepository,
+  RawMemberRow,
+} from '../interfaces/member-repository.interface';
 
 @Injectable()
-export class MemberRepository {
+export class MemberRepository implements IMemberRepository {
   constructor(@Inject(DRIZZLE) private readonly db: NodePgDatabase) {}
 
   async listByOrganizationPaginated(
@@ -93,10 +87,28 @@ export class MemberRepository {
     return { data, total };
   }
 
+  async listByOrg(
+    orgId: string,
+    query: ListMemberQueryDto,
+  ): Promise<{ data: MemberResponseDto[]; total: number }> {
+    const result = await this.listByOrganizationPaginated(orgId, query);
+    return {
+      data: result.data.map(MemberResponseDto.fromEntity),
+      total: result.total,
+    };
+  }
+
   async findById(
-    organizationId: string,
-    memberId: string,
+    organizationIdOrId: string,
+    memberId?: string,
   ): Promise<RawMemberRow | null> {
+    const whereClause = memberId
+      ? and(
+          eq(member.organizationId, organizationIdOrId),
+          eq(member.id, memberId),
+        )
+      : eq(member.id, organizationIdOrId);
+
     const rows = (await this.db
       .select({
         id: member.id,
@@ -111,9 +123,7 @@ export class MemberRepository {
       })
       .from(member)
       .innerJoin(user, eq(member.userId, user.id))
-      .where(
-        and(eq(member.organizationId, organizationId), eq(member.id, memberId)),
-      )
+      .where(whereClause)
       .limit(1)
       .execute()) as RawMemberRow[];
 
@@ -148,6 +158,13 @@ export class MemberRepository {
       .execute()) as RawMemberRow[];
 
     return rows[0] ?? null;
+  }
+
+  async findByOrgAndUser(
+    orgId: string,
+    userId: string,
+  ): Promise<RawMemberRow | null> {
+    return this.findByUserId(orgId, userId);
   }
 
   async upsertPendingLink(

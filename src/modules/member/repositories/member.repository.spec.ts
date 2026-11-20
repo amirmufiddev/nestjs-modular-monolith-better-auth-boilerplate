@@ -236,7 +236,6 @@ describe('MemberRepository', () => {
         'org-1',
         'test@example.com',
         'driver',
-        'cust-1',
       );
 
       expect(dbMock.insert).toHaveBeenCalledWith(pendingMemberLinks);

@@ -29,12 +29,14 @@ import { PaginatedResponseDto } from '@/common/dto/paginated-response.dto';
 import { MEMBER_ROLES } from '@/modules/auth/constants/auth.constants';
 import { RequirePermission } from '@/modules/rbac/decorators';
 import { RlsContext } from '@/shared/database/rls-context';
-import { MemberService } from '../application/member.service';
-import { InviteMemberDto } from './dto/invite-member.dto';
-import { UpdateMemberRoleDto } from './dto/update-member-role.dto';
-import { ListMemberQueryDto } from './dto/list-member-query.dto';
-import { MemberResponseDto } from './dto/member-response.dto';
-import { InvitationResponseDto } from './dto/invitation-response.dto';
+import { MemberService } from '../services/member.service';
+import {
+  InviteMemberDto,
+  UpdateMemberRoleDto,
+  ListMemberQueryDto,
+  MemberResponseDto,
+  InvitationResponseDto,
+} from '../dto';
 
 @ApiTags('Admin / Members')
 @ApiExtraModels(MemberResponseDto, InvitationResponseDto, ErrorResponseDto)
@@ -137,7 +139,6 @@ export class MemberController {
   @ApiOperation({ summary: 'Memperbarui role anggota' })
   @ApiBody({ type: UpdateMemberRoleDto })
   @ApiResponse({ status: HttpStatus.OK, type: MemberResponseDto })
-  @ApiResponse({ status: HttpStatus.NOT_FOUND, type: ErrorResponseDto })
   @ApiResponse({ status: HttpStatus.FORBIDDEN, type: ErrorResponseDto })
   async updateRole(
     @Param('id') id: string,

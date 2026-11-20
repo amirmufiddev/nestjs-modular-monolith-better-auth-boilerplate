@@ -1,7 +1,7 @@
 import { ApiPropertyOptional } from '@nestjs/swagger';
 import { IsIn, IsOptional, IsString } from 'class-validator';
 import { PaginationDto } from '@/common/dto/pagination.dto';
-import type { OrgMemberRole } from '../../api/dto/member.dto';
+import type { OrgMemberRole } from './member.dto';
 
 export class ListMemberQueryDto extends PaginationDto {
   @ApiPropertyOptional({

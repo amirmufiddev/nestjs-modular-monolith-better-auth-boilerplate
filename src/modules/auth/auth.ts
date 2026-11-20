@@ -19,7 +19,7 @@ import {
   twoFactor,
   username,
 } from 'better-auth/plugins';
-import { MemberAcceptedBridge } from '@/modules/member/api';
+import { MemberAcceptedBridge } from '@/modules/member';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { eq } from 'drizzle-orm';
 import { canCreateOrganization } from '@/modules/auth/organization-access';
@@ -136,8 +136,7 @@ const buildPluginsConfig = (
       infer: true,
     });
 
-  const statement =
-    deps.betterAuthStatement ?? BOOTSTRAP_BETTER_AUTH_STATEMENT;
+  const statement = deps.betterAuthStatement ?? BOOTSTRAP_BETTER_AUTH_STATEMENT;
   const ac = createAccessControl(statement);
 
   return [

@@ -169,7 +169,10 @@ describe('auth factory', () => {
       inviter: {
         user: { name: 'Owner Name', email: 'owner@example.com' },
       },
-      organization: { name: 'Acme Org', logo: '/uploads/public/org-1/logo.png' },
+      organization: {
+        name: 'Acme Org',
+        logo: '/uploads/public/org-1/logo.png',
+      },
     });
 
     expect(mockEmailService.send).toHaveBeenCalledWith(

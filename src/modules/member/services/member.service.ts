@@ -1,21 +1,25 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { AuthService } from '@thallesp/nestjs-better-auth';
 import { BusinessError } from '@/common/errors/business-error';
 import { AppLoggerService } from '@/logger/logger.service';
-import { MemberRepository } from '../infrastructure/member.repository';
+import {
+  MEMBER_REPOSITORY_TOKEN,
+  type IMemberRepository,
+} from '../interfaces/member-repository.interface';
 import type {
   InviteMemberInput,
   ListMembersOptions,
   MemberDto,
   OrgMemberRole,
-} from '../api/dto/member.dto';
-import type { MemberAcceptedPayload } from '../infrastructure/member-accepted.bridge';
-import { OrganizationRoleService } from '@/modules/rbac/services/organization-role.service';
+} from '../dto/member.dto';
+import type { MemberAcceptedPayload } from './member-accepted.bridge';
+import { OrganizationRoleService } from '@/modules/rbac';
 
 @Injectable()
 export class MemberService {
   constructor(
-    private readonly repo: MemberRepository,
+    @Inject(MEMBER_REPOSITORY_TOKEN)
+    private readonly memberRepo: IMemberRepository,
     private readonly authService: AuthService,
     private readonly logger: AppLoggerService,
     private readonly organizationRoleService: OrganizationRoleService,
@@ -26,7 +30,10 @@ export class MemberService {
     options?: ListMembersOptions,
   ): Promise<{ data: MemberDto[]; total: number }> {
     const { data: rawRows, total } =
-      await this.repo.listByOrganizationPaginated(organizationId, options);
+      await this.memberRepo.listByOrganizationPaginated(
+        organizationId,
+        options,
+      );
 
     const data: MemberDto[] = rawRows.map((row) => ({
       id: row.id,
@@ -46,7 +53,7 @@ export class MemberService {
     organizationId: string,
     memberId: string,
   ): Promise<MemberDto | null> {
-    const raw = await this.repo.findById(organizationId, memberId);
+    const raw = await this.memberRepo.findById(organizationId, memberId);
     if (!raw) {
       return null;
     }
@@ -71,7 +78,7 @@ export class MemberService {
 
     if (input.role === 'admin') {
       const inviter = input.inviterUserId
-        ? await this.repo.findByUserId(
+        ? await this.memberRepo.findByUserId(
             input.organizationId,
             input.inviterUserId,
           )
@@ -106,7 +113,10 @@ export class MemberService {
       throw BusinessError.notFound('Member', memberId);
     }
 
-    await this.organizationRoleService.assertAssignableRole(organizationId, role);
+    await this.organizationRoleService.assertAssignableRole(
+      organizationId,
+      role,
+    );
 
     const api = this.authService.api as any;
     return await api.updateMemberRole({

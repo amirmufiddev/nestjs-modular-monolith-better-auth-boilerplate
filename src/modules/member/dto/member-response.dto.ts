@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
-import type { MemberDto, OrgMemberRole } from '../../api/dto/member.dto';
+import type { MemberDto, OrgMemberRole } from './member.dto';
 
 export class MemberResponseDto {
   @ApiProperty({ example: 'mem-123' })
@@ -54,3 +54,5 @@ export class MemberResponseDto {
     return res;
   }
 }
+
+export type MemberListItemDto = MemberResponseDto;

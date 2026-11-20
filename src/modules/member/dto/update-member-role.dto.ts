@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsString, MaxLength, MinLength } from 'class-validator';
-import type { OrgMemberRole } from '../../api/dto/member.dto';
+import type { OrgMemberRole } from './member.dto';
 
 export class UpdateMemberRoleDto {
   @ApiProperty({

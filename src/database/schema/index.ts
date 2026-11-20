@@ -11,5 +11,5 @@ export * from './audit-trail';
 export * from './rbac-permission';
 export * from './rbac-role-template';
 export * from './regional';
-export * from '../../modules/member/infrastructure/pending-member-link.schema';
+export * from '../../modules/member/repositories/pending-member-link.schema';
 export * from '@/shared/push-notification/schema/push-tokens.schema';

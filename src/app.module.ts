@@ -23,7 +23,7 @@ import { LoggerModule } from './logger/logger.module';
 import { RbacModule } from './modules/rbac/rbac.module';
 import { UploadModule } from './modules/upload/upload.module';
 import { RegionalModule } from './modules/regional';
-import { MemberModule } from './modules/member/infrastructure/member.module';
+import { MemberModule } from './modules/member';
 import { CorrelationIdMiddleware } from './common/middleware/correlation-id.middleware';
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor';
