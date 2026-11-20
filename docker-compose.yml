@@ -62,6 +62,27 @@ services:
       timeout: 5s
       retries: 20
 
+  myapp:
+    container_name: myapp
+    build:
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+    ports:
+      - '${PORT:-2001}:2001'
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      minio:
+        condition: service_started
+      mailpit:
+        condition: service_started
+
 volumes:
   myapp_postgres_data:
     driver: local
