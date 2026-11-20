@@ -3,9 +3,11 @@ import { and, asc, eq, isNull } from 'drizzle-orm';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { DRIZZLE } from '@/database/database.constants';
 import { regionalAddresses } from '@/database/schema/regional';
-import type { RegionalDataDto } from '../api/dto/regional.dto';
-
-type RegionalLevel = 'province' | 'regency' | 'district' | 'village';
+import type { RegionalDataDto } from '../dto/regional.dto';
+import type {
+  IRegionalRepository,
+  RegionalLevel,
+} from '../interfaces/regional-repository.interface';
 
 /**
  * Repository for the `regional_addresses` shared master-data table.
@@ -15,7 +17,7 @@ type RegionalLevel = 'province' | 'regency' | 'district' | 'village';
  * via the standalone `regional.seed.ts` script.
  */
 @Injectable()
-export class RegionalRepository {
+export class RegionalRepository implements IRegionalRepository {
   constructor(@Inject(DRIZZLE) private readonly db: NodePgDatabase) {}
 
   async findByLevel(level: RegionalLevel): Promise<RegionalDataDto[]> {

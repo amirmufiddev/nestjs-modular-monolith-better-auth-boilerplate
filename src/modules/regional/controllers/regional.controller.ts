@@ -9,11 +9,11 @@ import {
 } from '@nestjs/swagger';
 import { ErrorResponseDto } from '@/common/dto/error-response.dto';
 import { BusinessError } from '@/common/errors/business-error';
-import { RegionalService } from '../application/regional.service';
+import { RegionalService } from '../services/regional.service';
 import {
   RegionalEnvelopeDto,
   RegionalResponseDto,
-} from './dto/regional-list-response.dto';
+} from '../dto/regional-list-response.dto';
 
 /**
  * HTTP controller for the regional master-data module.

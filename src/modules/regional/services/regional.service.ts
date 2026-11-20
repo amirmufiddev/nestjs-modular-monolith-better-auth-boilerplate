@@ -1,7 +1,10 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { BusinessError } from '@/common/errors/business-error';
-import type { RegionalDataDto } from '../api/dto/regional.dto';
-import { RegionalRepository } from '../infrastructure/regional.repository';
+import type { RegionalDataDto } from '../dto/regional.dto';
+import {
+  REGIONAL_REPOSITORY_TOKEN,
+  type IRegionalRepository,
+} from '../interfaces/regional-repository.interface';
 
 type ChildLevel = 'regency' | 'district' | 'village';
 
@@ -22,8 +25,8 @@ const CHILD_LEVEL_LABEL: Record<ChildLevel, string> = {
 @Injectable()
 export class RegionalService {
   constructor(
-    @Inject(RegionalRepository)
-    private readonly regionalRepo: RegionalRepository,
+    @Inject(REGIONAL_REPOSITORY_TOKEN)
+    private readonly regionalRepo: IRegionalRepository,
   ) {}
 
   getProvinces(): Promise<RegionalDataDto[]> {

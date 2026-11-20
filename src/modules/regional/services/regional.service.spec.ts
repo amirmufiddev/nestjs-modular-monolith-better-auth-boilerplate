@@ -1,11 +1,15 @@
 import { beforeEach, describe, expect, mock, test } from 'bun:test';
+import { Test } from '@nestjs/testing';
 import { BusinessError } from '@/common/errors/business-error';
 import { RegionalService } from './regional.service';
-import { RegionalRepository } from '../infrastructure/regional.repository';
-import type { RegionalDataDto } from '../api/dto/regional.dto';
+import {
+  REGIONAL_REPOSITORY_TOKEN,
+  type IRegionalRepository,
+} from '../interfaces/regional-repository.interface';
+import type { RegionalDataDto } from '../dto/regional.dto';
 
 describe('RegionalService', () => {
-  const repo = {
+  const repo: IRegionalRepository = {
     findByLevel: mock(
       (_level: 'province' | 'regency' | 'district' | 'village') =>
         Promise.resolve([] as RegionalDataDto[]),
@@ -20,12 +24,23 @@ describe('RegionalService', () => {
 
   let service: RegionalService;
 
-  beforeEach(() => {
-    repo.findByLevel.mockReset();
-    repo.findChildren.mockReset();
-    repo.findByLevel.mockResolvedValue([]);
-    repo.findChildren.mockResolvedValue([]);
-    service = new RegionalService(repo as unknown as RegionalRepository);
+  beforeEach(async () => {
+    (repo.findByLevel as any).mockReset();
+    (repo.findChildren as any).mockReset();
+    (repo.findByLevel as any).mockResolvedValue([]);
+    (repo.findChildren as any).mockResolvedValue([]);
+
+    const module = await Test.createTestingModule({
+      providers: [
+        RegionalService,
+        {
+          provide: REGIONAL_REPOSITORY_TOKEN,
+          useValue: repo,
+        },
+      ],
+    }).compile();
+
+    service = module.get<RegionalService>(RegionalService);
   });
 
   test('getProvinces returns list from repository filtered by level=province', async () => {
@@ -37,7 +52,7 @@ describe('RegionalService', () => {
         postalCode: null,
       },
     ];
-    repo.findByLevel.mockResolvedValueOnce(expected);
+    (repo.findByLevel as any).mockResolvedValueOnce(expected);
 
     const result = await service.getProvinces();
 
@@ -61,7 +76,7 @@ describe('RegionalService', () => {
         postalCode: null,
       },
     ];
-    repo.findChildren.mockResolvedValueOnce(expected);
+    (repo.findChildren as any).mockResolvedValueOnce(expected);
 
     const result = await service.getRegencies(31);
 
@@ -78,7 +93,7 @@ describe('RegionalService', () => {
         postalCode: '10110',
       },
     ];
-    repo.findChildren.mockResolvedValueOnce(expected);
+    (repo.findChildren as any).mockResolvedValueOnce(expected);
 
     const result = await service.getDistricts(3171);
 
@@ -95,7 +110,7 @@ describe('RegionalService', () => {
         postalCode: '10210',
       },
     ];
-    repo.findChildren.mockResolvedValueOnce(expected);
+    (repo.findChildren as any).mockResolvedValueOnce(expected);
 
     const result = await service.getVillages(317101);
 
@@ -104,8 +119,8 @@ describe('RegionalService', () => {
   });
 
   test('returns empty array when repository has no rows', async () => {
-    repo.findByLevel.mockResolvedValueOnce([]);
-    repo.findChildren.mockResolvedValueOnce([]);
+    (repo.findByLevel as any).mockResolvedValueOnce([]);
+    (repo.findChildren as any).mockResolvedValueOnce([]);
 
     expect(await service.getProvinces()).toEqual([]);
     expect(await service.getDistricts(9999)).toEqual([]);

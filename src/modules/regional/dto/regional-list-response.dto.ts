@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Expose } from 'class-transformer';
-import type { RegionalDataDto } from '../../api/dto/regional.dto';
+import type { RegionalDataDto } from './regional.dto';
 
 /**
  * HTTP response shape for a single regional entry returned by

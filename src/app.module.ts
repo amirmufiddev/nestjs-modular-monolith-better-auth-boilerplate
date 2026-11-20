@@ -22,7 +22,7 @@ import { HealthModule } from './modules/health/health.module';
 import { LoggerModule } from './logger/logger.module';
 import { RbacModule } from './modules/rbac/rbac.module';
 import { UploadModule } from './modules/upload/upload.module';
-import { RegionalModule } from './modules/regional/regional.module';
+import { RegionalModule } from './modules/regional';
 import { MemberModule } from './modules/member/infrastructure/member.module';
 import { CorrelationIdMiddleware } from './common/middleware/correlation-id.middleware';
 import { AllExceptionsFilter } from './common/filters/all-exceptions.filter';

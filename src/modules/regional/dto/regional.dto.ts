@@ -17,3 +17,8 @@ export interface RegionalDataDto {
   parentCode: number | null;
   postalCode: string | null;
 }
+
+export type ProvinceItemDto = RegionalDataDto;
+export type RegencyItemDto = RegionalDataDto;
+export type DistrictItemDto = RegionalDataDto;
+export type VillageItemDto = RegionalDataDto;
