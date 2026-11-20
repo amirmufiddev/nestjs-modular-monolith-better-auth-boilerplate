@@ -48,7 +48,7 @@ Daftar ini menjadi checklist saat menambah modul atau fork repo. Jangan menghapu
 
 | Kekuatan | Contoh path |
 |----------|-------------|
-| Referensi layering penuh | `src/modules/regional/` (`api/`, `application/`, `facade/`, `infrastructure/`, `presentation/`) |
+| Referensi layering penuh (SOLID) | `src/modules/regional/` (`controllers/`, `services/`, `repositories/`, `interfaces/`, `dto/`, `index.ts`) |
 | Boundary ESLint | `eslint.config.mjs`, `tools/eslint-rules/no-cross-module-import.mjs` |
 | Shared kernel (bukan domain) | `src/shared/README.md` |
 
@@ -67,7 +67,7 @@ Saat menambah modul bisnis, patuhi:
 1. **Response DTO** — controller mengembalikan DTO, bukan entity Drizzle mentah ([`docs/api-conventions.md`](./api-conventions.md)).
 2. **Soft delete** — kolom `deletedAt` + filter default di repository ([`docs/database.md`](./database.md)).
 3. **Typed errors** — `BusinessError.*`, jangan `throw new Error('...')` ([`docs/error-handling.md`](./error-handling.md)).
-4. **Boundary modul** — konsumsi lintas modul hanya via `modules/<name>/api/` ([`docs/anti-patterns-reference.md`](./anti-patterns-reference.md#1-direct-cross-module-import)).
+4. **Boundary modul** — konsumsi lintas modul hanya via root `modules/<name>` (gate `index.ts`) atau `interfaces` ([`docs/anti-patterns-reference.md`](./anti-patterns-reference.md#1-direct-cross-module-import)).
 5. **Env** — tidak baca `process.env` di service; gunakan `ConfigService` / config factory ([`docs/deployment.md`](./deployment.md)).
 
 Scaffold baru: [`src/modules/_template/README.md`](../src/modules/_template/README.md).

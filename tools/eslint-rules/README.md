@@ -6,40 +6,38 @@ Jalankan: `bun run lint`.
 
 ## no-cross-module-import
 
-Enforces module API boundaries by preventing direct imports to `infrastructure/` or `domain/` layers from other modules.
+Enforces module boundaries in the modular monolith by preventing direct cross-module imports into internal subfolders (`controllers/`, `services/`, `repositories/`, `infrastructure/`, `domain/`, `presentation/`, `facade/`, `application/`).
 
 ### Rule Details
 
-This rule prevents modules from directly accessing the internal implementation details of other modules. Cross-module communication must go through the public API layer (`modules/<name>/api/`).
+This rule prevents modules from directly accessing the internal implementation details of other modules. Cross-module communication must go through the module's public entrypoint (`modules/<name>` or `index.ts`) or `modules/<name>/interfaces`.
 
 ### Examples
 
 #### ❌ Incorrect (violations)
 
 ```typescript
-// File: src/modules/order/infrastructure/order.repository.ts
-// ❌ Cannot import from another module's domain layer
-import { CustomerEntity } from '../../customer/domain/customer.entity';
+// File: src/modules/order/services/order.service.ts
+// ❌ Cannot import directly from another module's repositories
+import { CustomerRepository } from '../../customer/repositories/customer.repository';
 
-// File: src/modules/order/application/order.service.ts  
-// ❌ Cannot import from another module's infrastructure layer
-import { CustomerRepository } from '../../customer/infrastructure/customer.repository';
+// File: src/modules/order/controllers/order.controller.ts  
+// ❌ Cannot import directly from another module's internal services
+import { CustomerService } from '../../customer/services/customer.service';
 ```
 
 #### ✅ Correct
 
 ```typescript
-// File: src/modules/order/infrastructure/order.repository.ts
-// ✅ Import from the same module's domain layer is allowed
-import { OrderEntity } from '../domain/order.entity';
+// File: src/modules/order/repositories/order.repository.ts
+// ✅ Internal imports within the same module are allowed
+import { IOrderRepository } from '../interfaces/order-repository.interface';
 
-// File: src/modules/order/api/order.controller.ts
-// ✅ API layer can orchestrate across modules
-import { CustomerRepository } from '../../customer/infrastructure/customer.repository';
-
-// File: src/modules/order/application/order.service.ts
-// ✅ Import from another module's public API
-import { CustomerService } from '../../customer/api/customer.service';
+// File: src/modules/order/services/order.service.ts
+// ✅ Import from another module's public entrypoint
+import { CustomerService } from '@/modules/customer';
+// ✅ Import abstraction / token from another module's interfaces
+import { ICustomerRepository } from '@/modules/customer/interfaces';
 ```
 
 ### Options
@@ -54,16 +52,15 @@ If you are not using a modular monolith architecture with strict module boundari
 
 The rule checks for imports matching these patterns:
 
-1. **Relative imports**: `../../<module>/(infrastructure|domain)/...`
-2. **Absolute imports**: `modules/<module>/(infrastructure|domain)/...`
+1. **Relative imports**: `../../<module>/(controllers|services|repositories|infrastructure|domain|presentation|facade|application)/...`
+2. **Absolute imports**: `modules/<module>/(controllers|services|repositories|infrastructure|domain|presentation|facade|application)/...`
 
 The rule allows:
 
-- Same-module imports (e.g., `order` module importing from `order/domain`)
-- Imports from within the `api/` folder (API layer can orchestrate)
-- Imports to any layer outside of `infrastructure/` or `domain/`
+- Same-module internal imports (e.g., `order` module importing from its own `repositories/` or `services/`)
+- Imports from the root module entrypoint: `modules/<module>` or `modules/<module>/index`
+- Imports from the interfaces folder: `modules/<module>/interfaces`
 
 The rule reports a violation when:
 
-- A file in one module tries to import from another module's `infrastructure/` or `domain/` layer
-- Unless the importing file is in its own module's `api/` folder
+- A file in one module tries to import directly from an internal subfolder of another module.

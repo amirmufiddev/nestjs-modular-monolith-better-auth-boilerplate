@@ -14,27 +14,26 @@ Foundation Layer boilerplate sudah tersedia — lihat `src/shared/README.md` unt
 
 ### 1. Direct Cross-Module Import
 
-**Symptom:** Mengimpor entity, repository, atau service dari `infrastructure/`/`domain/`/`application/` modul lain secara langsung.
+**Symptom:** Mengimpor entity, repository, atau service dari subfolder internal (`controllers/`, `services/`, `repositories/`, `infrastructure/`, `domain/`) modul lain secara langsung.
 
 ```typescript
 // ❌ Bad — bypass module boundary
-// di modules/delivery/application/delivery.service.ts
-import { OrderEntity } from '../../order/infrastructure/order.entity';
-import { OrderRepository } from '../../order/infrastructure/order.repository';
+// di modules/delivery/services/delivery.service.ts
+import { OrderRepository } from '../../order/repositories/order.repository';
 ```
 
 ```typescript
-// ✅ Good — konsumsi via public API modul
-import { OrderApiService } from '@/modules/order/api/order-api.service';
+// ✅ Good — konsumsi via public gate index.ts modul
+import { OrderService } from '@/modules/order';
 
-constructor(private readonly orderApi: OrderApiService) {}
+constructor(private readonly orderService: OrderService) {}
 
 async getOrderDetails(orderId: string) {
-  return this.orderApi.getOrderById(orderId);
+  return this.orderService.getOrderById(orderId);
 }
 ```
 
-**Enforcement:** ESLint custom rule `modular-monolith/no-cross-module-import` (lihat `src/shared/README.md`) memblokir import dari `modules/<other>/infrastructure/` atau `modules/<other>/domain/` lintas modul. Aturan yang sama melarang konsumsi langsung `DriverTokenRepository`/`FcmAdapter` dari modul lain — gunakan `PushNotificationModule` API.
+**Enforcement:** ESLint custom rule `modular-monolith/no-cross-module-import` (lihat `tools/eslint-rules/README.md`) memblokir import langsung ke subfolder internal (`controllers/`, `services/`, `repositories/`, `infrastructure/`, `domain/`, dll.) lintas modul. Komunikasi antar modul wajib lewat root `modules/<name>` (`index.ts`), `modules/<name>/interfaces`, atau via async event bus `EventEmitter2`. Aturan yang sama melarang konsumsi langsung `DriverTokenRepository`/`FcmAdapter` dari modul lain — gunakan `PushNotificationModule` API.
 
 ### 2. Empty Catch / Swallow Exception
 

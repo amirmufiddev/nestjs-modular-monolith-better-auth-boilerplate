@@ -8,17 +8,17 @@ Untuk aturan modul dan anti-pattern: [`modular-monolith.md`](modular-monolith.md
 
 ## 1. Pola arsitektur
 
-**Modular monolith** dengan **filosofi DDD (Domain-Driven Design) yang pragmatis** — satu proses deployable, tiap folder `src/modules/<nama>/` diperlakukan sebagai **bounded context**, dengan lapisan aplikasi/domain/infrastruktur dan komunikasi antar konteks lewat **public API** (facade/token) atau **domain events**. Detail filosofi DDD: [§2](#2-filosofi-ddd-domain-driven-design).
+**Modular monolith** idiomatik NestJS dengan penegakan disiplin **5 Prinsip SOLID (SRP, OCP, LSP, ISP, DIP)** — satu proses deployable, tiap modul di `src/modules/<nama>/` memiliki batas yang tegas dengan struktur seragam (`controllers/`, `services/`, `repositories/`, `interfaces/`, `dto/`, `index.ts`), dan komunikasi antar modul dilakukan secara eksplisit lewat **gerbang publik root `index.ts`** atau **event bus asinkron** (`EventEmitter2`). Detail arsitektur & SOLID: [§2](#2-arsitektur-modular-monolith--prinsip-solid).
 
-Batas modul tegas: **bukan** import silang ke `application/` / `infrastructure/` modul lain.
+Batas modul tegas: **dilarang keras** import silang ke subfolder internal (`controllers/`, `services/`, `repositories/`, dll.) modul lain.
 
-| Konsep        | Implementasi                                                            |
-| ------------- | ----------------------------------------------------------------------- |
-| Satu binary   | `main.ts` → `AppModule`                                                 |
-| Batas modul   | `src/modules/<nama>/` dengan folder `api/` sebagai gerbang lintas modul |
-| Shared kernel | `src/shared/` — event bus, RLS, realtime, push (bukan domain bisnis)    |
-| Cross-cutting | `src/common/`, `src/config/`, `src/logger/`, `src/infrastructure/`      |
-| Persistence   | `src/database/schema/` (Drizzle) + repository per modul                 |
+| Konsep        | Implementasi                                                                  |
+| ------------- | ----------------------------------------------------------------------------- |
+| Satu binary   | `main.ts` → `AppModule`                                                       |
+| Batas modul   | `src/modules/<nama>/index.ts` sebagai gerbang publik resmi lintas modul       |
+| Shared kernel | `src/shared/` — event bus, RLS, realtime, push (bukan domain bisnis)          |
+| Cross-cutting | `src/common/`, `src/config/`, `src/logger/`, `src/infrastructure/`            |
+| Persistence   | `src/database/schema/` (Drizzle) + repository per modul                       |
 
 ```mermaid
 flowchart TB
@@ -33,11 +33,12 @@ flowchart TB
     INT[Logging + Response envelope]
   end
 
-  subgraph modules [Domain modules]
-    PRES[presentation/controllers]
-    APP[application/services]
-    FAC[facade]
-    INF[infrastructure/repositories]
+  subgraph modules [Domain Modules]
+    CTRL[controllers]
+    SRV[services]
+    REPO[repositories]
+    INTF[interfaces & DIP Token]
+    GATE[index.ts public gate]
   end
 
   subgraph foundation [Foundation]
@@ -47,104 +48,121 @@ flowchart TB
     Events[EventEmitter2]
   end
 
-  HTTP --> MW --> Guards --> RLS --> INT --> PRES
-  PRES --> APP --> INF
-  APP --> FAC
-  FAC -.->|hanya via api/| APP
-  INF --> DB
+  HTTP --> MW --> Guards --> RLS --> INT --> CTRL
+  CTRL --> SRV
+  SRV --> INTF
+  INTF -.->|diimplementasikan oleh| REPO
+  REPO --> DB
+  SRV --> Events
+  SRV -.->|akses modul lain via| GATE
   Guards --> Auth
-  APP --> Events
   Auth --> DB
 ```
 
 ---
 
-## 2. Filosofi DDD (Domain-Driven Design)
+## 2. Arsitektur Modular Monolith & Prinsip SOLID
 
-### Apakah codebase ini “pakai DDD”?
+### Kenapa Modular Monolith Idiomatik NestJS & SOLID?
 
-**Ya — secara strategis dan selektif secara taktis**, bukan implementasi DDD “buku tebal” di setiap baris kode.
+Boilerplate ini menyatukan seluruh modul ke dalam **Modular Monolith idiomatik NestJS** dengan penegakan ketat **5 Prinsip SOLID**, menggantikan struktur DDD multi-layer lama (`api/`, `application/`, `domain/`, `facade/`, `infrastructure/`, `presentation/`) yang menimbulkan over-engineering, kedalaman direktori berlebih, dan inkonsistensi antar modul.
 
-| Aspek DDD                           | Di boilerplate ini                                                                                 |
-| ----------------------------------- | -------------------------------------------------------------------------------------------------- |
-| **Strategic:** Bounded context      | Satu modul = satu konteks bisnis (`member`, `rbac`, `upload`, …)                                   |
-| **Strategic:** Ubiquitous language  | Nama modul, DTO di `api/`, event di `DomainEventMap` memakai istilah domain, bukan istilah DB/HTTP |
-| **Strategic:** Konteks map implisit | Hubungan antar modul hanya lewat `api/` + events (konteks tidak “bocor”)                           |
-| **Tactical:** Application service   | `application/*.service.ts` — orkestrasi use case, transaksi, panggilan repo/facade lain            |
-| **Tactical:** Domain model          | Folder `domain/` **opsional** — entity/value object/ domain error saat logic bisnis padat          |
-| **Tactical:** Repository            | `infrastructure/*repository.ts` — abstraksi persistence                                            |
-| **Tactical:** Domain events         | `EventEmitter2` + perluasan `DomainEventMap`                                                       |
-| **Anti-corruption / public API**    | `facade/` + token `*_API` — modul luar hanya lihat kontrak `api/`                                  |
+Dengan pendekatan Modular Monolith + SOLID:
+1. **Maintainability & Lean Structure:** Setiap modul memiliki struktur yang seragam dan intuitif (`controllers/`, `services/`, `repositories/`, `interfaces/`, `dto/`, `index.ts`).
+2. **Kopling Rendah (Loose Coupling):** Tidak ada modul yang bergantung pada implementasi internal modul lain; akses publik dibatasi lewat gerbang tunggal `index.ts` atau event bus.
+3. **Kemudahan Pengujian (Testability):** Dependency Inversion (DIP) memastikan service bergantung pada abstraksi interface repository, sehingga dapat di-mock 100% pada unit test tanpa menyentuh database Drizzle nyata.
 
-Yang **sengaja tidak diwajibkan** di semua modul (agar boilerplate tetap ringan):
+### Penerapan 5 Prinsip SOLID
 
-- Aggregate root & invariant kompleks di setiap entity
-- Value object untuk setiap field
-- Event sourcing / CQRS penuh
-- Model domain “murni” tanpa service (banyak modul referensi memakai **application service + repository**, pola yang umum di Nest)
+#### 1. Single Responsibility Principle (SRP)
+- **Controller (`controllers/`):** Bertanggung jawab mutlak hanya pada protokol HTTP (ekstraksi params, body, query, session user dari Fastify request) dan mendelegasikan eksekusi langsung ke Service. Controller tidak boleh menjalankan raw query/Drizzle atau logika bisnis.
+- **Service (`services/`):** Bertanggung jawab mutlak pada aturan bisnis, verifikasi otorisasi/invarian data, orkestrasi repository, dan event dispatching. Maksimal 300 baris kode per service.
+- **Repository (`repositories/`):** Bertanggung jawab mutlak pada persistensi data (query database Drizzle, filtering, pagination via `BaseRepository`, soft delete). Tidak boleh mengandung logika HTTP atau exception formatting.
+- **DTO (`dto/`):** Bertanggung jawab mutlak pada validasi bentuk data input request (`create-*.dto.ts`, `update-*.dto.ts`) dan struktur serialisasi output respons API (`*-response.dto.ts`).
 
-Modul dengan aturan bisnis berat **boleh** mengisi `domain/` dan `DomainError`; modul CRUD tipis (mis. `regional`) cukup application + infrastructure. Rujuk [`testing.md`](testing.md) (coverage `domain/`).
+#### 2. Open/Closed Principle (OCP)
+- **Extensible Providers via Strategy/Token:** Komponen eksternal (seperti Object Storage pada modul `upload`) diisolasi di balik interface `IObjectStorageService`. Penambahan adapter baru (misal S3, MinIO, R2) dilakukan dengan membuat class baru yang mengimplementasikan interface tersebut tanpa mengubah `UploadService`.
+- **Event-Driven Extension:** Efek samping dari suatu use case (seperti pencatatan audit trail, pengiriman email notifikasi, dan invalidasi cache RBAC) dipicu melalui event bus `EventEmitter2`. Modul atau listener baru dapat ditambahkan tanpa memodifikasi kode use-case utama.
 
-**Catatan istilah:** `src/shared/` di repo ini adalah **infrastruktur horizontal** (event bus, RLS, SSE), bukan “Shared Kernel” DDD dalam arti dua bounded context berbagi **model domain** bisnis.
+#### 3. Liskov Substitution Principle (LSP)
+- Seluruh class implementasi repository (misal `MemberRepository`, `RegionalRepository`) wajib mematuhi seluruh kontrak method pada interface-nya (`IMemberRepository`, `IRegionalRepository`).
+- Implementasi mock repository dapat disubstitusikan secara penuh ke dalam Service pada unit test tanpa mengubah ekspektasi perilaku program atau menimbulkan runtime error yang tak terduga.
+- Tipe kembalian bersifat konsisten: `Promise<T | null>` untuk pencarian tunggal dan `Promise<T[]>` untuk pencarian majemuk/paginasi.
 
-### Kenapa memilih DDD (bersama modular monolith)?
+#### 4. Interface Segregation Principle (ISP)
+- Interface dirancang terfokus dan ramping (idealnya ≤ 5 sampai 7 method per interface).
+- Client atau modul pengonsumsi tidak dipaksa bergantung pada method yang tidak mereka gunakan. Kontrak query dan mutasi dapat dipisahkan bila modul berkembang kompleks.
 
-1. **Produk multi-organisasi** — tenant (`organizationId`) dan RBAC adalah concern horizontal; domain **member**, **role**, **upload** harus tetap terpisah agar aturan bisnis tidak tercampur dengan auth/infra.
-2. **Tim dan fitur bertumbuh** — batas modul = batas tanggung jawab PR/review; mengurangi “god service” yang mengimpor repository modul lain.
-3. **Evolusi deploy** — monolith tetap satu binary, tetapi bounded context yang jelas memudahkan **ekstraksi ke service terpisah** nanti tanpa rewrite total.
-4. **Konsistensi dengan stack** — Better Auth + organization plugin sudah memodelkan “organisasi” sebagai konteks; DDD menyelaraskan kode aplikasi dengan batas tersebut.
-5. **Boilerplate untuk banyak produk** — fork produk hanya menambah modul baru mengikuti `_template`, tanpa merusak modul core.
+#### 5. Dependency Inversion Principle (DIP)
+- Modul tingkat tinggi (`MemberService`) **tidak bergantung pada modul tingkat rendah (`MemberRepository` konkret)**. Keduanya bergantung pada abstraksi (`IMemberRepository` dan `MEMBER_REPOSITORY_TOKEN`).
+- Injeksi dependensi dilakukan melalui NestJS Injection Token:
 
-### Tujuan DDD dalam proyek ini
+```typescript
+// interfaces/member-repository.interface.ts
+export const MEMBER_REPOSITORY_TOKEN = Symbol('MEMBER_REPOSITORY_TOKEN');
 
-| Tujuan                              | Manifestasi di codebase                                                                               |
-| ----------------------------------- | ----------------------------------------------------------------------------------------------------- |
-| **Kode mencerminkan bahasa bisnis** | Route & modul bernama menurut kapabilitas (`member`, `rbac`), bukan menurut tabel generik             |
-| **Isolasi perubahan**               | Ubah persistence `member` tanpa menyentuh `rbac`, selama kontrak `MEMBER_API` stabil                  |
-| **Use case eksplisit**              | Controller tipis; keputusan bisnis di `application/` (invite, ubah role, CRUD permission)             |
-| **Integrasi tanpa coupling**        | Modul A memanggil B lewat facade; reaksi async lewat event (`order.created`, `rbac.cache.invalidate`) |
-| **Uji yang bermakna**               | Test service/facade dengan boundary jelas; mock `*_API` bukan repository internal modul lain          |
+export interface IMemberRepository {
+  findById(id: string): Promise<MemberRecord | null>;
+  findByOrgAndUser(orgId: string, userId: string): Promise<MemberRecord | null>;
+  listByOrg(orgId: string, query: ListMemberQuery): Promise<PaginatedResult<MemberRecord>>;
+  create(data: NewMemberRecord): Promise<MemberRecord>;
+  updateRole(id: string, role: string): Promise<MemberRecord>;
+  delete(id: string): Promise<void>;
+}
 
-### Kelebihan (yang dirasakan di daily development)
+// services/member.service.ts
+@Injectable()
+export class MemberService {
+  constructor(
+    @Inject(MEMBER_REPOSITORY_TOKEN)
+    private readonly memberRepo: IMemberRepository,
+    private readonly eventEmitter: EventEmitter2,
+  ) {}
+}
 
-- **Maintainability** — tahu “where to put code” dari struktur folder; ESLint `no-cross-module-import` memperkuat aturan DDD secara otomatis.
-- **Onboarding** — developer baru belajar satu pola (`_template` / `regional`) lalu mengulang di modul baru.
-- **Keamanan arsitektur** — sulit secara tidak sengaja mengexpose entity DB atau query modul lain (harus lewat `api/`).
-- **Skalabilitas tim** — ownership per modul/deployment unit logis jelas sebelum microservices.
-- **Fleksibilitas domain** — area kompleks bisa ditambah `domain/` + rich model; area sederhana tetap lean.
+// member.module.ts
+@Module({
+  controllers: [MemberController],
+  providers: [
+    MemberService,
+    {
+      provide: MEMBER_REPOSITORY_TOKEN,
+      useClass: MemberRepository,
+    },
+  ],
+  exports: [MemberService, MEMBER_REPOSITORY_TOKEN],
+})
+export class MemberModule {}
+```
 
-### Kapan **tidak** perlu memaksakan DDD lebih dalam?
-
-- CRUD master data dengan sedikit aturan → cukup application + repository (contoh `regional`).
-- Integrasi murni (adapter WAHA, S3) → lebih dekat ke **infrastructure module** daripada bounded context bisnis penuh.
-- Skrip one-off / seed → di luar pola modul domain.
-
-Untuk aturan “boleh / tidak boleh” import: [`modular-monolith.md`](modular-monolith.md) dan [`anti-patterns-reference.md`](anti-patterns-reference.md#1-direct-cross-module-import).
+### Komunikasi Antar Modul & Batasan Arsitektur
 
 ```mermaid
 flowchart LR
-  subgraph bc_member [Bounded Context: Member]
-    M_API[api/MEMBER_API]
-    M_APP[application]
-    M_DOM[domain opsional]
-    M_INF[infrastructure]
-    M_API --> M_APP
-    M_APP --> M_DOM
-    M_APP --> M_INF
+  subgraph Modul_A [Modul Member]
+    A_SRV[MemberService]
   end
 
-  subgraph bc_rbac [Bounded Context: RBAC]
-    R_API[api + controllers]
-    R_APP[application/services]
-    R_INF[infrastructure]
-    R_APP --> R_INF
+  subgraph Modul_B [Modul RBAC]
+    B_GATE[index.ts Public Gate]
+    B_SRV[RbacService / OrgRoleService]
+    B_INTF[Interfaces]
   end
 
-  M_APP -->|inject OrganizationRoleService via modul global| R_APP
-  M_APP -.->|hanya kontrak publik idealnya via API| M_API
+  subgraph Event_Bus [Shared Event Bus]
+    BUS[EventEmitter2 / DomainEventMap]
+  end
+
+  A_SRV -->|1. Direct Injection via public index.ts| B_GATE
+  B_GATE --> B_SRV
+  B_GATE --> B_INTF
+  A_SRV -->|2. Asynchronous Event emit| BUS
+  BUS -.->|listen event| B_SRV
 ```
 
-_(Praktik nyata: beberapa concern seperti RBAC diekspor sebagai module global Nest; untuk modul bisnis baru, tetap utamakan token `*_API`.)_
+1. **Gate Publik (`index.ts`):** Satu-satunya pintu masuk resmi modul adalah file `index.ts` di root folder modul (`src/modules/<nama_modul>/index.ts`). Modul mengekspor Module, Service publik, DTO, dan interface token.
+2. **ESLint Boundary Guard (`modular-monolith/no-cross-module-import`):** Melarang keras impor lintas modul yang langsung merujuk ke subfolder internal (`controllers/`, `services/`, `repositories/`, `infrastructure/`, `domain/`, `presentation/`, `facade/`, `application/`).
+3. **Komunikasi Asinkron:** Aksi lintas modul yang tidak memerlukan return value instan (misal email sambutan, invalidasi cache, audit log) disalurkan melalui `EventEmitter2` dengan typed registry `DomainEventMap`.
 
 ---
 
@@ -212,33 +230,48 @@ Urutan import di [`src/app.module.ts`](../src/app.module.ts) mengikuti prinsip: 
 
 ---
 
-## 6. Layering dalam modul domain
+## 6. Struktur dalam modul domain
 
-Setiap modul bisnis mengikuti lapisan yang sama (contoh referensi: `member`, `regional`, `_template`):
+Setiap modul bisnis mengikuti struktur standar modular idiomatik (contoh referensi: `src/modules/regional/`, `src/modules/member/`, `src/modules/_template/`):
 
 ```text
-modules/<nama>/
-├── api/              # DTO publik, token injeksi (MEMBER_API), index export
-├── application/      # Use case, orkestrasi, tanpa HTTP
-├── domain/           # Opsional: entity/value object murni
-├── facade/           # Implementasi token api/ — satu pintu untuk modul lain
-├── infrastructure/   # Repository, schema khusus modul, Nest Module
-└── presentation/     # Controller, DTO HTTP/Swagger
+src/modules/<nama_modul>/
+├── controllers/
+│   ├── <nama_modul>.controller.ts        # [SRP] HTTP routing, guards, interceptors, Swagger
+│   └── <nama_modul>.controller.spec.ts   # Unit test controller
+├── services/
+│   ├── <nama_modul>.service.ts           # [SRP] Logika bisnis, validasi, orkestrasi
+│   └── <nama_modul>.service.spec.ts      # Unit test service (mock repository)
+├── repositories/
+│   ├── <nama_modul>.repository.ts        # [SRP & DIP] Akses data konkret berbasis Drizzle ORM
+│   └── <nama_modul>.repository.spec.ts   # Unit test repository
+├── interfaces/
+│   ├── <nama_modul>-repository.interface.ts # [ISP & DIP] Kontrak repository + Injection Token
+│   ├── <nama_modul>-service.interface.ts    # [ISP] Kontrak public service bila dikonsumsi modul lain
+│   └── index.ts                             # Export seluruh interface dan token modul
+├── dto/
+│   ├── create-<nama_modul>.dto.ts        # [SRP] Validasi payload request via class-validator
+│   ├── update-<nama_modul>.dto.ts        # [SRP] Validasi payload update
+│   └── <nama_modul>-response.dto.ts      # [SRP] Serialisasi & struktur respons API
+├── <nama_modul>.module.ts                # [OCP] Konfigurasi dependency injection NestJS
+└── index.ts                              # Boundary Gate: Titik akses publik untuk modul lain
 ```
 
-**Alur dependensi (hanya ke bawah):**
+**Alur dependensi (searah & decoupled):**
 
 ```text
-presentation → application → infrastructure
-                    ↑
-              facade (implementasi api/)
+Controller → Service → [Interface / Token]
+                             │
+                     (diimplementasikan)
+                             ↓
+                         Repository → Database
 ```
 
 ### Aturan lintas modul
 
-1. Modul **A** hanya boleh import dari `modules/B/api/` (DTO, token, konstanta publik).
-2. Modul **B** mendaftarkan `provide: B_API, useClass: BFacade` dan **mengekspor** token itu.
-3. **Dilarang:** `import … from '../member/application/...'` dari modul lain (dicek ESLint `modular-monolith/no-cross-module-import`).
+1. Modul **A** hanya boleh mengimpor dari root modul **B** (`modules/B` atau `modules/B/index.ts`) atau kontrak publik (`modules/B/interfaces`).
+2. Modul **B** mendaftarkan provider dengan injection token (`provide: TOKEN, useClass: Repository`) dan mengekspor service atau token yang diizinkan untuk digunakan di modul lain via `<nama>.module.ts` dan diekspos di `index.ts`.
+3. **Dilarang keras:** `import ... from '../member/controllers/...'`, `../member/services/...'`, atau `../member/repositories/...'` dari modul lain (dicek otomatis oleh ESLint `modular-monolith/no-cross-module-import`).
 4. **Komunikasi longgar:** `EventEmitter2` + `DomainEventMap` di [`src/shared/events/domain-event-registry.ts`](../src/shared/events/domain-event-registry.ts).
 
 ---
@@ -250,7 +283,7 @@ presentation → application → infrastructure
 3. **Better Auth** (`@thallesp/nestjs-better-auth`): sesi, organisasi aktif, guard global (kecuali route `@AllowAnonymous`).
 4. **`RlsInterceptor`**: mengisi `RlsContext` (AsyncLocalStorage) dengan `organizationId` dari sesi — dipakai repository/admin yang aware tenant.
 5. **RBAC**: `@RequirePermission('resource:action')` + `MemberHasPermission` (Better Auth) + metadata scope (`PermissionScopeInterceptor`).
-6. **Controller** memanggil **service**, service memanggil **repository** / facade modul lain / `AuthService.api`.
+6. **Controller** memanggil **service**, service memanggil **repository** (via Symbol token) / service modul lain (via `index.ts`) / `AuthService.api`.
 7. **Response envelope** dan logging diterapkan pada keluar.
 
 Auth routes Better Auth dipasang di path terpisah (`auth.path`, default di bawah `/v1/auth`), tidak selalu melalui controller Nest domain.
@@ -297,7 +330,7 @@ Konstanta `permissions.constant.ts` hanya **bootstrap** untuk test / DB kosong.
 
 - **Drizzle**: `DRIZZLE` token di-inject ke repository; pola umum `BaseRepository` (`soft delete`, paginasi) di `src/common/repository/base.repository.ts`.
 - **Pool**: satu `pg.Pool` shared (`getSharedPool()`) — dipakai Better Auth factory dan Drizzle.
-- **Schema**: file per concern di `src/database/schema/`; modul boleh punya schema tambahan di `infrastructure/` jika hanya dipakai modul itu (contoh `pending-member-link`).
+- **Schema**: file per concern di `src/database/schema/`; modul boleh punya schema tambahan di `repositories/` jika hanya dipakai modul itu (contoh `pending-member-link.schema.ts`).
 - **RLS aplikasi**: bukan selalu RLS Postgres native — konteks tenant lewat `RlsContext` untuk query yang memfilter `organizationId`.
 
 ---
@@ -323,13 +356,13 @@ Ini **bukan** tempat logic domain (order, invoice, dll.) — hanya kemampuan hor
 - **Domain / bisnis:** `BusinessError` (`notFound`, `forbidden`, `conflict`, …) → `AllExceptionsFilter` → DTO error + kode.
 - **Envelope sukses:** `ResponseEnvelopeInterceptor` (konsisten di API Nest).
 - **Paginasi:** `PaginatedResponseDto`, helper di `common/dto/`.
-- **Swagger:** DTO di `presentation/dto/` dengan decorator `@ApiProperty`.
+- **Swagger:** DTO di `dto/` dengan decorator `@ApiProperty`.
 
 ---
 
 ## 13. Upload & object storage
 
-- Modul `upload`: upload via multipart (bootstrap), metadata di DB, file di **S3-compatible** (MinIO di `docker-compose`) lewat `S3ObjectStorageService`.
+- Modul `upload`: upload via multipart (bootstrap), metadata di DB, file di **S3-compatible** (MinIO di `docker-compose`) lewat `S3ObjectStorageAdapter` yang mengimplementasikan `IObjectStorageService` (via token `OBJECT_STORAGE_TOKEN`).
 - Stream/read tetap bisa lewat route uploads (lihat modul upload).
 
 ---
@@ -344,11 +377,14 @@ Ini **bukan** tempat logic domain (order, invoice, dll.) — hanya kemampuan hor
 ## 15. Menambah modul baru
 
 1. Salin struktur [`src/modules/_template/`](../src/modules/_template/).
-2. Definisikan `X_API` + facade + export dari `api/index.ts`.
-3. Import `XModule` di `AppModule` (atau biarkan opsional).
-4. Tambah schema/migrasi Drizzle bila perlu.
-5. Extend `DomainEventMap` jika mem-publish event baru.
-6. Jalankan `bun test`, `bun run build`, `graphify update .` setelah perubahan besar.
+2. Definisikan interface repository & Symbol token di `interfaces/`.
+3. Implementasikan repository di `repositories/` dan service logika bisnis di `services/`.
+4. Definisikan DTO di `dto/` dan controller di `controllers/`.
+5. Daftarkan provider di `<nama_modul>.module.ts` dan ekspor public API di `index.ts`.
+6. Import `YourModule` di `src/app.module.ts` (atau biarkan opsional).
+7. Tambah schema/migrasi Drizzle bila perlu.
+8. Extend `DomainEventMap` jika mem-publish event baru.
+9. Jalankan `bun test`, `bun run lint`, `bun run build`.
 
 Panduan singkat: [`scaffold-new-module.md`](scaffold-new-module.md).
 
@@ -359,7 +395,7 @@ Panduan singkat: [`scaffold-new-module.md`](scaffold-new-module.md).
 | Tier                  | Contoh                                              | Registrasi                                                                        |
 | --------------------- | --------------------------------------------------- | --------------------------------------------------------------------------------- |
 | **Core**              | auth, member, rbac, regional, upload, email, health | Sudah di `AppModule`                                                              |
-| **Referensi**         | `_template`, regional (CRUD berlapis)               | Template / pola                                                                   |
+| **Referensi**         | `_template`, regional (Modular SOLID idiomatik)     | Template / pola                                                                   |
 | **Opsional / sample** | payment, notification, whatsapp, ai                 | Manual import; lihat [`boilerplate-module-tiers.md`](boilerplate-module-tiers.md) |
 
 ---
@@ -399,12 +435,12 @@ flowchart LR
 
 ## 19. Referensi cepat
 
-| Topik                  | Dokumen                                                          |
-| ---------------------- | ---------------------------------------------------------------- |
-| Filosofi DDD (ringkas) | [§2 di dokumen ini](#2-filosofi-ddd-domain-driven-design)        |
-| Batas modul & ESLint   | [`modular-monolith.md`](modular-monolith.md)                     |
-| Auth & organisasi      | [`auth.md`](auth.md)                                             |
-| Error handling         | [`error-handling.md`](error-handling.md)                         |
-| DB & migrasi baseline  | [`drizzle-migration-baseline.md`](drizzle-migration-baseline.md) |
-| Shared kernel API      | [`src/shared/README.md`](../src/shared/README.md)                |
-| Kekuatan boilerplate   | [`boilerplate-strengths.md`](boilerplate-strengths.md)           |
+| Topik                             | Dokumen                                                          |
+| --------------------------------- | ---------------------------------------------------------------- |
+| Arsitektur Modular Monolith & SOLID | [§2 di dokumen ini](#2-arsitektur-modular-monolith--prinsip-solid) |
+| Batas modul & ESLint              | [`modular-monolith.md`](modular-monolith.md)                     |
+| Auth & organisasi                 | [`auth.md`](auth.md)                                             |
+| Error handling                    | [`error-handling.md`](error-handling.md)                         |
+| DB & migrasi baseline             | [`drizzle-migration-baseline.md`](drizzle-migration-baseline.md) |
+| Shared kernel API                 | [`src/shared/README.md`](../src/shared/README.md)                |
+| Kekuatan boilerplate              | [`boilerplate-strengths.md`](boilerplate-strengths.md)           |

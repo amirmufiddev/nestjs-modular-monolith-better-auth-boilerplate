@@ -31,17 +31,88 @@ Dokumen ini merangkum standar penulisan kode yang berlaku di backend ini. Aturan
 
 - **Service** idealnya ≤300 baris. Jika lebih, pecah menjadi service yang lebih fokus (contoh: `BalanceService` → `BalanceQueryService` + `BalanceMutationService`).
 - **Controller** idealnya ≤4 endpoint. Jika lebih (god controller), pecah berdasarkan concern (contoh: `OwnerWaController` → `QrController`, `PairingController`, `SessionController`).
-- Constructor injection ≤5 dependency. Jika lebih, pecah service atau gunakan facade.
+- Constructor injection ≤5 dependency. Jika lebih, pecah service menjadi beberapa service terfokus.
 
 ### Open/Closed — Detail
 
 - Hindari `switch` besar di tengah service. Gunakan **registry pattern** atau **strategy pattern**.
 - Contoh di codebase: `WahaWebhookService` sebelumnya punya monolithic `switch (event)`, sekarang didelegasikan ke handler registry via `Map<string, WahaEventHandler>`.
+- Provider eksternal (seperti Object Storage) diisolasi dengan interface dan adapter terpisah tanpa mengubah consumer (`UploadService`).
 
 ### Dependency Inversion — Detail
 
-- Service TIDAK boleh import concrete class dari module lain. Import hanya via interface/token atau event.
-- Contoh: modul `member`/`rbac` tidak boleh import repository modul lain langsung — ekspos lewat `modules/<name>/api/` atau event (`EventEmitter2.emit('audit.entity_changed', payload)`).
+- Service bisnis TIDAK boleh bergantung langsung pada class konkret repository (Drizzle ORM) atau concrete class dari modul lain. Service dan data layer harus bergantung pada abstraksi interface dan Symbol Injection Token.
+- Modul lain hanya boleh berinteraksi via public gate root `index.ts`, interface token, atau domain event (`EventEmitter2.emit('domain.event', payload)`).
+
+#### Contoh Implementasi DIP dengan Symbol Injection Token
+
+```typescript
+// 1. Definisikan kontrak interface & Symbol Token di interfaces/
+// File: src/modules/member/interfaces/member-repository.interface.ts
+export const MEMBER_REPOSITORY_TOKEN = Symbol('MEMBER_REPOSITORY_TOKEN');
+
+export interface IMemberRepository {
+  findById(id: string): Promise<MemberRecord | null>;
+  findByOrgAndUser(orgId: string, userId: string): Promise<MemberRecord | null>;
+  create(data: NewMemberRecord): Promise<MemberRecord>;
+  updateRole(id: string, role: string): Promise<MemberRecord>;
+  delete(id: string): Promise<void>;
+}
+
+// 2. Service tingkat tinggi bergantung pada interface melalui @Inject(TOKEN)
+// File: src/modules/member/services/member.service.ts
+@Injectable()
+export class MemberService {
+  constructor(
+    @Inject(MEMBER_REPOSITORY_TOKEN)
+    private readonly memberRepo: IMemberRepository,
+    private readonly eventEmitter: EventEmitter2,
+  ) {}
+
+  async getMember(id: string): Promise<MemberRecord> {
+    const member = await this.memberRepo.findById(id);
+    if (!member) throw BusinessError.notFound('Member', id);
+    return member;
+  }
+}
+
+// 3. Wire token ke concrete class di NestJS Module
+// File: src/modules/member/member.module.ts
+@Module({
+  controllers: [MemberController],
+  providers: [
+    MemberService,
+    {
+      provide: MEMBER_REPOSITORY_TOKEN,
+      useClass: MemberRepository, // Drizzle concrete implementation
+    },
+  ],
+  exports: [MemberService, MEMBER_REPOSITORY_TOKEN],
+})
+export class MemberModule {}
+```
+
+**Keuntungan Pengujian (Testability & LSP):**
+Dalam unit test `MemberService`, implementasi mock repository in-memory dapat disubstitusikan secara penuh tanpa memerlukan koneksi database nyata:
+
+```typescript
+// File: src/modules/member/services/member.service.spec.ts
+const mockMemberRepo: IMemberRepository = {
+  findById: jest.fn(),
+  findByOrgAndUser: jest.fn(),
+  create: jest.fn(),
+  updateRole: jest.fn(),
+  delete: jest.fn(),
+};
+
+const module = await Test.createTestingModule({
+  providers: [
+    MemberService,
+    { provide: MEMBER_REPOSITORY_TOKEN, useValue: mockMemberRepo },
+    { provide: EventEmitter2, useValue: { emit: jest.fn() } },
+  ],
+}).compile();
+```
 
 ## Foundation Layer sebagai Contoh SOLID
 
@@ -51,7 +122,7 @@ Foundation P1 memusatkan concern teknis tanpa memindahkan business rule ke share
 - **FCM adapter (DIP/SRP):** modul bisnis menginjeksi `FcmAdapter`, bukan mengimpor `firebase-admin` atau membangun credential sendiri. Adapter menangani modular initialization, no-op fallback, dan logging provider.
 - **SSE service (SRP):** `SseService` memiliki tanggung jawab channel subscription dan publication. Controller hanya mengekspos stream; module bisnis tidak menyentuh `Subject` internal.
 - **BusinessError factories (DRY/OCP):** gunakan factory yang sudah tersedia untuk kode/status/context konsisten, bukan mengulang konstruktor `BusinessError` di banyak service.
-- **Module boundary enforcement:** `modular-monolith/no-cross-module-import` menolak import lintas module ke `domain/` atau `infrastructure/` dari luar `api/`. Lint adalah guardrail, bukan pengganti desain interface.
+- **Module boundary enforcement:** `modular-monolith/no-cross-module-import` menolak import lintas module ke subfolder internal (`controllers/`, `services/`, `repositories/`, `infrastructure/`, `domain/`, dll.) dari luar `index.ts` atau `interfaces/`. Lint adalah guardrail, bukan pengganti desain interface.
 
 ## Tooling Enforcement
 
@@ -183,10 +254,12 @@ Gunakan checklist ini saat melakukan code review:
 
 ### SOLID
 
-- [ ] 1 class = 1 alasan berubah
-- [ ] Tidak ada `switch` besar di tengah logic — gunakan registry/strategy
-- [ ] Tidak import concrete class dari module lain — pakai interface/token atau event
-- [ ] Interface kecil dan fokus (≤5 method)
+- [ ] 1 class = 1 alasan berubah (SRP)
+- [ ] Tidak ada `switch` besar di tengah logic — gunakan registry/strategy (OCP)
+- [ ] Implementasi konkret dapat saling menggantikan kontrak interface (LSP)
+- [ ] Interface kecil dan terfokus (≤5 sampai 7 method) (ISP)
+- [ ] Injeksi dependensi data layer menggunakan Symbol token (`@Inject(TOKEN)`) dan interface abstrak (DIP)
+- [ ] Boundary modul diakses lewat public gate root `index.ts` atau `interfaces` (ESLint `no-cross-module-import`)
 
 ### DRY (Don't Repeat Yourself)
 

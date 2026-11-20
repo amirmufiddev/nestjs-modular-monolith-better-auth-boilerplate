@@ -402,36 +402,36 @@ async find() {
 
 ## Module Isolation (ESLint)
 
-Modul-modul di arsitektur modular monolith **wajib** terisolasi. ESLint rule `modular-monolith/no-cross-module-import` (lihat `backend/src/shared/README.md` bagian 5) memblokir pelanggaran di level CI.
+Modul-modul di arsitektur modular monolith **wajib** terisolasi. ESLint rule `modular-monolith/no-cross-module-import` memblokir pelanggaran di level CI.
 
 ### Aturan
 
-- ✅ **BOLEH:** Import dari `modules/<name>/api/` (public API modul)
-- ✅ **BOLEH:** Import dalam modul yang sama (mis. `order` import dari `order/domain/`)
-- ❌ **TIDAK BOLEH:** Import dari `modules/<other>/infrastructure/` atau `modules/<other>/domain/`
+- ✅ **BOLEH:** Import dari `modules/<name>` (public `index.ts`) atau `modules/<name>/interfaces`
+- ✅ **BOLEH:** Import dalam modul yang sama (mis. `order` internal files saling import)
+- ❌ **TIDAK BOLEH:** Import dari subfolder internal modul lain (`controllers/`, `services/`, `repositories/`, `infrastructure/`, `domain/`, dll.)
 
 ### Contoh Violation & Fix
 
 ```typescript
 // ❌ Bad — ESLint error
-// di modules/delivery/application/delivery.service.ts
-import { OrderEntity } from '../../order/infrastructure/order.entity';
+// di modules/delivery/services/delivery.service.ts
+import { OrderRepository } from '../../order/repositories/order.repository';
 ```
 
 ```typescript
-// ✅ Good — via public API
-import { OrderApiService } from '@/modules/order/api/order-api.service';
+// ✅ Good — via public entrypoint index.ts
+import { OrderService } from '@/modules/order';
 ```
 
 ### Mengapa Penting untuk Security
 
-- Akses langsung ke entity modul lain memungkinkan bypass authorization layer (mis. `OrderEntity` mungkin expose field yang seharusnya tak terlihat oleh modul `delivery`).
+- Akses langsung ke internal repository atau entity modul lain memungkinkan bypass authorization layer (mis. bypass multi-tenant check atau field permission).
 - Modifikasi internal satu modul tanpa contract testing akan langsung bocor behavior ke modul lain.
 - Audit trail compliance lebih mudah — semua cross-module interaction lewat API surface yang bisa di-trace.
 
 > **Catatan:** ESLint rule adalah guardrail, bukan pengganti contract. Pair dengan code review dan module-level integration test.
 >
-> **Cakupan tambahan:** rule yang sama melarang import langsung `DriverTokenRepository`/`FcmAdapter` dari modul lain — gunakan `PushNotificationModule` API (lihat `backend/src/shared/README.md` bagian 4). Tujuannya: ciphertext/token hanya keluar lewat satu chokepoint yang bisa di-audit.
+> **Cakupan tambahan:** rule yang sama melarang import langsung `DriverTokenRepository`/`FcmAdapter` dari modul lain — gunakan `PushNotificationModule` API (lihat `src/shared/README.md`). Tujuannya: ciphertext/token hanya keluar lewat satu chokepoint yang bisa di-audit.
 
 ---
 
@@ -510,8 +510,8 @@ Setiap PR yang menyentuh auth/data/endpoint WAJIB melewati checklist ini:
 
 ### Module Isolation
 
-- [ ] Tidak ada import langsung ke `modules/<other>/infrastructure/` atau `modules/<other>/domain/` (ESLint `no-cross-module-import` enforce)
-- [ ] Cross-module interaction via `modules/<name>/api/` (DTO + service publik)
+- [ ] Tidak ada import langsung ke subfolder internal modul lain (`controllers/`, `services/`, `repositories/`, dll.) (ESLint `no-cross-module-import` enforce)
+- [ ] Cross-module interaction via `modules/<name>` (`index.ts`) atau `modules/<name>/interfaces` (atau async event bus)
 
 ### Logging
 

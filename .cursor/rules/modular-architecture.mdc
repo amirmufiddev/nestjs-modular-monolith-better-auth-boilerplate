@@ -1,37 +1,54 @@
 ---
-description: Modular monolith architecture with strict layer separation and module boundaries
-globs: backend/**/*.ts
+description: Modular monolith architecture with strict layer separation, SOLID principles, and module boundaries
+globs: src/modules/**/*.ts
 alwaysApply: false
 ---
 
 # Arsitektur Modular Monolith
 
+## Struktur Lapisan Modul (SOLID Layout)
+
+Setiap modul di `src/modules/<nama_modul>/` wajib memiliki struktur lapisan seragam:
+
+```text
+src/modules/<nama_modul>/
+├── controllers/          # [SRP] HTTP routing, Fastify params, guards, Swagger
+├── services/             # [SRP] Logika bisnis, validasi aturan domain, orkestrasi
+├── repositories/         # [SRP & DIP] Akses data konkret Drizzle ORM, extend BaseRepository
+├── interfaces/           # [ISP & DIP] Kontrak repository/service & Symbol injection token
+├── dto/                  # [SRP] DTO validasi request & response format DTO
+├── <nama_modul>.module.ts # [OCP] Wiring dependency injection provider
+└── index.ts              # Satu-satunya gerbang akses publik resmi modul
+```
+
 ## Pemisahan Lapisan (Dependency Direction)
 
+```text
+Controllers  -> Hanya boleh memanggil Services & DTO (TIDAK BOLEH akses raw query DB)
+Services     -> Memanggil Repository via Interface/Token abstraksi (DIP) & emit Domain Events
+Repositories -> Mengimplementasikan interface repository, akses Drizzle DB & BaseRepository
+Interfaces   -> Kontrak murni & Symbol Token (TIDAK BOLEH mengimpor implementasi konkret)
 ```
-API/Controllers     -> Boleh import apa pun di bawahnya
-Application/Service -> Hanya boleh import dari Domain & Infrastructure
-Domain/Entities     -> Layer terisolasi; TIDAK BOLEH import apa pun dari luar
-Infrastructure      -> Mengimplementasikan interface Domain
-```
 
-### Aturan Ketat
+### Aturan Ketat Lapisan
 
-- Infrastruktur TIDAK BOLEH diimpor oleh Domain.
-- Service TIDAK BOLEH diimpor oleh Entity.
-- Selalu gunakan interface/abstract class sebagai batas dependency.
+- **Dependency Inversion (DIP):** Service TIDAK BOLEH mengimpor atau bergantung langsung pada class konkret Repository (Drizzle). Wajib menggunakan Symbol Token `@Inject(<NAMA>_REPOSITORY_TOKEN) private readonly repo: I<Nama>Repository`.
+- **Single Responsibility (SRP):** Controller tidak boleh mengeksekusi logika bisnis atau query SQL langsung. Repository tidak boleh mengurus HTTP exceptions atau formatting response.
+- **Provider Binding:** Modul mendaftarkan provider dengan `{ provide: <NAMA>_REPOSITORY_TOKEN, useClass: <Nama>Repository }` dan mengekspor service serta token di `<nama_modul>.module.ts`.
 
-## Module Coupling
+## Batasan Antar Modul (Module Coupling & Boundary)
 
-- Modul hanya boleh mengekspos API/DTO publik.
-- JANGAN import implementasi/entitas internal langsung antar modul.
-- **Circular Dependencies antar modul DILARANG KERAS.** Gunakan event bus atau shared interface.
-- Setiap modul HARUS punya tabel sendiri; tidak boleh akses langsung tabel modul lain.
+- **Public Gate Tunggal (`index.ts`):** Modul lain HANYA boleh mengimpor dari root modul `src/modules/<other>` (melalui `index.ts`) atau `src/modules/<other>/interfaces`.
+- **Dilarang Keras Subfolder Import:** DILARANG mengimpor file langsung dari subfolder internal modul lain (`controllers/`, `services/`, `repositories/`, `infrastructure/`, `domain/`, `presentation/`, `facade/`, `application/`). Pelanggaran dicegat oleh ESLint `modular-monolith/no-cross-module-import`.
+- **Circular Dependencies DILARANG KERAS:** Jangan buat ketergantungan melingkar antar modul. Gunakan event bus asinkron (`EventEmitter2` + `DomainEventMap`) untuk aksi reaksi lintas modul (misal: email, audit, invalidasi cache).
+- **Isolasi Data Modul:** Setiap modul bertanggung jawab atas tabelnya sendiri. Jangan melakukan join atau query langsung ke tabel internal modul lain dari repository lokal.
 
 ```typescript
-// ❌ BAD - Import entity dari modul lain
-import { OrderEntity } from '../order/order.entity';
+// ❌ BAD - Mengimpor subfolder internal modul lain
+import { OrderRepository } from '../order/repositories/order.repository';
+import { OrderService } from '../order/services/order.service';
 
-// ✅ GOOD - Hanya consume via API/DTO publik modul lain
-import { OrderApiService } from '../order/order.api-service';
+// ✅ GOOD - Hanya konsumsi via public gate index.ts atau interfaces
+import { OrderModule, OrderService } from '@/modules/order';
+import { IOrderRepository, ORDER_REPOSITORY_TOKEN } from '@/modules/order/interfaces';
 ```

@@ -292,16 +292,16 @@ Coverage threshold umum:
 | Functions  | 90%     |
 | Lines      | 90%     |
 
-### Fokus Coverage: Use Case, Bukan Entity
+### Fokus Coverage: Service & Use Case, Bukan Entity
 
-> **Aturan:** Coverage dihitung bermakna bila berasal dari **use case (application layer)** — yang menjalankan business flow end-to-end dengan dependency ter-mock. Entity/DTO cukup diverifikasi oleh type-check, bukan line coverage.
+> **Aturan:** Coverage dihitung bermakna bila berasal dari **business logic (service layer)** — yang menjalankan business flow end-to-end dengan dependency repository ter-mock via DIP. Entity/Schema/DTO cukup diverifikasi oleh type-check, bukan line coverage.
 
 | Layer                | Wajib di-test? | Alasan |
 | -------------------- | -------------- | ------ |
-| `application/` (use case, service) | Ya, ≥90% | Business logic utama; paling banyak branch & edge case |
-| `infrastructure/` (adapter, repository) | Ya, fokus pada error path & RLS context | I/O boundary; bug sulit di-debug tanpa test |
-| `domain/` (entity) | Tidak wajib coverage, cukup type-check | Logic di entity biasanya sederhana; tested lewat use case |
-| `api/` (controller) | Ya, minimal 1 happy-path + 1 error-path per endpoint | Verifikasi kontrak HTTP |
+| `services/` (business logic) | Ya, ≥90% | Business logic utama; paling banyak branch & edge case |
+| `repositories/` (adapter, data access) | Ya, fokus pada error path & RLS context | I/O boundary; query filter & tenant context |
+| `controllers/` (HTTP endpoints) | Ya, minimal 1 happy-path + 1 error-path per endpoint | Verifikasi routing HTTP, guards, DTO validation |
+| `interfaces/`        | Tidak (hanya type/token) | Kontrak murni & Symbol tokens |
 | `*.module.ts`       | Tidak           | Hanya wiring DI |
 | `*.dto.ts`          | Tidak           | Schema class-validator, cukup type-check |
 | `main.ts`           | Tidak (e2e cover) | Bootstrap |
@@ -312,7 +312,8 @@ Coverage threshold umum:
 - `main.ts` — Bootstrap (diuji via e2e)
 - `*.dto.ts` — Data transfer objects (cukup type-check)
 - `index.ts` — Barrel files (re-export saja)
-- `*.entity.ts` — Domain entity (tested via use case)
+- `interfaces/*.ts` — Abstraksi interface dan Symbol tokens
+- `schema/*.ts` — Definisi schema Drizzle (tested via repository/migrations)
 
 ### Red-Green-Refactor (TDD)
 

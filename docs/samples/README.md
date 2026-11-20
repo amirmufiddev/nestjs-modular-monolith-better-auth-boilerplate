@@ -7,7 +7,7 @@ Kode di bawah ini **bukan** bagian dari startup default. Gunakan sebagai referen
 | Modul | Peran |
 |-------|--------|
 | `auth`, `member`, `rbac` | Multi-tenant + Better Auth |
-| `regional` | Contoh CRUD berlapis (api → application → facade → infrastructure → presentation) |
+| `regional` | Contoh CRUD modular idiomatik (`controllers/`, `services/`, `repositories/`, `interfaces/`, `dto/`, `index.ts`) |
 | `upload`, `email`, `health` | Infrastruktur umum |
 | `notification` | Contoh notifikasi in-app + event |
 | `payment` | Contoh pembayaran / metode bayar (tanpa modul order domain) |
@@ -46,4 +46,4 @@ ConfigModule.forRoot({
 
 ## Boundary modul
 
-Import lintas modul hanya dari `modules/<name>/api/`. Rule ESLint: `modular-monolith/no-cross-module-import` (lihat `docs/anti-patterns-reference.md`).
+Import lintas modul hanya dari root modul `modules/<name>` (`index.ts`) atau `modules/<name>/interfaces`. Dilarang mengimpor langsung subfolder internal (`controllers/`, `services/`, `repositories/`, dll.). Rule ESLint: `modular-monolith/no-cross-module-import` (lihat `docs/anti-patterns-reference.md`).
