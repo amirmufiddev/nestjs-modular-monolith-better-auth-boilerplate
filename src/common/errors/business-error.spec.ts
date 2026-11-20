@@ -54,10 +54,7 @@ describe('BusinessError', () => {
 
   describe('ModuleApiUnavailableError', () => {
     it('should create error when module API is not reachable', () => {
-      const error = BusinessError.moduleApiUnavailable(
-        'MemberApi',
-        'invite',
-      );
+      const error = BusinessError.moduleApiUnavailable('MemberApi', 'invite');
 
       expect(error.code).toBe('MODULE_API_UNAVAILABLE');
       expect(error.httpStatus).toBe(503);

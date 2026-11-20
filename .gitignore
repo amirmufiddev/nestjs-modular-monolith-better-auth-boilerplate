@@ -72,6 +72,7 @@ report.html
 
 .bun
 graphify-out/cache
+graphify-out/20*/
 testsprite_tests/tmp
 testsprite_tests/__pycache__
 
