@@ -28,7 +28,7 @@ describe('ESLint Rule: modular-monolith/no-cross-module-import', () => {
   const inventoryJobFile =
     '/project/backend/src/modules/inventory/application/jobs/reconciliation.service.ts';
   const inventoryServiceFile =
-    '/project/backend/src/modules/inventory/application/inventory.service.ts';
+    '/project/backend/src/modules/inventory/services/inventory.service.ts';
   const inventoryApiFile =
     '/project/backend/src/modules/inventory/api/inventory.api.ts';
 
@@ -41,44 +41,33 @@ describe('ESLint Rule: modular-monolith/no-cross-module-import', () => {
       expect(reports).toHaveLength(0);
     });
 
-    test('relative import to same module infrastructure from application root (1 level up)', () => {
+    test('relative import to same module infrastructure from services (1 level up)', () => {
       const reports = runRule(
         inventoryServiceFile,
-        '../infrastructure/inventory.repository',
+        '../repositories/inventory.repository',
       );
       expect(reports).toHaveLength(0);
     });
 
-    test('alias import to same module infrastructure', () => {
-      const reports = runRule(
-        inventoryServiceFile,
-        '@/modules/inventory/infrastructure/inventory.repository',
-      );
-      expect(reports).toHaveLength(0);
-    });
-
-    test('cross-module import consuming public api barrel', () => {
-      const reports = runRule(
-        inventoryServiceFile,
-        '@/modules/customer/api',
-      );
-      expect(reports).toHaveLength(0);
-    });
-
-    test('cross-module import consuming public api subpath', () => {
-      const reports = runRule(
-        inventoryServiceFile,
-        '@/modules/order/api/dto/order.dto',
-      );
-      expect(reports).toHaveLength(0);
-    });
-
-    test('imports from inside api layer (permissive orchestrator)', () => {
-      const reports = runRule(
-        inventoryApiFile,
-        '@/modules/order/infrastructure/order.repository',
-      );
-      expect(reports).toHaveLength(0);
+    test('alias import to same module internal subfolder (infrastructure/repositories/services/controllers)', () => {
+      expect(
+        runRule(
+          inventoryServiceFile,
+          '@/modules/inventory/repositories/inventory.repository',
+        ),
+      ).toHaveLength(0);
+      expect(
+        runRule(
+          inventoryServiceFile,
+          '@/modules/inventory/services/inventory.service',
+        ),
+      ).toHaveLength(0);
+      expect(
+        runRule(
+          inventoryServiceFile,
+          '@/modules/inventory/controllers/inventory.controller',
+        ),
+      ).toHaveLength(0);
     });
 
     test('imports from shared utilities', () => {
@@ -90,32 +79,99 @@ describe('ESLint Rule: modular-monolith/no-cross-module-import', () => {
     });
   });
 
+  describe('valid cross-module public entrypoint imports (should NOT report)', () => {
+    test('cross-module import from root module entrypoint via alias', () => {
+      const reports = runRule(
+        inventoryServiceFile,
+        '@/modules/customer',
+      );
+      expect(reports).toHaveLength(0);
+    });
+
+    test('cross-module import from root module index via alias', () => {
+      const reports = runRule(
+        inventoryServiceFile,
+        '@/modules/customer/index',
+      );
+      expect(reports).toHaveLength(0);
+    });
+
+    test('cross-module import from interfaces subfolder via alias', () => {
+      const reports = runRule(
+        inventoryServiceFile,
+        '@/modules/customer/interfaces',
+      );
+      expect(reports).toHaveLength(0);
+    });
+
+    test('cross-module import from specific interface file via alias', () => {
+      const reports = runRule(
+        inventoryServiceFile,
+        '@/modules/customer/interfaces/customer-repo.interface',
+      );
+      expect(reports).toHaveLength(0);
+    });
+
+    test('cross-module import from root module entrypoint via relative path', () => {
+      const reports = runRule(
+        inventoryServiceFile,
+        '../../customer',
+      );
+      expect(reports).toHaveLength(0);
+    });
+
+    test('cross-module import from root module index via relative path', () => {
+      const reports = runRule(
+        inventoryServiceFile,
+        '../../customer/index',
+      );
+      expect(reports).toHaveLength(0);
+    });
+
+    test('cross-module import from interfaces via relative path', () => {
+      const reports = runRule(
+        inventoryServiceFile,
+        '../../customer/interfaces',
+      );
+      expect(reports).toHaveLength(0);
+    });
+  });
+
   describe('invalid cross-module imports (MUST report violation)', () => {
-    test('alias import to another module infrastructure', () => {
-      const reports = runRule(
-        inventoryServiceFile,
-        '@/modules/customer/infrastructure/customer.repository',
-      );
-      expect(reports).toHaveLength(1);
-      expect(reports[0].messageId).toBe('noCrossModuleImport');
-      expect(reports[0].data?.importPath).toBe(
-        '@/modules/customer/infrastructure/customer.repository',
-      );
+    test('alias import to another module internal subfolders', () => {
+      const subfolders = [
+        'controllers/customer.controller',
+        'services/customer.service',
+        'repositories/customer.repository',
+        'infrastructure/customer.repository',
+        'domain/customer.entity',
+        'presentation/customer.controller',
+        'facade/customer.facade',
+        'application/customer.service',
+      ];
+
+      for (const sub of subfolders) {
+        const importPath = `@/modules/customer/${sub}`;
+        const reports = runRule(inventoryServiceFile, importPath);
+        expect(reports).toHaveLength(1);
+        expect(reports[0].messageId).toBe('noCrossModuleImport');
+        expect(reports[0].data?.importPath).toBe(importPath);
+      }
     });
 
-    test('alias import to another module domain', () => {
-      const reports = runRule(
-        inventoryServiceFile,
-        '@/modules/order/domain/order.entity',
-      );
-      expect(reports).toHaveLength(1);
-      expect(reports[0].messageId).toBe('noCrossModuleImport');
-    });
-
-    test('relative cross-module import to another module infrastructure', () => {
+    test('relative cross-module import to another module internal subfolder', () => {
       const reports = runRule(
         inventoryJobFile,
-        '../../../customer/infrastructure/customer.repository',
+        '../../../customer/repositories/customer.repository',
+      );
+      expect(reports).toHaveLength(1);
+      expect(reports[0].messageId).toBe('noCrossModuleImport');
+    });
+
+    test('cross-module internal import from inside api folder is now rejected (no permissive exception)', () => {
+      const reports = runRule(
+        inventoryApiFile,
+        '@/modules/order/infrastructure/order.repository',
       );
       expect(reports).toHaveLength(1);
       expect(reports[0].messageId).toBe('noCrossModuleImport');

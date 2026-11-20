@@ -1,11 +1,3 @@
-/**
- * ESLint custom rule: no-cross-module-import
- * 
- * Prevents cross-module imports outside the public api/ folder.
- * Modules can only consume other modules via 'modules/<name>/api/'.
- * Direct imports to infrastructure/ or domain/ are forbidden.
- */
-
 import path from 'node:path';
 
 /** @type {import('eslint').Rule.RuleModule} */
@@ -13,29 +5,24 @@ const rule = {
   meta: {
     type: 'problem',
     docs: {
-      description: 'Disallow cross-module imports outside the public api/ folder',
+      description: 'Disallow cross-module imports to internal module subfolders',
       category: 'Best Practices',
       recommended: true,
     },
     schema: [],
     messages: {
       noCrossModuleImport:
-        "Cross-module import detected: '{{importPath}}'. Modul hanya boleh consume modul lain via 'modules/<name>/api/'. Import langsung ke infrastructure/domain terlarang.",
+        "Cross-module import violation: '{{importPath}}'. Modul lain hanya boleh diimpor via public entrypoint 'modules/<name>' (index.ts) atau 'modules/<name>/interfaces'. Dilarang mengimpor langsung subfolder internal (controllers/services/repositories/infrastructure/domain).",
     },
   },
   create(context) {
     const rawFile = context.getFilename ? context.getFilename() : context.filename;
     const currentFile = (rawFile || '').replace(/\\/g, '/');
 
-    // Extract current module from file path
     const currentModuleMatch = currentFile.match(/(?:^|\/)modules\/([^/]+)\//);
     if (!currentModuleMatch) return {};
 
     const currentModule = currentModuleMatch[1];
-
-    // Allow if current file is in api/ folder (api layer can import from other modules)
-    // This is intentionally permissive - api/ needs to orchestrate across modules
-    if (currentFile.includes(`/modules/${currentModule}/api/`)) return {};
 
     return {
       ImportDeclaration(node) {
@@ -43,7 +30,9 @@ const rule = {
         if (typeof importPath !== 'string') return;
 
         let targetModule;
-        let isForbiddenLayer = false;
+        let isInternalSubfolder = false;
+
+        const internalFoldersRegex = /\/(controllers|services|repositories|infrastructure|domain|presentation|facade|application)(?:\/|$)/;
 
         if (importPath.startsWith('.')) {
           const resolvedPath = path.resolve(path.dirname(rawFile), importPath).replace(/\\/g, '/');
@@ -51,22 +40,21 @@ const rule = {
           if (!targetModuleMatch) return;
 
           targetModule = targetModuleMatch[1];
-          isForbiddenLayer = /\/(infrastructure|domain)(?:\/|$)/.test(resolvedPath);
+          isInternalSubfolder = internalFoldersRegex.test(resolvedPath);
         } else if (importPath.includes('modules/')) {
           const targetModuleMatch = importPath.match(/(?:^|\/)modules\/([^/]+)\//);
           if (!targetModuleMatch) return;
 
           targetModule = targetModuleMatch[1];
-          isForbiddenLayer = /\/(infrastructure|domain)(?:\/|$)/.test(importPath);
+          isInternalSubfolder = internalFoldersRegex.test(importPath);
         } else {
           return;
         }
 
-        // Allow imports within the same module
+        // Allow internal imports within the same module
         if (targetModule === currentModule) return;
 
-        // Report violation: cross-module import to infrastructure/domain from non-api layer
-        if (isForbiddenLayer) {
+        if (isInternalSubfolder) {
           context.report({
             node,
             messageId: 'noCrossModuleImport',
