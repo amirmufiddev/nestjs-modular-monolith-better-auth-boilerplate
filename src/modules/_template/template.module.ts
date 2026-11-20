@@ -1,23 +1,18 @@
 import { Module } from '@nestjs/common';
-import { DatabaseModule } from '@/database/database.module';
-import { TEMPLATE_API } from './api/template.api';
-import { TemplateService } from './application/template.service';
-import { TemplateFacade } from './facade/template.facade';
-import { TemplateRepository } from './infrastructure/template.repository';
-import { TemplateController } from './presentation/template.controller';
+import { TemplateController } from './controllers/template.controller';
+import { TemplateService } from './services/template.service';
+import { TemplateRepository } from './repositories/template.repository';
+import { TEMPLATE_REPOSITORY_TOKEN } from './interfaces/template-repository.interface';
 
-/**
- * Scaffold module — **do not** import in `AppModule` until copied & renamed.
- */
 @Module({
-  imports: [DatabaseModule],
   controllers: [TemplateController],
   providers: [
-    TemplateRepository,
     TemplateService,
-    TemplateFacade,
-    { provide: TEMPLATE_API, useClass: TemplateFacade },
+    {
+      provide: TEMPLATE_REPOSITORY_TOKEN,
+      useClass: TemplateRepository,
+    },
   ],
-  exports: [TEMPLATE_API],
+  exports: [TemplateService, TEMPLATE_REPOSITORY_TOKEN],
 })
 export class TemplateModule {}
