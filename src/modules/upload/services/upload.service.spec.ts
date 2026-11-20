@@ -1,14 +1,12 @@
 import { UploadService, validateMagicBytes } from './upload.service';
-import { BusinessError } from '../../common/errors/business-error';
-import { AppLoggerService } from '../../logger/logger.service';
-import type { S3ObjectStorageService } from './infrastructure/s3-object-storage.service';
+import { BusinessError } from '@/common/errors/business-error';
+import { AppLoggerService } from '@/logger/logger.service';
+import type { IObjectStorageService } from '../interfaces/object-storage.interface';
 import { Readable } from 'node:stream';
 
 describe('UploadService', () => {
   let service: UploadService;
-  let mockStorage: jest.Mocked<
-    Pick<S3ObjectStorageService, 'putObject' | 'exists' | 'getObject'>
-  >;
+  let mockStorage: jest.Mocked<IObjectStorageService>;
   let mockLogger: jest.Mocked<AppLoggerService>;
 
   const validPngBuffer = Buffer.from([
@@ -18,9 +16,10 @@ describe('UploadService', () => {
 
   beforeEach(() => {
     mockStorage = {
-      putObject: jest.fn().mockResolvedValue(undefined),
+      putObject: jest.fn().mockResolvedValue({ key: 'test' }),
       exists: jest.fn().mockResolvedValue(false),
       getObject: jest.fn(),
+      deleteObject: jest.fn().mockResolvedValue(undefined),
     };
     mockLogger = {
       log: jest.fn(),
@@ -29,7 +28,7 @@ describe('UploadService', () => {
       debug: jest.fn(),
       verbose: jest.fn(),
     } as any;
-    service = new UploadService(mockStorage as any, mockLogger);
+    service = new UploadService(mockStorage, mockLogger);
   });
 
   it('should be defined', () => {
@@ -58,11 +57,11 @@ describe('UploadService', () => {
       const result = await service.saveFile(mockFile, 'public', orgId);
       expect(result).toContain(`/uploads/public/${orgId}/`);
       expect(result).toMatch(/\.png$/);
-      expect(mockStorage.putObject).toHaveBeenCalledWith(
-        expect.stringMatching(/^public\/org-abc-123\/[\w-]+\.png$/),
-        validPngBuffer,
-        'image/png',
-      );
+      expect(mockStorage.putObject).toHaveBeenCalledWith({
+        key: expect.stringMatching(/^public\/org-abc-123\/[\w-]+\.png$/),
+        body: validPngBuffer,
+        contentType: 'image/png',
+      });
     });
 
     it('should save private file under private/{orgId} object key', async () => {
@@ -74,11 +73,11 @@ describe('UploadService', () => {
 
       const result = await service.saveFile(mockFile, 'private', orgId);
       expect(result).toContain(`/uploads/private/${orgId}/`);
-      expect(mockStorage.putObject).toHaveBeenCalledWith(
-        expect.stringMatching(/^private\/org-abc-123\/[\w-]+\.png$/),
-        validPngBuffer,
-        'image/png',
-      );
+      expect(mockStorage.putObject).toHaveBeenCalledWith({
+        key: expect.stringMatching(/^private\/org-abc-123\/[\w-]+\.png$/),
+        body: validPngBuffer,
+        contentType: 'image/png',
+      });
     });
 
     it('should include sub-path in object key and URL', async () => {
@@ -88,18 +87,15 @@ describe('UploadService', () => {
         mimetype: 'image/png',
       };
 
-      const result = await service.saveFile(
-        mockFile,
-        'public',
-        orgId,
-        'media',
-      );
+      const result = await service.saveFile(mockFile, 'public', orgId, 'media');
       expect(result).toContain(`/uploads/public/${orgId}/media/`);
-      expect(mockStorage.putObject).toHaveBeenCalledWith(
-        expect.stringMatching(/^public\/org-abc-123\/media\/[\w-]+\.webp$/),
-        validPngBuffer,
-        'image/png',
-      );
+      expect(mockStorage.putObject).toHaveBeenCalledWith({
+        key: expect.stringMatching(
+          /^public\/org-abc-123\/media\/[\w-]+\.webp$/,
+        ),
+        body: validPngBuffer,
+        contentType: 'image/png',
+      });
     });
   });
 
@@ -163,7 +159,10 @@ describe('UploadService', () => {
     it('should return stream for public object', async () => {
       const stream = Readable.from(['data']);
       mockStorage.exists.mockResolvedValueOnce(true);
-      mockStorage.getObject.mockResolvedValueOnce(stream);
+      mockStorage.getObject.mockResolvedValueOnce({
+        body: stream,
+        contentType: 'image/png',
+      });
 
       const result = await service.getFile('public', orgId, 'test.png');
       expect(result.fileName).toBe('test.png');
@@ -176,7 +175,10 @@ describe('UploadService', () => {
       mockStorage.exists
         .mockResolvedValueOnce(false)
         .mockResolvedValueOnce(true);
-      mockStorage.getObject.mockResolvedValueOnce(stream);
+      mockStorage.getObject.mockResolvedValueOnce({
+        body: stream,
+        contentType: 'image/png',
+      });
 
       const result = await service.getFile('private', orgId, 'test.png');
       expect(result.objectKey).toBe('org-abc-123/test.png');

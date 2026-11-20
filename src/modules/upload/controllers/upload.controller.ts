@@ -18,14 +18,14 @@ import {
   ApiExtraModels,
 } from '@nestjs/swagger';
 import type { FastifyReply, FastifyRequest } from 'fastify';
-import { UploadService, FileVisibility } from './upload.service';
-import { BusinessError } from '../../common/errors/business-error';
+import { UploadService, type FileVisibility } from '../services/upload.service';
+import { BusinessError } from '@/common/errors/business-error';
 import {
   AuthGuard,
   AllowAnonymous,
   Session,
 } from '@thallesp/nestjs-better-auth';
-import { UploadResponseDto } from './dto/upload-response.dto';
+import { UploadResponseDto } from '../dto/upload-response.dto';
 import { ErrorResponseDto } from '@/common/dto/error-response.dto';
 import type { UserSession } from '@thallesp/nestjs-better-auth';
 import * as path from 'node:path';

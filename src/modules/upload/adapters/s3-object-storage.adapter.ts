@@ -1,7 +1,8 @@
-import { Inject, Injectable, OnModuleInit } from '@nestjs/common';
+import { Injectable, OnModuleInit } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import {
   CreateBucketCommand,
+  DeleteObjectCommand,
   GetObjectCommand,
   HeadBucketCommand,
   HeadObjectCommand,
@@ -9,10 +10,13 @@ import {
   S3Client,
   S3ServiceException,
 } from '@aws-sdk/client-s3';
-import { Readable } from 'node:stream';
 import type { UploadConfig } from '@/config/upload.config';
 import { AppLoggerService } from '@/logger/logger.service';
-import { S3_CLIENT } from '../upload.tokens';
+import type {
+  GetObjectResult,
+  IObjectStorageService,
+  PutObjectOptions,
+} from '../interfaces/object-storage.interface';
 
 function isBucketMissing(error: unknown): boolean {
   if (!(error instanceof S3ServiceException)) {
@@ -35,12 +39,29 @@ function isObjectMissing(error: unknown): boolean {
 }
 
 @Injectable()
-export class S3ObjectStorageService implements OnModuleInit {
+export class S3ObjectStorageAdapter
+  implements IObjectStorageService, OnModuleInit
+{
+  private readonly s3: S3Client;
+
   constructor(
-    @Inject(S3_CLIENT) private readonly s3: S3Client,
     private readonly configService: ConfigService,
     private readonly logger: AppLoggerService,
-  ) {}
+    s3Client?: S3Client,
+  ) {
+    const upload = this.uploadConfig;
+    this.s3 =
+      s3Client ??
+      new S3Client({
+        endpoint: upload.endpoint,
+        region: upload.region,
+        credentials: {
+          accessKeyId: upload.accessKeyId,
+          secretAccessKey: upload.secretAccessKey,
+        },
+        forcePathStyle: upload.forcePathStyle,
+      });
+  }
 
   private get uploadConfig(): UploadConfig {
     const config = this.configService.get<UploadConfig>('upload', {
@@ -57,7 +78,7 @@ export class S3ObjectStorageService implements OnModuleInit {
     try {
       await this.s3.send(new HeadBucketCommand({ Bucket: bucket }));
       this.logger.debug(`S3 bucket siap: ${bucket}`, {
-        context: 'S3ObjectStorageService',
+        context: 'S3ObjectStorageAdapter',
         bucket,
       });
     } catch (error: unknown) {
@@ -65,31 +86,31 @@ export class S3ObjectStorageService implements OnModuleInit {
         this.logger.error(
           `Gagal memeriksa bucket S3: ${bucket}`,
           error instanceof Error ? error.stack : undefined,
-          { context: 'S3ObjectStorageService', bucket },
+          { context: 'S3ObjectStorageAdapter', bucket },
         );
         throw error;
       }
       await this.s3.send(new CreateBucketCommand({ Bucket: bucket }));
       this.logger.log(`Bucket S3 dibuat: ${bucket}`, {
-        context: 'S3ObjectStorageService',
+        context: 'S3ObjectStorageAdapter',
         bucket,
       });
     }
   }
 
   async putObject(
-    key: string,
-    body: Buffer,
-    contentType: string,
-  ): Promise<void> {
+    options: PutObjectOptions,
+  ): Promise<{ key: string; url?: string }> {
     await this.s3.send(
       new PutObjectCommand({
         Bucket: this.uploadConfig.bucket,
-        Key: key,
-        Body: body,
-        ContentType: contentType,
+        Key: options.key,
+        Body: options.body,
+        ContentType: options.contentType,
+        Metadata: options.metadata,
       }),
     );
+    return { key: options.key };
   }
 
   async exists(key: string): Promise<boolean> {
@@ -109,7 +130,7 @@ export class S3ObjectStorageService implements OnModuleInit {
     }
   }
 
-  async getObject(key: string): Promise<Readable> {
+  async getObject(key: string): Promise<GetObjectResult> {
     const result = await this.s3.send(
       new GetObjectCommand({
         Bucket: this.uploadConfig.bucket,
@@ -120,6 +141,19 @@ export class S3ObjectStorageService implements OnModuleInit {
     if (!body) {
       throw new Error(`Objek S3 tidak memiliki body stream: ${key}`);
     }
-    return body as Readable;
+    return {
+      body: body as unknown as NodeJS.ReadableStream,
+      contentType: result.ContentType ?? 'application/octet-stream',
+      contentLength: result.ContentLength,
+    };
+  }
+
+  async deleteObject(key: string): Promise<void> {
+    await this.s3.send(
+      new DeleteObjectCommand({
+        Bucket: this.uploadConfig.bucket,
+        Key: key,
+      }),
+    );
   }
 }

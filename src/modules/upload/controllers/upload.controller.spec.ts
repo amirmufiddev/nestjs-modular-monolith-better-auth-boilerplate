@@ -13,8 +13,8 @@ jest.mock('@thallesp/nestjs-better-auth', () => ({
 
 import { Readable } from 'node:stream';
 import { UploadController } from './upload.controller';
-import { UploadService } from './upload.service';
-import { BusinessError } from '../../common/errors/business-error';
+import { UploadService } from '../services/upload.service';
+import { BusinessError } from '@/common/errors/business-error';
 
 describe('UploadController', () => {
   let controller: UploadController;

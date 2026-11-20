@@ -1,10 +1,13 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import * as path from 'node:path';
 import { randomUUID } from 'node:crypto';
 import type { Readable } from 'node:stream';
-import { BusinessError } from '../../common/errors/business-error';
-import { AppLoggerService } from '../../logger/logger.service';
-import { S3ObjectStorageService } from './infrastructure/s3-object-storage.service';
+import { BusinessError } from '@/common/errors/business-error';
+import { AppLoggerService } from '@/logger/logger.service';
+import {
+  OBJECT_STORAGE_TOKEN,
+  type IObjectStorageService,
+} from '../interfaces/object-storage.interface';
 
 export type FileVisibility = 'public' | 'private';
 
@@ -74,7 +77,8 @@ function joinObjectKey(...segments: string[]): string {
 @Injectable()
 export class UploadService {
   constructor(
-    private readonly storage: S3ObjectStorageService,
+    @Inject(OBJECT_STORAGE_TOKEN)
+    private readonly storage: IObjectStorageService,
     private readonly logger: AppLoggerService,
   ) {}
 
@@ -207,7 +211,11 @@ export class UploadService {
     );
 
     try {
-      await this.storage.putObject(objectKey, file.buffer, file.mimetype);
+      await this.storage.putObject({
+        key: objectKey,
+        body: file.buffer,
+        contentType: file.mimetype,
+      });
 
       const urlSegments = ['/uploads', visibility, organizationId];
       if (cleanSubPath) urlSegments.push(cleanSubPath);
@@ -253,22 +261,22 @@ export class UploadService {
       filePath,
     );
     if (await this.storage.exists(primaryKey)) {
-      const body = await this.storage.getObject(primaryKey);
+      const result = await this.storage.getObject(primaryKey);
       return {
         objectKey: primaryKey,
         fileName: path.basename(filePath),
-        body,
+        body: result.body as Readable,
       };
     }
 
     if (visibility === 'private') {
       const legacyKey = this.resolveLegacyObjectKey(organizationId, filePath);
       if (await this.storage.exists(legacyKey)) {
-        const body = await this.storage.getObject(legacyKey);
+        const result = await this.storage.getObject(legacyKey);
         return {
           objectKey: legacyKey,
           fileName: path.basename(filePath),
-          body,
+          body: result.body as Readable,
         };
       }
     }

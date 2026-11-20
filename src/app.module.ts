@@ -21,7 +21,7 @@ import { SchedulingModule } from './shared/scheduling/scheduling.module';
 import { HealthModule } from './modules/health/health.module';
 import { LoggerModule } from './logger/logger.module';
 import { RbacModule } from './modules/rbac/rbac.module';
-import { UploadModule } from './modules/upload/upload.module';
+import { UploadModule } from './modules/upload';
 import { RegionalModule } from './modules/regional';
 import { MemberModule } from './modules/member';
 import { CorrelationIdMiddleware } from './common/middleware/correlation-id.middleware';
