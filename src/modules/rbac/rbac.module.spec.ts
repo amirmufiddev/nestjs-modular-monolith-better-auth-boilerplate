@@ -9,6 +9,12 @@ import { AuditTrailService } from './services/audit-trail.service';
 import { AuditTrailRepository } from './repositories/audit-trail.repository';
 import { PermissionScopeInterceptor } from './interceptors/permission-scope.interceptor';
 import { PermissionsController } from './controllers/permissions.controller';
+import { OrganizationRoleService } from './services/organization-role.service';
+import { RbacPermissionService } from './services/rbac-permission.service';
+import {
+  ORGANIZATION_ROLE_REPOSITORY_TOKEN,
+  RBAC_PERMISSION_REPOSITORY_TOKEN,
+} from './interfaces';
 import { DRIZZLE } from '@/database/database.constants';
 import { CacheService } from '@/common/cache/cache.service';
 
@@ -83,5 +89,13 @@ describe('RbacModule', () => {
     expect(
       testingModule.get<PermissionScopeInterceptor>(PermissionScopeInterceptor),
     ).toBeDefined();
+    expect(
+      testingModule.get<OrganizationRoleService>(OrganizationRoleService),
+    ).toBeDefined();
+    expect(
+      testingModule.get<RbacPermissionService>(RbacPermissionService),
+    ).toBeDefined();
+    expect(testingModule.get(ORGANIZATION_ROLE_REPOSITORY_TOKEN)).toBeDefined();
+    expect(testingModule.get(RBAC_PERMISSION_REPOSITORY_TOKEN)).toBeDefined();
   });
 });

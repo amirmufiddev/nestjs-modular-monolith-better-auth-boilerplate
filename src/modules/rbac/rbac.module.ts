@@ -13,15 +13,25 @@ import { OrganizationRoleRepository } from './repositories/organization-role.rep
 import { RbacPermissionService } from './services/rbac-permission.service';
 import { OrganizationRoleService } from './services/organization-role.service';
 import { PermissionScopeInterceptor } from './interceptors/permission-scope.interceptor';
+import {
+  ORGANIZATION_ROLE_REPOSITORY_TOKEN,
+  RBAC_PERMISSION_REPOSITORY_TOKEN,
+} from './interfaces';
 
 @Global()
 @Module({
   imports: [DatabaseModule, SharedEventsModule],
   controllers: [PermissionsController, OrganizationRolesController],
   providers: [
-    RbacPermissionRepository,
+    {
+      provide: RBAC_PERMISSION_REPOSITORY_TOKEN,
+      useClass: RbacPermissionRepository,
+    },
+    {
+      provide: ORGANIZATION_ROLE_REPOSITORY_TOKEN,
+      useClass: OrganizationRoleRepository,
+    },
     RbacRoleTemplateRepository,
-    OrganizationRoleRepository,
     RbacPermissionService,
     OrganizationRoleService,
     PermissionScopeService,
@@ -38,7 +48,8 @@ import { PermissionScopeInterceptor } from './interceptors/permission-scope.inte
     AuditTrailRepository,
     RbacPermissionService,
     OrganizationRoleService,
-    OrganizationRoleRepository,
+    ORGANIZATION_ROLE_REPOSITORY_TOKEN,
+    RBAC_PERMISSION_REPOSITORY_TOKEN,
   ],
 })
 export class RbacModule {}

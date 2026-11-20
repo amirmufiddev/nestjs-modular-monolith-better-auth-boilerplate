@@ -3,7 +3,7 @@ import { loadBetterAuthStatement } from './rbac-permission.loader';
 import { BOOTSTRAP_BETTER_AUTH_STATEMENT } from '../constants/permissions.constant';
 
 describe('loadBetterAuthStatement', () => {
-  it('falls back to bootstrap when rbac_permission table is missing', async () => {
+  it('should fall back to bootstrap when rbac_permission table is missing', async () => {
     const db = {
       select: () => ({
         from: () => ({

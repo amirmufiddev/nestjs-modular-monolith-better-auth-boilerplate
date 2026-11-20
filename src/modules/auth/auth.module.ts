@@ -8,9 +8,8 @@ import { DatabaseModule } from '@/database/database.module';
 import { DRIZZLE } from '@/database/database.constants';
 import * as schema from '@/database/schema';
 import { loadBetterAuthStatement } from '@/modules/rbac/permissions/rbac-permission.loader';
-import { EmailService } from '@/modules/email/email.service';
+import { EmailModule, EmailService } from '@/modules/email';
 import { AppLoggerService } from '@/logger/logger.service';
-import { EmailModule } from '@/modules/email/email.module';
 import {
   BetterAuthCacheModule,
   BETTER_AUTH_SECONDARY_STORAGE,

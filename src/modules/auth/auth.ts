@@ -29,12 +29,12 @@ import translationsEn from '@/i18n/en/auth-errors.json';
 import { getSharedPool } from '@/database/database.module';
 import { ConfigService } from '@nestjs/config';
 import { AppLoggerService } from '@/logger/logger.service';
-import { EmailService } from '@/modules/email/email.service';
 import {
+  EmailService,
   buildResetPasswordEmail,
   buildEmailVerificationEmail,
   buildOrganizationInvitationEmail,
-} from '@/modules/email/templates';
+} from '@/modules/email';
 import { AppConfig, AuthConfig } from '@/config';
 import { buildInvitationLink } from '@/modules/auth/invitation-link.util';
 

@@ -5,11 +5,13 @@ import { DRIZZLE } from '@/database/database.constants';
 import * as schema from '@/database/schema';
 import { NewRbacPermission, RbacPermission } from '@/database/schema';
 import { BaseRepository } from '@/common/repository/base.repository';
+import type { IRbacPermissionRepository } from '../interfaces/rbac-permission-repository.interface';
 
 @Injectable()
-export class RbacPermissionRepository extends BaseRepository<
-  typeof schema.rbacPermission
-> {
+export class RbacPermissionRepository
+  extends BaseRepository<typeof schema.rbacPermission>
+  implements IRbacPermissionRepository
+{
   constructor(@Inject(DRIZZLE) db: NodePgDatabase) {
     super(db, schema.rbacPermission);
   }

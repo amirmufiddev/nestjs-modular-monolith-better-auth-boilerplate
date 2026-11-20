@@ -55,9 +55,7 @@ describe('PermissionsController', () => {
     reflector = new Reflector();
     rbacPermissionService = {
       getCatalog: jest.fn().mockResolvedValue(mockCatalog),
-      getPermissionCodes: jest
-        .fn()
-        .mockResolvedValue(getAllPermissionCodes()),
+      getPermissionCodes: jest.fn().mockResolvedValue(getAllPermissionCodes()),
     };
     const module: TestingModule = await Test.createTestingModule({
       controllers: [PermissionsController],

@@ -1,7 +1,10 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { BusinessError } from '@/common/errors/business-error';
 import type { RbacPermission } from '@/database/schema';
-import { RbacPermissionRepository } from '../repositories/rbac-permission.repository';
+import {
+  RBAC_PERMISSION_REPOSITORY_TOKEN,
+  type IRbacPermissionRepository,
+} from '../interfaces/rbac-permission-repository.interface';
 import {
   buildAllPermissionCodes,
   buildPermissionCatalogView,
@@ -14,20 +17,23 @@ const ACTION_PATTERN = /^[a-z][a-z0-9-]*$/;
 
 @Injectable()
 export class RbacPermissionService {
-  constructor(private readonly repository: RbacPermissionRepository) {}
+  constructor(
+    @Inject(RBAC_PERMISSION_REPOSITORY_TOKEN)
+    private readonly permissionRepo: IRbacPermissionRepository,
+  ) {}
 
   async getCatalog() {
-    const rows = await this.repository.findAllActive();
+    const rows = await this.permissionRepo.findAllActive();
     return buildPermissionCatalogView(rows);
   }
 
   async getPermissionCodes(): Promise<string[]> {
-    const rows = await this.repository.findAllActive();
+    const rows = await this.permissionRepo.findAllActive();
     return buildAllPermissionCodes(rows);
   }
 
   async getById(id: string): Promise<RbacPermission> {
-    const row = await this.repository.findActiveById(id);
+    const row = await this.permissionRepo.findActiveById(id);
     if (!row) {
       throw BusinessError.notFound('Permission', id);
     }
@@ -38,7 +44,7 @@ export class RbacPermissionService {
     this.assertSlug('resource', dto.resource, RESOURCE_PATTERN);
     this.assertSlug('action', dto.action, ACTION_PATTERN);
 
-    const existing = await this.repository.findByResourceAndAction(
+    const existing = await this.permissionRepo.findByResourceAndAction(
       dto.resource,
       dto.action,
     );
@@ -49,7 +55,7 @@ export class RbacPermissionService {
       );
     }
 
-    return this.repository.createPermission({
+    return this.permissionRepo.createPermission({
       resource: dto.resource,
       action: dto.action,
       actionDisplayName: dto.actionDisplayName,
@@ -65,7 +71,7 @@ export class RbacPermissionService {
   ): Promise<RbacPermission> {
     await this.getById(id);
 
-    const updated = await this.repository.updatePermission(id, {
+    const updated = await this.permissionRepo.updatePermission(id, {
       actionDisplayName: dto.actionDisplayName,
       actionDescription: dto.actionDescription,
       resourceDisplayName: dto.resourceDisplayName,
@@ -81,17 +87,13 @@ export class RbacPermissionService {
 
   async remove(id: string): Promise<void> {
     await this.getById(id);
-    const deleted = await this.repository.softDelete(id);
+    const deleted = await this.permissionRepo.softDelete(id);
     if (!deleted) {
       throw BusinessError.notFound('Permission', id);
     }
   }
 
-  private assertSlug(
-    field: string,
-    value: string,
-    pattern: RegExp,
-  ): void {
+  private assertSlug(field: string, value: string, pattern: RegExp): void {
     if (!pattern.test(value)) {
       throw BusinessError.unprocessable(
         `${field} harus lowercase alfanumerik dengan strip (contoh: update-role)`,

@@ -2,12 +2,14 @@
  * Bootstrap fallback saat tabel `rbac_permission` belum terisi (mis. unit test auth).
  * Produksi memuat statement dari database via `loadBetterAuthStatement`.
  */
-export const BOOTSTRAP_BETTER_AUTH_STATEMENT: Record<string, readonly string[]> =
-  {
-    member: ['read', 'invite', 'remove', 'update-role'],
-    ac: ['create', 'read', 'update', 'delete'],
-    broadcast: ['trigger'],
-  };
+export const BOOTSTRAP_BETTER_AUTH_STATEMENT: Record<
+  string,
+  readonly string[]
+> = {
+  member: ['read', 'invite', 'remove', 'update-role'],
+  ac: ['create', 'read', 'update', 'delete'],
+  broadcast: ['trigger'],
+};
 
 /** @deprecated Gunakan RbacPermissionService / database. Hanya untuk backward-compat test. */
 export const MASTER_PERMISSIONS = Object.fromEntries(
@@ -25,7 +27,10 @@ export const MASTER_PERMISSIONS = Object.fromEntries(
 
 /** @deprecated */
 export function getBetterAuthStatement(
-  statement: Record<string, readonly string[]> = BOOTSTRAP_BETTER_AUTH_STATEMENT,
+  statement: Record<
+    string,
+    readonly string[]
+  > = BOOTSTRAP_BETTER_AUTH_STATEMENT,
 ): Record<string, readonly string[]> {
   return statement;
 }

@@ -22,7 +22,7 @@ const sampleRow = (overrides: Partial<RbacPermission> = {}): RbacPermission =>
   }) as RbacPermission;
 
 describe('rbac-permission.mapper', () => {
-  it('buildBetterAuthStatementFromRows groups actions per resource', () => {
+  it('should group actions per resource from rows', () => {
     const statement = buildBetterAuthStatementFromRows([
       { resource: 'member', action: 'read' },
       { resource: 'member', action: 'invite' },
@@ -33,13 +33,13 @@ describe('rbac-permission.mapper', () => {
     expect(statement.ac).toEqual(['read']);
   });
 
-  it('buildPermissionCatalogView maps rows to API shape', () => {
+  it('should map rows to API shape for catalog view', () => {
     const view = buildPermissionCatalogView([sampleRow()]);
     expect(view.resources[0].resource).toBe('member');
     expect(view.permissions[0].code).toBe('member:read');
   });
 
-  it('buildAllPermissionCodes returns sorted codes', () => {
+  it('should return sorted codes from rows', () => {
     const codes = buildAllPermissionCodes([
       { resource: 'ac', action: 'read' },
       { resource: 'member', action: 'read' },

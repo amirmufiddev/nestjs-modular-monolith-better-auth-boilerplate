@@ -1,9 +1,12 @@
-import { Injectable } from '@nestjs/common';
+import { Inject, Injectable } from '@nestjs/common';
 import { EventEmitter2 } from '@nestjs/event-emitter';
 import { AuthService } from '@thallesp/nestjs-better-auth';
 import { BusinessError } from '@/common/errors/business-error';
 import { OrganizationRole } from '@/database/schema';
-import { OrganizationRoleRepository } from '../repositories/organization-role.repository';
+import {
+  ORGANIZATION_ROLE_REPOSITORY_TOKEN,
+  type IOrganizationRoleRepository,
+} from '../interfaces/organization-role-repository.interface';
 import type { UpsertOrganizationRoleDto } from '../dto/organization-role.dto';
 
 const RESERVED_OWNER = 'owner';
@@ -19,23 +22,21 @@ type BetterAuthOrganizationRole = {
 @Injectable()
 export class OrganizationRoleService {
   constructor(
-    private readonly organizationRoleRepository: OrganizationRoleRepository,
+    @Inject(ORGANIZATION_ROLE_REPOSITORY_TOKEN)
+    private readonly roleRepo: IOrganizationRoleRepository,
     private readonly authService: AuthService,
     private readonly eventEmitter: EventEmitter2,
   ) {}
 
   async list(organizationId: string): Promise<OrganizationRole[]> {
-    return this.organizationRoleRepository.findByOrganization(organizationId);
+    return this.roleRepo.findByOrganization(organizationId);
   }
 
   async getById(
     organizationId: string,
     roleId: string,
   ): Promise<OrganizationRole> {
-    const role = await this.organizationRoleRepository.findById(
-      organizationId,
-      roleId,
-    );
+    const role = await this.roleRepo.findById(organizationId, roleId);
     if (!role) {
       throw BusinessError.notFound('Organization role', roleId);
     }
@@ -147,7 +148,7 @@ export class OrganizationRoleService {
       );
     }
 
-    const role = await this.organizationRoleRepository.findByOrganizationAndRoleName(
+    const role = await this.roleRepo.findByOrganizationAndRoleName(
       organizationId,
       normalized,
     );

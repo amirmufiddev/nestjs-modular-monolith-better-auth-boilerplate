@@ -30,7 +30,9 @@ import {
 @ApiBearerAuth()
 @Controller('rbac/roles')
 export class OrganizationRolesController {
-  constructor(private readonly organizationRoleService: OrganizationRoleService) {}
+  constructor(
+    private readonly organizationRoleService: OrganizationRoleService,
+  ) {}
 
   private requireActiveOrganizationId(): string {
     const organizationId = RlsContext.getCurrentOrganizationId();
