@@ -1,15 +1,73 @@
 services:
+  postgres:
+    container_name: postgres
+    image: postgres:16-alpine
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:-myapp}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?set POSTGRES_PASSWORD in .env}
+      POSTGRES_DB: ${POSTGRES_DB:-myapp}
+    ports:
+      - '${POSTGRES_PORT:-5432}:5432'
+    volumes:
+      - myapp_postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test:
+        [
+          'CMD-SHELL',
+          'pg_isready -U ${POSTGRES_USER:-myapp} -d ${POSTGRES_DB:-myapp}',
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 20
   minio:
+    container_name: minio
     image: minio/minio:latest
     command: server /data --console-address ":9001"
     ports:
-      - '9000:9000'
-      - '9001:9001'
+      - '${S3_PORT:-9000}:9000'
+      - '${S3_CONSOLE_PORT:-9001}:9001'
     environment:
-      MINIO_ROOT_USER: minioadmin
-      MINIO_ROOT_PASSWORD: minioadmin
+      MINIO_ROOT_USER: ${S3_ACCESS_KEY_ID}
+      MINIO_ROOT_PASSWORD: ${S3_SECRET_ACCESS_KEY}
     volumes:
-      - minio_data:/data
+      - myapp_minio_data:/data
+  mailpit:
+    container_name: mailpit
+    image: axllent/mailpit:v1.27
+    ports:
+      - '${MAILPIT_UI_PORT:-8025}:8025'
+      - '${EMAIL_PORT:-1025}:1025'
+    volumes:
+      - myapp_mailpit_data:/data
+  redis:
+    container_name: redis
+    image: redis:7-alpine
+    env_file:
+      - .env
+    ports:
+      - '${REDIS_PORT:-6379}:6379'
+    command:
+      [
+        'redis-server',
+        '--requirepass',
+        '${REDIS_PASSWORD:?set REDIS_PASSWORD in .env}',
+      ]
+    volumes:
+      - myapp_redis_data:/data
+    healthcheck:
+      test: ['CMD', 'redis-cli', '-a', '${REDIS_PASSWORD}', 'ping']
+      interval: 5s
+      timeout: 5s
+      retries: 20
 
 volumes:
-  minio_data:
+  myapp_postgres_data:
+    driver: local
+  myapp_redis_data:
+    driver: local
+  myapp_mailpit_data:
+    driver: local
+  myapp_minio_data:
+    driver: local

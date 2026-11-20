@@ -29,11 +29,10 @@ COPY --from=builder /app/drizzle ./drizzle
 COPY --from=builder /app/tsconfig.json ./tsconfig.json
 COPY --from=builder /app/package.json ./package.json
 COPY --from=builder /app/bun.lock ./bun.lock
-COPY --from=builder /app/docker-entrypoint.sh ./docker-entrypoint.sh
 COPY --from=builder /app/node_modules ./node_modules
 
 # Ensure entrypoint is executable and set correct permissions
-RUN chmod +x docker-entrypoint.sh && chown -R bun:bun /app
+RUN chown -R bun:bun /app
 
 # Run as non-root user
 USER bun
@@ -41,5 +40,4 @@ USER bun
 # Expose backend port
 EXPOSE 2001
 
-ENTRYPOINT ["/bin/sh", "docker-entrypoint.sh"]
 CMD ["bun", "run", "src/main.ts"]
