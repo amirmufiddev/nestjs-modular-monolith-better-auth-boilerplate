@@ -1040,7 +1040,7 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_package_jest_transform",
-      "community": 108,
+      "community": 40,
       "norm_label": "transform"
     },
     {
@@ -1050,7 +1050,7 @@
       "source_location": "L109",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_package_transform_t_j_s",
-      "community": 108,
+      "community": 40,
       "norm_label": "^.+\\\\.(t|j)s$"
     },
     {
@@ -1060,7 +1060,7 @@
       "source_location": "L118",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_package_transform_mjs",
-      "community": 108,
+      "community": 40,
       "norm_label": "^.+\\\\.mjs$"
     },
     {
@@ -1100,7 +1100,7 @@
       "source_location": "L133",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_package_jest_modulenamemapper",
-      "community": 40,
+      "community": 51,
       "norm_label": "modulenamemapper"
     },
     {
@@ -1110,7 +1110,7 @@
       "source_location": "L134",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_package_modulenamemapper",
-      "community": 40,
+      "community": 51,
       "norm_label": "^@/(.*)$"
     },
     {
@@ -1120,7 +1120,7 @@
       "source_location": "L135",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_package_modulenamemapper_express",
-      "community": 40,
+      "community": 51,
       "norm_label": "^express$"
     },
     {
@@ -1220,7 +1220,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "src_app_module_appmodule",
-      "community": 36,
+      "community": 0,
       "norm_label": "appmodule"
     },
     {
@@ -1230,7 +1230,7 @@
       "source_location": "L95",
       "_origin": "ast",
       "id": "src_app_module_appmodule_configure",
-      "community": 36,
+      "community": 29,
       "norm_label": ".configure()"
     },
     {
@@ -1240,7 +1240,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_compress_config",
-      "community": 2,
+      "community": 0,
       "norm_label": "compress.config.ts"
     },
     {
@@ -1250,7 +1250,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_bootstrap_compress_config_configurecompress",
-      "community": 2,
+      "community": 0,
       "norm_label": "configurecompress()"
     },
     {
@@ -1260,7 +1260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_cors_config_spec",
-      "community": 2,
+      "community": 49,
       "norm_label": "cors.config.spec.ts"
     },
     {
@@ -1270,7 +1270,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_cors_config",
-      "community": 2,
+      "community": 49,
       "norm_label": "cors.config.ts"
     },
     {
@@ -1280,7 +1280,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_bootstrap_cors_config_assertproductioncorsallowed",
-      "community": 2,
+      "community": 49,
       "norm_label": "assertproductioncorsallowed()"
     },
     {
@@ -1290,7 +1290,7 @@
       "source_location": "L26",
       "_origin": "ast",
       "id": "src_bootstrap_cors_config_configurecors",
-      "community": 2,
+      "community": 49,
       "norm_label": "configurecors()"
     },
     {
@@ -1300,7 +1300,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_helmet_config_spec",
-      "community": 2,
+      "community": 0,
       "norm_label": "helmet.config.spec.ts"
     },
     {
@@ -1310,7 +1310,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_helmet_config",
-      "community": 2,
+      "community": 0,
       "norm_label": "helmet.config.ts"
     },
     {
@@ -1320,7 +1320,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_bootstrap_helmet_config_configurehelmet",
-      "community": 2,
+      "community": 0,
       "norm_label": "configurehelmet()"
     },
     {
@@ -1330,7 +1330,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_multipart_config",
-      "community": 2,
+      "community": 0,
       "norm_label": "multipart.config.ts"
     },
     {
@@ -1340,7 +1340,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_bootstrap_multipart_config_configuremultipart",
-      "community": 2,
+      "community": 0,
       "norm_label": "configuremultipart()"
     },
     {
@@ -1350,7 +1350,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_openapi_config",
-      "community": 17,
+      "community": 1,
       "norm_label": "openapi.config.ts"
     },
     {
@@ -1360,7 +1360,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_bootstrap_openapi_config_configureopenapi",
-      "community": 2,
+      "community": 1,
       "norm_label": "configureopenapi()"
     },
     {
@@ -1370,7 +1370,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_plugin_register_util_spec",
-      "community": 2,
+      "community": 0,
       "norm_label": "plugin-register.util.spec.ts"
     },
     {
@@ -1380,7 +1380,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_plugin_register_util",
-      "community": 2,
+      "community": 0,
       "norm_label": "plugin-register.util.ts"
     },
     {
@@ -1390,7 +1390,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_bootstrap_plugin_register_util_registerfastifyplugin",
-      "community": 2,
+      "community": 0,
       "norm_label": "registerfastifyplugin()"
     },
     {
@@ -1400,7 +1400,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_rate_limit_config_spec",
-      "community": 2,
+      "community": 0,
       "norm_label": "rate-limit.config.spec.ts"
     },
     {
@@ -1410,7 +1410,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_rate_limit_config",
-      "community": 2,
+      "community": 0,
       "norm_label": "rate-limit.config.ts"
     },
     {
@@ -1420,7 +1420,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_bootstrap_rate_limit_config_configureratelimit",
-      "community": 2,
+      "community": 0,
       "norm_label": "configureratelimit()"
     },
     {
@@ -1430,7 +1430,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_bootstrap_static_config",
-      "community": 2,
+      "community": 0,
       "norm_label": "static.config.ts"
     },
     {
@@ -1440,7 +1440,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_bootstrap_static_config_configurestatic",
-      "community": 2,
+      "community": 0,
       "norm_label": "configurestatic()"
     },
     {
@@ -1450,7 +1450,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_auth_auth_cache_constants",
-      "community": 16,
+      "community": 4,
       "norm_label": "auth-cache.constants.ts"
     },
     {
@@ -1460,7 +1460,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_auth_better_auth_cache_module",
-      "community": 16,
+      "community": 4,
       "norm_label": "better-auth-cache.module.ts"
     },
     {
@@ -1470,7 +1470,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_common_auth_better_auth_cache_module_better_auth_redis_client",
-      "community": 16,
+      "community": 4,
       "norm_label": "better_auth_redis_client"
     },
     {
@@ -1480,7 +1480,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_common_auth_better_auth_cache_module_better_auth_secondary_storage",
-      "community": 16,
+      "community": 4,
       "norm_label": "better_auth_secondary_storage"
     },
     {
@@ -1490,7 +1490,7 @@
       "source_location": "L67",
       "_origin": "ast",
       "id": "src_common_auth_better_auth_cache_module_betterauthcachemodule",
-      "community": 16,
+      "community": 4,
       "norm_label": "betterauthcachemodule"
     },
     {
@@ -1530,7 +1530,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_cache_cache_service_spec",
-      "community": 39,
+      "community": 71,
       "norm_label": "cache.service.spec.ts"
     },
     {
@@ -1620,7 +1620,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "src_common_cache_cache_service_cacheservice_buildkey",
-      "community": 11,
+      "community": 71,
       "norm_label": ".buildkey()"
     },
     {
@@ -1640,7 +1640,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_dto_error_response_dto",
-      "community": 72,
+      "community": 27,
       "norm_label": "error-response.dto.ts"
     },
     {
@@ -1650,7 +1650,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_common_dto_error_response_dto_errorresponsedto",
-      "community": 72,
+      "community": 27,
       "norm_label": "errorresponsedto"
     },
     {
@@ -1720,7 +1720,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_dto_pagination_dto",
-      "community": 49,
+      "community": 71,
       "norm_label": "pagination.dto.ts"
     },
     {
@@ -1730,7 +1730,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_common_dto_pagination_dto_paginationdto",
-      "community": 49,
+      "community": 71,
       "norm_label": "paginationdto"
     },
     {
@@ -1740,7 +1740,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "src_common_dto_pagination_dto_paginationdto_offset",
-      "community": 49,
+      "community": 71,
       "norm_label": ".offset()"
     },
     {
@@ -1830,7 +1830,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_errors_business_error_spec",
-      "community": 1,
+      "community": 71,
       "norm_label": "business-error.spec.ts"
     },
     {
@@ -1840,7 +1840,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_errors_business_error",
-      "community": 1,
+      "community": 71,
       "norm_label": "business-error.ts"
     },
     {
@@ -1850,7 +1850,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_common_errors_business_error_businesserror",
-      "community": 1,
+      "community": 71,
       "norm_label": "businesserror"
     },
     {
@@ -1860,7 +1860,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_common_errors_business_error_businesserror_constructor",
-      "community": 1,
+      "community": 71,
       "norm_label": ".constructor()"
     },
     {
@@ -1870,7 +1870,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_common_errors_business_error_businesserror_notfound",
-      "community": 50,
+      "community": 71,
       "norm_label": ".notfound()"
     },
     {
@@ -1880,7 +1880,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_common_errors_business_error_businesserror_badrequest",
-      "community": 4,
+      "community": 16,
       "norm_label": ".badrequest()"
     },
     {
@@ -1900,7 +1900,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_common_errors_business_error_businesserror_unauthorized",
-      "community": 50,
+      "community": 11,
       "norm_label": ".unauthorized()"
     },
     {
@@ -1910,7 +1910,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_common_errors_business_error_businesserror_forbidden",
-      "community": 1,
+      "community": 11,
       "norm_label": ".forbidden()"
     },
     {
@@ -1920,7 +1920,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_common_errors_business_error_businesserror_internal",
-      "community": 1,
+      "community": 38,
       "norm_label": ".internal()"
     },
     {
@@ -1940,7 +1940,7 @@
       "source_location": "L81",
       "_origin": "ast",
       "id": "src_common_errors_business_error_businesserror_moduleapiunavailable",
-      "community": 1,
+      "community": 71,
       "norm_label": ".moduleapiunavailable()"
     },
     {
@@ -2010,7 +2010,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_filters_all_exceptions_filter_spec",
-      "community": 1,
+      "community": 71,
       "norm_label": "all-exceptions.filter.spec.ts"
     },
     {
@@ -2020,7 +2020,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_filters_all_exceptions_filter",
-      "community": 1,
+      "community": 71,
       "norm_label": "all-exceptions.filter.ts"
     },
     {
@@ -2030,7 +2030,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_common_filters_all_exceptions_filter_allexceptionsfilter",
-      "community": 1,
+      "community": 71,
       "norm_label": "allexceptionsfilter"
     },
     {
@@ -2050,7 +2050,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_common_filters_all_exceptions_filter_allexceptionsfilter_catch",
-      "community": 46,
+      "community": 43,
       "norm_label": ".catch()"
     },
     {
@@ -2080,7 +2080,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_common_health_redis_health_redishealthindicator_constructor",
-      "community": 31,
+      "community": 39,
       "norm_label": ".constructor()"
     },
     {
@@ -2200,7 +2200,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_middleware_correlation_id_middleware_spec",
-      "community": 36,
+      "community": 29,
       "norm_label": "correlation-id.middleware.spec.ts"
     },
     {
@@ -2210,7 +2210,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_middleware_correlation_id_middleware",
-      "community": 36,
+      "community": 29,
       "norm_label": "correlation-id.middleware.ts"
     },
     {
@@ -2220,7 +2220,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_common_middleware_correlation_id_middleware_correlationidmiddleware",
-      "community": 36,
+      "community": 29,
       "norm_label": "correlationidmiddleware"
     },
     {
@@ -2230,7 +2230,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_common_middleware_correlation_id_middleware_correlationidmiddleware_use",
-      "community": 36,
+      "community": 29,
       "norm_label": ".use()"
     },
     {
@@ -2380,7 +2380,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_common_repository_base_repository",
-      "community": 5,
+      "community": 24,
       "norm_label": "base.repository.ts"
     },
     {
@@ -2400,7 +2400,7 @@
       "source_location": "L24",
       "_origin": "ast",
       "id": "src_common_repository_base_repository_tabledata",
-      "community": 5,
+      "community": 24,
       "norm_label": "tabledata"
     },
     {
@@ -2600,7 +2600,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_config_auth_config_spec",
-      "community": 17,
+      "community": 1,
       "norm_label": "auth.config.spec.ts"
     },
     {
@@ -2610,7 +2610,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_config_auth_config",
-      "community": 17,
+      "community": 1,
       "norm_label": "auth.config.ts"
     },
     {
@@ -2620,7 +2620,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_config_auth_config_authconfig",
-      "community": 17,
+      "community": 1,
       "norm_label": "authconfig"
     },
     {
@@ -2850,7 +2850,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_database_database_module_getsharedpool",
-      "community": 36,
+      "community": 17,
       "norm_label": "getsharedpool()"
     },
     {
@@ -3030,7 +3030,7 @@
       "source_location": "L34",
       "_origin": "ast",
       "id": "src_database_schema_better_auth_member_member",
-      "community": 51,
+      "community": 8,
       "norm_label": "member"
     },
     {
@@ -3200,7 +3200,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_database_schema_better_auth_verification",
-      "community": 109,
+      "community": 8,
       "norm_label": "better-auth-verification.ts"
     },
     {
@@ -3210,7 +3210,7 @@
       "source_location": "L22",
       "_origin": "ast",
       "id": "src_database_schema_better_auth_verification_verification",
-      "community": 109,
+      "community": 8,
       "norm_label": "verification"
     },
     {
@@ -3220,7 +3220,7 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_database_schema_better_auth_verification_newverification",
-      "community": 109,
+      "community": 8,
       "norm_label": "newverification"
     },
     {
@@ -3232,6 +3232,46 @@
       "id": "src_database_schema_index",
       "community": 8,
       "norm_label": "index.ts"
+    },
+    {
+      "label": "pending-member-link.ts",
+      "file_type": "code",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_database_schema_pending_member_link",
+      "community": 8,
+      "norm_label": "pending-member-link.ts"
+    },
+    {
+      "label": "pendingMemberLinks",
+      "file_type": "code",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L5",
+      "_origin": "ast",
+      "id": "src_database_schema_pending_member_link_pendingmemberlinks",
+      "community": 8,
+      "norm_label": "pendingmemberlinks"
+    },
+    {
+      "label": "PendingMemberLink",
+      "file_type": "code",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L24",
+      "_origin": "ast",
+      "id": "src_database_schema_pending_member_link_pendingmemberlink",
+      "community": 8,
+      "norm_label": "pendingmemberlink"
+    },
+    {
+      "label": "NewPendingMemberLink",
+      "file_type": "code",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L25",
+      "_origin": "ast",
+      "id": "src_database_schema_pending_member_link_newpendingmemberlink",
+      "community": 8,
+      "norm_label": "newpendingmemberlink"
     },
     {
       "label": "rbac-permission.ts",
@@ -3270,7 +3310,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_database_schema_rbac_role_template",
-      "community": 28,
+      "community": 8,
       "norm_label": "rbac-role-template.ts"
     },
     {
@@ -3290,7 +3330,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_database_schema_rbac_role_template_newrbacroletemplate",
-      "community": 28,
+      "community": 8,
       "norm_label": "newrbacroletemplate"
     },
     {
@@ -3360,7 +3400,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_i18n_i18n_config",
-      "community": 36,
+      "community": 50,
       "norm_label": "i18n.config.ts"
     },
     {
@@ -3370,7 +3410,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_i18n_i18n_config_i18noptionsfactory",
-      "community": 36,
+      "community": 50,
       "norm_label": "i18noptionsfactory()"
     },
     {
@@ -3380,7 +3420,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_i18n_i18n_config_i18npaths",
-      "community": 36,
+      "community": 50,
       "norm_label": "i18npaths"
     },
     {
@@ -3390,7 +3430,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_i18n_index",
-      "community": 36,
+      "community": 50,
       "norm_label": "index.ts"
     },
     {
@@ -3800,7 +3840,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_main",
-      "community": 2,
+      "community": 0,
       "norm_label": "main.ts"
     },
     {
@@ -3810,7 +3850,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_main_bootstrap",
-      "community": 2,
+      "community": 0,
       "norm_label": "bootstrap()"
     },
     {
@@ -4220,7 +4260,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_auth_auth_module",
-      "community": 16,
+      "community": 4,
       "norm_label": "auth.module.ts"
     },
     {
@@ -4230,7 +4270,7 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "src_modules_auth_auth_module_authmodule",
-      "community": 16,
+      "community": 4,
       "norm_label": "authmodule"
     },
     {
@@ -4330,7 +4370,7 @@
       "source_location": "L442",
       "_origin": "ast",
       "id": "src_modules_auth_auth_auth",
-      "community": 17,
+      "community": 1,
       "norm_label": "auth"
     },
     {
@@ -4340,7 +4380,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_auth_constants_auth_constants",
-      "community": 48,
+      "community": 71,
       "norm_label": "auth.constants.ts"
     },
     {
@@ -4350,7 +4390,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_auth_constants_auth_constants_member_roles",
-      "community": 48,
+      "community": 71,
       "norm_label": "member_roles"
     },
     {
@@ -4360,7 +4400,7 @@
       "source_location": "L8",
       "_origin": "ast",
       "id": "src_modules_auth_constants_auth_constants_roles",
-      "community": 48,
+      "community": 71,
       "norm_label": "roles"
     },
     {
@@ -4640,7 +4680,7 @@
       "source_location": "L77",
       "_origin": "ast",
       "id": "src_modules_email_email_service_emailservice_extractmessageid",
-      "community": 4,
+      "community": 16,
       "norm_label": ".extractmessageid()"
     },
     {
@@ -4660,7 +4700,7 @@
       "source_location": "L90",
       "_origin": "ast",
       "id": "src_modules_email_email_service_emailservice_send",
-      "community": 4,
+      "community": 16,
       "norm_label": ".send()"
     },
     {
@@ -5320,7 +5360,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller_spec",
-      "community": 48,
+      "community": 71,
       "norm_label": "member.controller.spec.ts"
     },
     {
@@ -5330,7 +5370,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller",
-      "community": 48,
+      "community": 71,
       "norm_label": "member.controller.ts"
     },
     {
@@ -5340,7 +5380,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller_membercontroller",
-      "community": 50,
+      "community": 71,
       "norm_label": "membercontroller"
     },
     {
@@ -5360,7 +5400,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller_membercontroller_requireactiveorganizationid",
-      "community": 50,
+      "community": 71,
       "norm_label": ".requireactiveorganizationid()"
     },
     {
@@ -5370,7 +5410,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller_membercontroller_list",
-      "community": 50,
+      "community": 71,
       "norm_label": ".list()"
     },
     {
@@ -5380,7 +5420,7 @@
       "source_location": "L103",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller_membercontroller_getbyid",
-      "community": 50,
+      "community": 71,
       "norm_label": ".getbyid()"
     },
     {
@@ -5390,7 +5430,7 @@
       "source_location": "L119",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller_membercontroller_invite",
-      "community": 65,
+      "community": 71,
       "norm_label": ".invite()"
     },
     {
@@ -5400,7 +5440,7 @@
       "source_location": "L143",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller_membercontroller_updaterole",
-      "community": 50,
+      "community": 71,
       "norm_label": ".updaterole()"
     },
     {
@@ -5410,7 +5450,7 @@
       "source_location": "L169",
       "_origin": "ast",
       "id": "src_modules_member_controllers_member_controller_membercontroller_remove",
-      "community": 50,
+      "community": 71,
       "norm_label": ".remove()"
     },
     {
@@ -5420,7 +5460,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_dto_index",
-      "community": 49,
+      "community": 71,
       "norm_label": "index.ts"
     },
     {
@@ -5430,7 +5470,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_dto_invitation_response_dto",
-      "community": 65,
+      "community": 71,
       "norm_label": "invitation-response.dto.ts"
     },
     {
@@ -5440,7 +5480,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_modules_member_dto_invitation_response_dto_invitationresponsedto",
-      "community": 65,
+      "community": 71,
       "norm_label": "invitationresponsedto"
     },
     {
@@ -5450,7 +5490,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_modules_member_dto_invitation_response_dto_invitationresponsedto_from",
-      "community": 65,
+      "community": 71,
       "norm_label": ".from()"
     },
     {
@@ -5460,7 +5500,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_dto_invite_member_dto",
-      "community": 65,
+      "community": 71,
       "norm_label": "invite-member.dto.ts"
     },
     {
@@ -5470,7 +5510,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_modules_member_dto_invite_member_dto_invitememberdto",
-      "community": 65,
+      "community": 71,
       "norm_label": "invitememberdto"
     },
     {
@@ -5480,7 +5520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_dto_list_member_query_dto",
-      "community": 49,
+      "community": 71,
       "norm_label": "list-member-query.dto.ts"
     },
     {
@@ -5490,7 +5530,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_modules_member_dto_list_member_query_dto_listmemberquerydto",
-      "community": 49,
+      "community": 71,
       "norm_label": "listmemberquerydto"
     },
     {
@@ -5500,7 +5540,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_dto_member_response_dto",
-      "community": 49,
+      "community": 71,
       "norm_label": "member-response.dto.ts"
     },
     {
@@ -5510,7 +5550,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_modules_member_dto_member_response_dto_memberresponsedto",
-      "community": 50,
+      "community": 71,
       "norm_label": "memberresponsedto"
     },
     {
@@ -5520,7 +5560,7 @@
       "source_location": "L44",
       "_origin": "ast",
       "id": "src_modules_member_dto_member_response_dto_memberresponsedto_fromentity",
-      "community": 50,
+      "community": 71,
       "norm_label": ".fromentity()"
     },
     {
@@ -5530,7 +5570,7 @@
       "source_location": "L58",
       "_origin": "ast",
       "id": "src_modules_member_dto_member_response_dto_memberlistitemdto",
-      "community": 49,
+      "community": 71,
       "norm_label": "memberlistitemdto"
     },
     {
@@ -5540,7 +5580,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_dto_member_dto",
-      "community": 49,
+      "community": 71,
       "norm_label": "member.dto.ts"
     },
     {
@@ -5550,7 +5590,7 @@
       "source_location": "L2",
       "_origin": "ast",
       "id": "src_modules_member_dto_member_dto_orgmemberrole",
-      "community": 49,
+      "community": 71,
       "norm_label": "orgmemberrole"
     },
     {
@@ -5560,7 +5600,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_modules_member_dto_member_dto_memberdto",
-      "community": 49,
+      "community": 71,
       "norm_label": "memberdto"
     },
     {
@@ -5570,7 +5610,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_modules_member_dto_member_dto_invitememberinput",
-      "community": 65,
+      "community": 71,
       "norm_label": "invitememberinput"
     },
     {
@@ -5590,7 +5630,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_dto_update_member_role_dto",
-      "community": 49,
+      "community": 71,
       "norm_label": "update-member-role.dto.ts"
     },
     {
@@ -5600,7 +5640,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "src_modules_member_dto_update_member_role_dto_updatememberroledto",
-      "community": 49,
+      "community": 71,
       "norm_label": "updatememberroledto"
     },
     {
@@ -5637,47 +5677,37 @@
       "label": "MEMBER_REPOSITORY_TOKEN",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L6",
+      "source_location": "L4",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_member_repository_token",
       "community": 71,
       "norm_label": "member_repository_token"
     },
     {
-      "label": "MemberRecord",
-      "file_type": "code",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "src_modules_member_interfaces_member_repository_interface_memberrecord",
-      "community": 71,
-      "norm_label": "memberrecord"
-    },
-    {
       "label": "RawMemberRow",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L20",
+      "source_location": "L6",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_rawmemberrow",
-      "community": 51,
+      "community": 8,
       "norm_label": "rawmemberrow"
     },
     {
       "label": "IMemberRepository",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L32",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
-      "community": 53,
+      "community": 71,
       "norm_label": "imemberrepository"
     },
     {
       "label": ".listByOrganizationPaginated()",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L33",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_listbyorganizationpaginated",
       "community": 71,
@@ -5687,91 +5717,51 @@
       "label": ".findById()",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L37",
+      "source_location": "L23",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findbyid",
-      "community": 53,
+      "community": 71,
       "norm_label": ".findbyid()"
     },
     {
       "label": ".findByUserId()",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L41",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findbyuserid",
-      "community": 65,
+      "community": 71,
       "norm_label": ".findbyuserid()"
-    },
-    {
-      "label": ".findByOrgAndUser()",
-      "file_type": "code",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L45",
-      "_origin": "ast",
-      "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findbyorganduser",
-      "community": 53,
-      "norm_label": ".findbyorganduser()"
-    },
-    {
-      "label": ".listByOrg()",
-      "file_type": "code",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_listbyorg",
-      "community": 53,
-      "norm_label": ".listbyorg()"
     },
     {
       "label": ".upsertPendingLink()",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L53",
+      "source_location": "L31",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_upsertpendinglink",
-      "community": 53,
+      "community": 8,
       "norm_label": ".upsertpendinglink()"
     },
     {
       "label": ".findPendingLink()",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L58",
+      "source_location": "L36",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findpendinglink",
-      "community": 53,
+      "community": 8,
       "norm_label": ".findpendinglink()"
     },
     {
       "label": ".deletePendingLink()",
       "file_type": "code",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L62",
+      "source_location": "L40",
       "_origin": "ast",
       "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_deletependinglink",
-      "community": 53,
+      "community": 71,
       "norm_label": ".deletependinglink()"
-    },
-    {
-      "label": ".updateRole()",
-      "file_type": "code",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L63",
-      "_origin": "ast",
-      "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_updaterole",
-      "community": 53,
-      "norm_label": ".updaterole()"
-    },
-    {
-      "label": ".delete()",
-      "file_type": "code",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L64",
-      "_origin": "ast",
-      "id": "src_modules_member_interfaces_member_repository_interface_imemberrepository_delete",
-      "community": 53,
-      "norm_label": ".delete()"
     },
     {
       "label": "member.module.ts",
@@ -5820,7 +5810,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_spec",
-      "community": 51,
+      "community": 8,
       "norm_label": "member.repository.spec.ts"
     },
     {
@@ -5830,148 +5820,88 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository",
-      "community": 51,
+      "community": 8,
       "norm_label": "member.repository.ts"
     },
     {
       "label": "MemberRepository",
       "file_type": "code",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L20",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_memberrepository",
-      "community": 51,
+      "community": 8,
       "norm_label": "memberrepository"
     },
     {
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L21",
+      "source_location": "L19",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_memberrepository_constructor",
-      "community": 51,
+      "community": 8,
       "norm_label": ".constructor()"
     },
     {
       "label": ".listByOrganizationPaginated()",
       "file_type": "code",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L23",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_memberrepository_listbyorganizationpaginated",
-      "community": 51,
+      "community": 8,
       "norm_label": ".listbyorganizationpaginated()"
-    },
-    {
-      "label": ".listByOrg()",
-      "file_type": "code",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L90",
-      "_origin": "ast",
-      "id": "src_modules_member_repositories_member_repository_memberrepository_listbyorg",
-      "community": 51,
-      "norm_label": ".listbyorg()"
     },
     {
       "label": ".findById()",
       "file_type": "code",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L101",
+      "source_location": "L88",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_memberrepository_findbyid",
-      "community": 51,
+      "community": 8,
       "norm_label": ".findbyid()"
     },
     {
       "label": ".findByUserId()",
       "file_type": "code",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L133",
+      "source_location": "L118",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_memberrepository_findbyuserid",
-      "community": 51,
+      "community": 8,
       "norm_label": ".findbyuserid()"
-    },
-    {
-      "label": ".findByOrgAndUser()",
-      "file_type": "code",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L163",
-      "_origin": "ast",
-      "id": "src_modules_member_repositories_member_repository_memberrepository_findbyorganduser",
-      "community": 51,
-      "norm_label": ".findbyorganduser()"
     },
     {
       "label": ".upsertPendingLink()",
       "file_type": "code",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L170",
+      "source_location": "L148",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_memberrepository_upsertpendinglink",
-      "community": 53,
+      "community": 8,
       "norm_label": ".upsertpendinglink()"
     },
     {
       "label": ".findPendingLink()",
       "file_type": "code",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L195",
+      "source_location": "L173",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_memberrepository_findpendinglink",
-      "community": 53,
+      "community": 8,
       "norm_label": ".findpendinglink()"
     },
     {
       "label": ".deletePendingLink()",
       "file_type": "code",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L214",
+      "source_location": "L192",
       "_origin": "ast",
       "id": "src_modules_member_repositories_member_repository_memberrepository_deletependinglink",
-      "community": 51,
+      "community": 8,
       "norm_label": ".deletependinglink()"
-    },
-    {
-      "label": "pending-member-link.schema.ts",
-      "file_type": "code",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L1",
-      "_origin": "ast",
-      "id": "src_modules_member_repositories_pending_member_link_schema",
-      "community": 8,
-      "norm_label": "pending-member-link.schema.ts"
-    },
-    {
-      "label": "pendingMemberLinks",
-      "file_type": "code",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L5",
-      "_origin": "ast",
-      "id": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlinks",
-      "community": 51,
-      "norm_label": "pendingmemberlinks"
-    },
-    {
-      "label": "PendingMemberLink",
-      "file_type": "code",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L24",
-      "_origin": "ast",
-      "id": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlink",
-      "community": 53,
-      "norm_label": "pendingmemberlink"
-    },
-    {
-      "label": "NewPendingMemberLink",
-      "file_type": "code",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L25",
-      "_origin": "ast",
-      "id": "src_modules_member_repositories_pending_member_link_schema_newpendingmemberlink",
-      "community": 8,
-      "norm_label": "newpendingmemberlink"
     },
     {
       "label": "member-accepted.bridge.ts",
@@ -6060,7 +5990,7 @@
       "source_location": "L52",
       "_origin": "ast",
       "id": "src_modules_member_services_member_service_memberservice_getbyid",
-      "community": 50,
+      "community": 71,
       "norm_label": ".getbyid()"
     },
     {
@@ -6070,7 +6000,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "src_modules_member_services_member_service_memberservice_invitemember",
-      "community": 65,
+      "community": 71,
       "norm_label": ".invitemember()"
     },
     {
@@ -6080,7 +6010,7 @@
       "source_location": "L105",
       "_origin": "ast",
       "id": "src_modules_member_services_member_service_memberservice_updaterole",
-      "community": 50,
+      "community": 71,
       "norm_label": ".updaterole()"
     },
     {
@@ -6090,7 +6020,7 @@
       "source_location": "L131",
       "_origin": "ast",
       "id": "src_modules_member_services_member_service_memberservice_removemember",
-      "community": 50,
+      "community": 71,
       "norm_label": ".removemember()"
     },
     {
@@ -6100,7 +6030,7 @@
       "source_location": "L150",
       "_origin": "ast",
       "id": "src_modules_member_services_member_service_memberservice_handlememberaccepted",
-      "community": 46,
+      "community": 71,
       "norm_label": ".handlememberaccepted()"
     },
     {
@@ -6220,7 +6150,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_constants_rbac_cache_constants",
-      "community": 0,
+      "community": 28,
       "norm_label": "rbac-cache.constants.ts"
     },
     {
@@ -6230,7 +6160,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_organization_roles_controller",
-      "community": 48,
+      "community": 11,
       "norm_label": "organization-roles.controller.ts"
     },
     {
@@ -6320,7 +6250,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_spec",
-      "community": 23,
+      "community": 28,
       "norm_label": "permissions.controller.spec.ts"
     },
     {
@@ -6330,7 +6260,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_spec_getapiresponsetype",
-      "community": 23,
+      "community": 28,
       "norm_label": "getapiresponsetype()"
     },
     {
@@ -6340,7 +6270,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_spec_mockcatalog",
-      "community": 23,
+      "community": 28,
       "norm_label": "mockcatalog"
     },
     {
@@ -6350,7 +6280,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller",
-      "community": 23,
+      "community": 5,
       "norm_label": "permissions.controller.ts"
     },
     {
@@ -6360,7 +6290,7 @@
       "source_location": "L31",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_permissionscontroller",
-      "community": 23,
+      "community": 5,
       "norm_label": "permissionscontroller"
     },
     {
@@ -6380,7 +6310,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_permissionscontroller_getpermissions",
-      "community": 23,
+      "community": 5,
       "norm_label": ".getpermissions()"
     },
     {
@@ -6390,7 +6320,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_permissionscontroller_getpermissioncodes",
-      "community": 23,
+      "community": 5,
       "norm_label": ".getpermissioncodes()"
     },
     {
@@ -6400,7 +6330,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_permissionscontroller_getbyid",
-      "community": 23,
+      "community": 5,
       "norm_label": ".getbyid()"
     },
     {
@@ -6410,7 +6340,7 @@
       "source_location": "L68",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_permissionscontroller_create",
-      "community": 23,
+      "community": 5,
       "norm_label": ".create()"
     },
     {
@@ -6420,7 +6350,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "src_modules_rbac_controllers_permissions_controller_permissionscontroller_update",
-      "community": 23,
+      "community": 5,
       "norm_label": ".update()"
     },
     {
@@ -6440,7 +6370,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_index",
-      "community": 29,
+      "community": 28,
       "norm_label": "index.ts"
     },
     {
@@ -6450,7 +6380,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_permission_scope_decorator",
-      "community": 29,
+      "community": 28,
       "norm_label": "permission-scope.decorator.ts"
     },
     {
@@ -6460,7 +6390,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_permission_scope_decorator_permissionscope",
-      "community": 29,
+      "community": 28,
       "norm_label": "permissionscope"
     },
     {
@@ -6470,7 +6400,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_permission_scope_spec",
-      "community": 29,
+      "community": 28,
       "norm_label": "permission-scope.spec.ts"
     },
     {
@@ -6480,7 +6410,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_permission_scope_spec_getparamdecoratorfactory",
-      "community": 29,
+      "community": 28,
       "norm_label": "getparamdecoratorfactory()"
     },
     {
@@ -6490,7 +6420,7 @@
       "source_location": "L91",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_permission_scope_spec_testclass",
-      "community": 29,
+      "community": 28,
       "norm_label": "testclass"
     },
     {
@@ -6500,7 +6430,7 @@
       "source_location": "L93",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_permission_scope_spec_testclass_handler",
-      "community": 29,
+      "community": 28,
       "norm_label": ".handler()"
     },
     {
@@ -6510,7 +6440,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_require_permission_decorator",
-      "community": 29,
+      "community": 28,
       "norm_label": "require-permission.decorator.ts"
     },
     {
@@ -6520,7 +6450,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_require_permission_decorator_requirepermission",
-      "community": 29,
+      "community": 28,
       "norm_label": "requirepermission()"
     },
     {
@@ -6530,7 +6460,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_modules_rbac_decorators_require_permission_decorator_requirepermissions",
-      "community": 29,
+      "community": 28,
       "norm_label": "requirepermissions()"
     },
     {
@@ -6540,7 +6470,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_create_rbac_permission_dto",
-      "community": 23,
+      "community": 5,
       "norm_label": "create-rbac-permission.dto.ts"
     },
     {
@@ -6550,7 +6480,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_create_rbac_permission_dto_createrbacpermissiondto",
-      "community": 23,
+      "community": 5,
       "norm_label": "createrbacpermissiondto"
     },
     {
@@ -6560,7 +6490,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_index",
-      "community": 23,
+      "community": 5,
       "norm_label": "index.ts"
     },
     {
@@ -6610,7 +6540,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_permission_dto",
-      "community": 23,
+      "community": 5,
       "norm_label": "permission.dto.ts"
     },
     {
@@ -6620,7 +6550,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_permission_dto_actiondto",
-      "community": 23,
+      "community": 5,
       "norm_label": "actiondto"
     },
     {
@@ -6630,7 +6560,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_permission_dto_resourcepermissiondto",
-      "community": 23,
+      "community": 5,
       "norm_label": "resourcepermissiondto"
     },
     {
@@ -6640,7 +6570,7 @@
       "source_location": "L25",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_permission_dto_permissioncodedto",
-      "community": 23,
+      "community": 5,
       "norm_label": "permissioncodedto"
     },
     {
@@ -6650,7 +6580,7 @@
       "source_location": "L39",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_permission_dto_permissionsresponsedto",
-      "community": 23,
+      "community": 5,
       "norm_label": "permissionsresponsedto"
     },
     {
@@ -6660,7 +6590,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_permission_dto_permissioncodesresponsedto",
-      "community": 23,
+      "community": 5,
       "norm_label": "permissioncodesresponsedto"
     },
     {
@@ -6670,7 +6600,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_rbac_permission_response_dto",
-      "community": 23,
+      "community": 5,
       "norm_label": "rbac-permission-response.dto.ts"
     },
     {
@@ -6680,7 +6610,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_rbac_permission_response_dto_rbacpermissionresponsedto",
-      "community": 23,
+      "community": 5,
       "norm_label": "rbacpermissionresponsedto"
     },
     {
@@ -6690,7 +6620,7 @@
       "source_location": "L29",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_rbac_permission_response_dto_rbacpermissionresponsedto_fromentity",
-      "community": 23,
+      "community": 5,
       "norm_label": ".fromentity()"
     },
     {
@@ -6700,7 +6630,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_update_rbac_permission_dto",
-      "community": 23,
+      "community": 5,
       "norm_label": "update-rbac-permission.dto.ts"
     },
     {
@@ -6710,7 +6640,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_modules_rbac_dto_update_rbac_permission_dto_updaterbacpermissiondto",
-      "community": 23,
+      "community": 5,
       "norm_label": "updaterbacpermissiondto"
     },
     {
@@ -6730,7 +6660,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_interceptors_permission_scope_interceptor_spec",
-      "community": 29,
+      "community": 28,
       "norm_label": "permission-scope.interceptor.spec.ts"
     },
     {
@@ -6740,7 +6670,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_interceptors_permission_scope_interceptor",
-      "community": 29,
+      "community": 28,
       "norm_label": "permission-scope.interceptor.ts"
     },
     {
@@ -6750,7 +6680,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_modules_rbac_interceptors_permission_scope_interceptor_permissionscopeinterceptor",
-      "community": 29,
+      "community": 28,
       "norm_label": "permissionscopeinterceptor"
     },
     {
@@ -6760,7 +6690,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_modules_rbac_interceptors_permission_scope_interceptor_permissionscopeinterceptor_constructor",
-      "community": 29,
+      "community": 28,
       "norm_label": ".constructor()"
     },
     {
@@ -6770,8 +6700,68 @@
       "source_location": "L23",
       "_origin": "ast",
       "id": "src_modules_rbac_interceptors_permission_scope_interceptor_permissionscopeinterceptor_intercept",
-      "community": 29,
+      "community": 28,
       "norm_label": ".intercept()"
+    },
+    {
+      "label": "audit-trail-repository.interface.ts",
+      "file_type": "code",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L1",
+      "_origin": "ast",
+      "id": "src_modules_rbac_interfaces_audit_trail_repository_interface",
+      "community": 28,
+      "norm_label": "audit-trail-repository.interface.ts"
+    },
+    {
+      "label": "AUDIT_TRAIL_REPOSITORY_TOKEN",
+      "file_type": "code",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L3",
+      "_origin": "ast",
+      "id": "src_modules_rbac_interfaces_audit_trail_repository_interface_audit_trail_repository_token",
+      "community": 28,
+      "norm_label": "audit_trail_repository_token"
+    },
+    {
+      "label": "FindAuditLogsParams",
+      "file_type": "code",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L7",
+      "_origin": "ast",
+      "id": "src_modules_rbac_interfaces_audit_trail_repository_interface_findauditlogsparams",
+      "community": 28,
+      "norm_label": "findauditlogsparams"
+    },
+    {
+      "label": "IAuditTrailRepository",
+      "file_type": "code",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L18",
+      "_origin": "ast",
+      "id": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "community": 28,
+      "norm_label": "iaudittrailrepository"
+    },
+    {
+      "label": ".create()",
+      "file_type": "code",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L19",
+      "_origin": "ast",
+      "id": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_create",
+      "community": 28,
+      "norm_label": ".create()"
+    },
+    {
+      "label": ".findMany()",
+      "file_type": "code",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L20",
+      "_origin": "ast",
+      "id": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_findmany",
+      "community": 28,
+      "norm_label": ".findmany()"
     },
     {
       "label": "index.ts",
@@ -6990,7 +6980,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_rbac_integration_spec",
-      "community": 29,
+      "community": 28,
       "norm_label": "rbac.integration.spec.ts"
     },
     {
@@ -7000,7 +6990,7 @@
       "source_location": "L221",
       "_origin": "ast",
       "id": "src_modules_rbac_rbac_integration_spec_testcontroller",
-      "community": 29,
+      "community": 28,
       "norm_label": "testcontroller"
     },
     {
@@ -7010,7 +7000,7 @@
       "source_location": "L223",
       "_origin": "ast",
       "id": "src_modules_rbac_rbac_integration_spec_testcontroller_createproduct",
-      "community": 29,
+      "community": 28,
       "norm_label": ".createproduct()"
     },
     {
@@ -7027,7 +7017,7 @@
       "label": "FakeAuthModule",
       "file_type": "code",
       "source_file": "src/modules/rbac/rbac.module.spec.ts",
-      "source_location": "L23",
+      "source_location": "L24",
       "_origin": "ast",
       "id": "src_modules_rbac_rbac_module_spec_fakeauthmodule",
       "community": 28,
@@ -7044,10 +7034,20 @@
       "norm_label": "rbac.module.ts"
     },
     {
+      "label": "auditTrailRepositoryProvider",
+      "file_type": "code",
+      "source_file": "src/modules/rbac/rbac.module.ts",
+      "source_location": "L22",
+      "_origin": "ast",
+      "id": "src_modules_rbac_rbac_module_audittrailrepositoryprovider",
+      "community": 28,
+      "norm_label": "audittrailrepositoryprovider"
+    },
+    {
       "label": "RbacModule",
       "file_type": "code",
       "source_file": "src/modules/rbac/rbac.module.ts",
-      "source_location": "L55",
+      "source_location": "L64",
       "_origin": "ast",
       "id": "src_modules_rbac_rbac_module_rbacmodule",
       "community": 28,
@@ -7074,20 +7074,10 @@
       "norm_label": "audit-trail.repository.ts"
     },
     {
-      "label": "FindAuditLogsParams",
-      "file_type": "code",
-      "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L8",
-      "_origin": "ast",
-      "id": "src_modules_rbac_repositories_audit_trail_repository_findauditlogsparams",
-      "community": 28,
-      "norm_label": "findauditlogsparams"
-    },
-    {
       "label": "AuditTrailRepository",
       "file_type": "code",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L20",
+      "source_location": "L12",
       "_origin": "ast",
       "id": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
       "community": 28,
@@ -7097,7 +7087,7 @@
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L21",
+      "source_location": "L13",
       "_origin": "ast",
       "id": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_constructor",
       "community": 28,
@@ -7107,7 +7097,7 @@
       "label": ".create()",
       "file_type": "code",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L26",
+      "source_location": "L18",
       "_origin": "ast",
       "id": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_create",
       "community": 28,
@@ -7117,7 +7107,7 @@
       "label": ".findMany()",
       "file_type": "code",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L35",
+      "source_location": "L27",
       "_origin": "ast",
       "id": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_findmany",
       "community": 28,
@@ -7327,7 +7317,7 @@
       "label": "LogAuditParams",
       "file_type": "code",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L5",
+      "source_location": "L8",
       "_origin": "ast",
       "id": "src_modules_rbac_services_audit_trail_service_logauditparams",
       "community": 28,
@@ -7337,7 +7327,7 @@
       "label": "AuditTrailService",
       "file_type": "code",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L17",
+      "source_location": "L20",
       "_origin": "ast",
       "id": "src_modules_rbac_services_audit_trail_service_audittrailservice",
       "community": 28,
@@ -7347,7 +7337,7 @@
       "label": ".constructor()",
       "file_type": "code",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L18",
+      "source_location": "L21",
       "_origin": "ast",
       "id": "src_modules_rbac_services_audit_trail_service_audittrailservice_constructor",
       "community": 28,
@@ -7357,7 +7347,7 @@
       "label": ".log()",
       "file_type": "code",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L20",
+      "source_location": "L26",
       "_origin": "ast",
       "id": "src_modules_rbac_services_audit_trail_service_audittrailservice_log",
       "community": 28,
@@ -7367,7 +7357,7 @@
       "label": ".logRbacChange()",
       "file_type": "code",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L33",
+      "source_location": "L39",
       "_origin": "ast",
       "id": "src_modules_rbac_services_audit_trail_service_audittrailservice_logrbacchange",
       "community": 28,
@@ -7377,7 +7367,7 @@
       "label": ".findByModule()",
       "file_type": "code",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L54",
+      "source_location": "L60",
       "_origin": "ast",
       "id": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbymodule",
       "community": 28,
@@ -7387,7 +7377,7 @@
       "label": ".findByEntity()",
       "file_type": "code",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L62",
+      "source_location": "L68",
       "_origin": "ast",
       "id": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbyentity",
       "community": 28,
@@ -7520,7 +7510,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_cache_service_spec",
-      "community": 0,
+      "community": 28,
       "norm_label": "permission-scope-cache.service.spec.ts"
     },
     {
@@ -7530,7 +7520,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_cache_service",
-      "community": 0,
+      "community": 28,
       "norm_label": "permission-scope-cache.service.ts"
     },
     {
@@ -7540,7 +7530,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_cache_service_permissionscopecacheservice",
-      "community": 0,
+      "community": 28,
       "norm_label": "permissionscopecacheservice"
     },
     {
@@ -7550,7 +7540,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_cache_service_permissionscopecacheservice_constructor",
-      "community": 0,
+      "community": 43,
       "norm_label": ".constructor()"
     },
     {
@@ -7560,7 +7550,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_cache_service_permissionscopecacheservice_resolvescope",
-      "community": 0,
+      "community": 28,
       "norm_label": ".resolvescope()"
     },
     {
@@ -7570,7 +7560,7 @@
       "source_location": "L47",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_cache_service_permissionscopecacheservice_createsystemscope",
-      "community": 0,
+      "community": 28,
       "norm_label": ".createsystemscope()"
     },
     {
@@ -7580,7 +7570,7 @@
       "source_location": "L54",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_cache_service_permissionscopecacheservice_createuserscope",
-      "community": 0,
+      "community": 28,
       "norm_label": ".createuserscope()"
     },
     {
@@ -7600,7 +7590,7 @@
       "source_location": "L94",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_cache_service_permissionscopecacheservice_buildkey",
-      "community": 0,
+      "community": 28,
       "norm_label": ".buildkey()"
     },
     {
@@ -7610,7 +7600,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_spec",
-      "community": 0,
+      "community": 28,
       "norm_label": "permission-scope.service.spec.ts"
     },
     {
@@ -7620,7 +7610,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service",
-      "community": 0,
+      "community": 28,
       "norm_label": "permission-scope.service.ts"
     },
     {
@@ -7630,7 +7620,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_system_admin_roles",
-      "community": 0,
+      "community": 28,
       "norm_label": "system_admin_roles"
     },
     {
@@ -7640,7 +7630,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice",
-      "community": 0,
+      "community": 28,
       "norm_label": "permissionscopeservice"
     },
     {
@@ -7650,7 +7640,7 @@
       "source_location": "L13",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice_constructor",
-      "community": 0,
+      "community": 28,
       "norm_label": ".constructor()"
     },
     {
@@ -7660,7 +7650,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice_resolvescope",
-      "community": 0,
+      "community": 28,
       "norm_label": ".resolvescope()"
     },
     {
@@ -7670,7 +7660,7 @@
       "source_location": "L73",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice_createsystemscope",
-      "community": 0,
+      "community": 28,
       "norm_label": ".createsystemscope()"
     },
     {
@@ -7680,7 +7670,7 @@
       "source_location": "L83",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice_createuserscope",
-      "community": 0,
+      "community": 28,
       "norm_label": ".createuserscope()"
     },
     {
@@ -7690,7 +7680,7 @@
       "source_location": "L104",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice_issystemadmin",
-      "community": 0,
+      "community": 28,
       "norm_label": ".issystemadmin()"
     },
     {
@@ -7700,7 +7690,7 @@
       "source_location": "L110",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice_getorgrolewithscope",
-      "community": 0,
+      "community": 28,
       "norm_label": ".getorgrolewithscope()"
     },
     {
@@ -7710,7 +7700,7 @@
       "source_location": "L148",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice_parsepermissionscopes",
-      "community": 0,
+      "community": 28,
       "norm_label": ".parsepermissionscopes()"
     },
     {
@@ -7720,7 +7710,7 @@
       "source_location": "L164",
       "_origin": "ast",
       "id": "src_modules_rbac_services_permission_scope_service_permissionscopeservice_getuseroutletid",
-      "community": 0,
+      "community": 28,
       "norm_label": ".getuseroutletid()"
     },
     {
@@ -7740,7 +7730,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_services_rbac_permission_service",
-      "community": 23,
+      "community": 5,
       "norm_label": "rbac-permission.service.ts"
     },
     {
@@ -7780,7 +7770,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_modules_rbac_services_rbac_permission_service_rbacpermissionservice_getpermissioncodes",
-      "community": 23,
+      "community": 5,
       "norm_label": ".getpermissioncodes()"
     },
     {
@@ -7850,7 +7840,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_types_permission_scope_types",
-      "community": 0,
+      "community": 28,
       "norm_label": "permission-scope.types.ts"
     },
     {
@@ -7860,7 +7850,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_types_permission_scope_types_scopetype",
-      "community": 0,
+      "community": 28,
       "norm_label": "scopetype"
     },
     {
@@ -7870,7 +7860,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_modules_rbac_types_permission_scope_types_permissionscopecontext",
-      "community": 0,
+      "community": 28,
       "norm_label": "permissionscopecontext"
     },
     {
@@ -7880,7 +7870,7 @@
       "source_location": "L11",
       "_origin": "ast",
       "id": "src_modules_rbac_types_permission_scope_types_scopemeta",
-      "community": 29,
+      "community": 28,
       "norm_label": "scopemeta"
     },
     {
@@ -7890,7 +7880,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_modules_rbac_types_permission_scope_types_resolveparams",
-      "community": 0,
+      "community": 28,
       "norm_label": "resolveparams"
     },
     {
@@ -7900,7 +7890,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_utils_rbac_permission_mapper_spec",
-      "community": 23,
+      "community": 5,
       "norm_label": "rbac-permission.mapper.spec.ts"
     },
     {
@@ -7910,7 +7900,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_modules_rbac_utils_rbac_permission_mapper_spec_samplerow",
-      "community": 23,
+      "community": 5,
       "norm_label": "samplerow()"
     },
     {
@@ -7920,7 +7910,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_rbac_utils_rbac_permission_mapper",
-      "community": 23,
+      "community": 5,
       "norm_label": "rbac-permission.mapper.ts"
     },
     {
@@ -7940,7 +7930,7 @@
       "source_location": "L28",
       "_origin": "ast",
       "id": "src_modules_rbac_utils_rbac_permission_mapper_buildpermissioncatalogview",
-      "community": 23,
+      "community": 5,
       "norm_label": "buildpermissioncatalogview()"
     },
     {
@@ -7950,7 +7940,7 @@
       "source_location": "L69",
       "_origin": "ast",
       "id": "src_modules_rbac_utils_rbac_permission_mapper_buildallpermissioncodes",
-      "community": 23,
+      "community": 5,
       "norm_label": "buildallpermissioncodes()"
     },
     {
@@ -8197,7 +8187,7 @@
       "label": "REGIONAL_REPOSITORY_TOKEN",
       "file_type": "code",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L9",
+      "source_location": "L3",
       "_origin": "ast",
       "id": "src_modules_regional_interfaces_regional_repository_interface_regional_repository_token",
       "community": 3,
@@ -8207,57 +8197,17 @@
       "label": "RegionalLevel",
       "file_type": "code",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L11",
+      "source_location": "L5",
       "_origin": "ast",
       "id": "src_modules_regional_interfaces_regional_repository_interface_regionallevel",
       "community": 3,
       "norm_label": "regionallevel"
     },
     {
-      "label": "ListProvincesParams",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L13",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_listprovincesparams",
-      "community": 3,
-      "norm_label": "listprovincesparams"
-    },
-    {
-      "label": "ListRegenciesParams",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L19",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_listregenciesparams",
-      "community": 3,
-      "norm_label": "listregenciesparams"
-    },
-    {
-      "label": "ListDistrictsParams",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L26",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_listdistrictsparams",
-      "community": 3,
-      "norm_label": "listdistrictsparams"
-    },
-    {
-      "label": "ListVillagesParams",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L33",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_listvillagesparams",
-      "community": 3,
-      "norm_label": "listvillagesparams"
-    },
-    {
       "label": "IRegionalRepository",
       "file_type": "code",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L40",
+      "source_location": "L7",
       "_origin": "ast",
       "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
       "community": 3,
@@ -8267,7 +8217,7 @@
       "label": ".findByLevel()",
       "file_type": "code",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L41",
+      "source_location": "L8",
       "_origin": "ast",
       "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findbylevel",
       "community": 3,
@@ -8277,91 +8227,11 @@
       "label": ".findChildren()",
       "file_type": "code",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L42",
+      "source_location": "L9",
       "_origin": "ast",
       "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findchildren",
       "community": 3,
       "norm_label": ".findchildren()"
-    },
-    {
-      "label": ".findProvinces()",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L46",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findprovinces",
-      "community": 3,
-      "norm_label": ".findprovinces()"
-    },
-    {
-      "label": ".findRegencies()",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L47",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findregencies",
-      "community": 3,
-      "norm_label": ".findregencies()"
-    },
-    {
-      "label": ".findDistricts()",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L48",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_finddistricts",
-      "community": 3,
-      "norm_label": ".finddistricts()"
-    },
-    {
-      "label": ".findVillages()",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L49",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findvillages",
-      "community": 3,
-      "norm_label": ".findvillages()"
-    },
-    {
-      "label": ".findProvinceById()",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L50",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findprovincebyid",
-      "community": 3,
-      "norm_label": ".findprovincebyid()"
-    },
-    {
-      "label": ".findRegencyById()",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L51",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findregencybyid",
-      "community": 3,
-      "norm_label": ".findregencybyid()"
-    },
-    {
-      "label": ".findDistrictById()",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L52",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_finddistrictbyid",
-      "community": 3,
-      "norm_label": ".finddistrictbyid()"
-    },
-    {
-      "label": ".findVillageById()",
-      "file_type": "code",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L53",
-      "_origin": "ast",
-      "id": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findvillagebyid",
-      "community": 3,
-      "norm_label": ".findvillagebyid()"
     },
     {
       "label": "regional.module.ts",
@@ -8600,7 +8470,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_modules_upload_adapters_s3_object_storage_adapter_isbucketmissing",
-      "community": 46,
+      "community": 38,
       "norm_label": "isbucketmissing()"
     },
     {
@@ -8700,7 +8570,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_spec",
-      "community": 1,
+      "community": 71,
       "norm_label": "upload.controller.spec.ts"
     },
     {
@@ -8710,7 +8580,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_spec_dummyauthguard",
-      "community": 1,
+      "community": 71,
       "norm_label": "dummyauthguard"
     },
     {
@@ -8720,7 +8590,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller",
-      "community": 72,
+      "community": 38,
       "norm_label": "upload.controller.ts"
     },
     {
@@ -8730,7 +8600,7 @@
       "source_location": "L33",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_mime_map",
-      "community": 72,
+      "community": 38,
       "norm_label": "mime_map"
     },
     {
@@ -8740,7 +8610,7 @@
       "source_location": "L45",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_uploadcontroller",
-      "community": 72,
+      "community": 38,
       "norm_label": "uploadcontroller"
     },
     {
@@ -8750,7 +8620,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_uploadcontroller_constructor",
-      "community": 72,
+      "community": 38,
       "norm_label": ".constructor()"
     },
     {
@@ -8760,7 +8630,7 @@
       "source_location": "L48",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_uploadcontroller_processupload",
-      "community": 72,
+      "community": 38,
       "norm_label": ".processupload()"
     },
     {
@@ -8770,7 +8640,7 @@
       "source_location": "L137",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_uploadcontroller_uploadpublicfile",
-      "community": 72,
+      "community": 38,
       "norm_label": ".uploadpublicfile()"
     },
     {
@@ -8780,7 +8650,7 @@
       "source_location": "L187",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_uploadcontroller_uploadprivatefile",
-      "community": 72,
+      "community": 38,
       "norm_label": ".uploadprivatefile()"
     },
     {
@@ -8790,7 +8660,7 @@
       "source_location": "L208",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_uploadcontroller_servepublicfile",
-      "community": 4,
+      "community": 38,
       "norm_label": ".servepublicfile()"
     },
     {
@@ -8800,7 +8670,7 @@
       "source_location": "L259",
       "_origin": "ast",
       "id": "src_modules_upload_controllers_upload_controller_uploadcontroller_serveprivatefile",
-      "community": 1,
+      "community": 38,
       "norm_label": ".serveprivatefile()"
     },
     {
@@ -8810,7 +8680,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_upload_dto_upload_response_dto",
-      "community": 72,
+      "community": 38,
       "norm_label": "upload-response.dto.ts"
     },
     {
@@ -8820,7 +8690,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_modules_upload_dto_upload_response_dto_uploadresponsedto",
-      "community": 72,
+      "community": 38,
       "norm_label": "uploadresponsedto"
     },
     {
@@ -8890,7 +8760,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_modules_upload_interfaces_object_storage_interface_iobjectstorageservice",
-      "community": 4,
+      "community": 38,
       "norm_label": "iobjectstorageservice"
     },
     {
@@ -8900,7 +8770,7 @@
       "source_location": "L17",
       "_origin": "ast",
       "id": "src_modules_upload_interfaces_object_storage_interface_iobjectstorageservice_putobject",
-      "community": 4,
+      "community": 38,
       "norm_label": ".putobject()"
     },
     {
@@ -8910,7 +8780,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_modules_upload_interfaces_object_storage_interface_iobjectstorageservice_getobject",
-      "community": 4,
+      "community": 38,
       "norm_label": ".getobject()"
     },
     {
@@ -8920,7 +8790,7 @@
       "source_location": "L19",
       "_origin": "ast",
       "id": "src_modules_upload_interfaces_object_storage_interface_iobjectstorageservice_deleteobject",
-      "community": 4,
+      "community": 38,
       "norm_label": ".deleteobject()"
     },
     {
@@ -8930,7 +8800,7 @@
       "source_location": "L20",
       "_origin": "ast",
       "id": "src_modules_upload_interfaces_object_storage_interface_iobjectstorageservice_getsigneddownloadurl",
-      "community": 4,
+      "community": 38,
       "norm_label": ".getsigneddownloadurl()"
     },
     {
@@ -8940,7 +8810,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_modules_upload_interfaces_object_storage_interface_iobjectstorageservice_exists",
-      "community": 4,
+      "community": 38,
       "norm_label": ".exists()"
     },
     {
@@ -8950,7 +8820,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_spec",
-      "community": 4,
+      "community": 38,
       "norm_label": "upload.service.spec.ts"
     },
     {
@@ -8960,7 +8830,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service",
-      "community": 4,
+      "community": 38,
       "norm_label": "upload.service.ts"
     },
     {
@@ -8970,7 +8840,7 @@
       "source_location": "L12",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_filevisibility",
-      "community": 72,
+      "community": 38,
       "norm_label": "filevisibility"
     },
     {
@@ -8980,7 +8850,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_allowed_types",
-      "community": 4,
+      "community": 38,
       "norm_label": "allowed_types"
     },
     {
@@ -8990,7 +8860,7 @@
       "source_location": "L21",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_validatemagicbytes",
-      "community": 4,
+      "community": 38,
       "norm_label": "validatemagicbytes()"
     },
     {
@@ -9000,7 +8870,7 @@
       "source_location": "L59",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_containstraversal",
-      "community": 4,
+      "community": 38,
       "norm_label": "containstraversal()"
     },
     {
@@ -9010,7 +8880,7 @@
       "source_location": "L64",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_sanitizesubpath",
-      "community": 4,
+      "community": 38,
       "norm_label": "sanitizesubpath()"
     },
     {
@@ -9020,7 +8890,7 @@
       "source_location": "L70",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_joinobjectkey",
-      "community": 4,
+      "community": 38,
       "norm_label": "joinobjectkey()"
     },
     {
@@ -9030,7 +8900,7 @@
       "source_location": "L78",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_uploadservice",
-      "community": 4,
+      "community": 38,
       "norm_label": "uploadservice"
     },
     {
@@ -9040,7 +8910,7 @@
       "source_location": "L79",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_uploadservice_constructor",
-      "community": 4,
+      "community": 38,
       "norm_label": ".constructor()"
     },
     {
@@ -9050,7 +8920,7 @@
       "source_location": "L85",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_uploadservice_resolveobjectkey",
-      "community": 4,
+      "community": 38,
       "norm_label": ".resolveobjectkey()"
     },
     {
@@ -9060,7 +8930,7 @@
       "source_location": "L107",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_uploadservice_resolvelegacyobjectkey",
-      "community": 4,
+      "community": 38,
       "norm_label": ".resolvelegacyobjectkey()"
     },
     {
@@ -9070,7 +8940,7 @@
       "source_location": "L128",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_uploadservice_resolvefilepath",
-      "community": 4,
+      "community": 38,
       "norm_label": ".resolvefilepath()"
     },
     {
@@ -9080,7 +8950,7 @@
       "source_location": "L136",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_uploadservice_fileexists",
-      "community": 4,
+      "community": 38,
       "norm_label": ".fileexists()"
     },
     {
@@ -9090,7 +8960,7 @@
       "source_location": "L158",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_uploadservice_savefile",
-      "community": 4,
+      "community": 38,
       "norm_label": ".savefile()"
     },
     {
@@ -9100,7 +8970,7 @@
       "source_location": "L253",
       "_origin": "ast",
       "id": "src_modules_upload_services_upload_service_uploadservice_getfile",
-      "community": 4,
+      "community": 38,
       "norm_label": ".getfile()"
     },
     {
@@ -9250,7 +9120,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_shared_database_rls_context_spec",
-      "community": 48,
+      "community": 71,
       "norm_label": "rls-context.spec.ts"
     },
     {
@@ -9260,7 +9130,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_shared_database_rls_context",
-      "community": 48,
+      "community": 71,
       "norm_label": "rls-context.ts"
     },
     {
@@ -9270,7 +9140,7 @@
       "source_location": "L3",
       "_origin": "ast",
       "id": "src_shared_database_rls_context_rlsstore",
-      "community": 48,
+      "community": 71,
       "norm_label": "rlsstore"
     },
     {
@@ -9280,7 +9150,7 @@
       "source_location": "L7",
       "_origin": "ast",
       "id": "src_shared_database_rls_context_storage",
-      "community": 48,
+      "community": 71,
       "norm_label": "storage"
     },
     {
@@ -9290,7 +9160,7 @@
       "source_location": "L9",
       "_origin": "ast",
       "id": "src_shared_database_rls_context_rlscontext",
-      "community": 48,
+      "community": 71,
       "norm_label": "rlscontext"
     },
     {
@@ -9300,7 +9170,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_shared_database_rls_context_rlscontext_run",
-      "community": 48,
+      "community": 71,
       "norm_label": ".run()"
     },
     {
@@ -9310,7 +9180,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_shared_database_rls_context_rlscontext_getcurrentorganizationid",
-      "community": 11,
+      "community": 71,
       "norm_label": ".getcurrentorganizationid()"
     },
     {
@@ -9320,7 +9190,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_shared_database_rls_interceptor_spec",
-      "community": 48,
+      "community": 71,
       "norm_label": "rls.interceptor.spec.ts"
     },
     {
@@ -9330,7 +9200,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_shared_database_rls_interceptor",
-      "community": 48,
+      "community": 71,
       "norm_label": "rls.interceptor.ts"
     },
     {
@@ -9340,7 +9210,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_shared_database_rls_interceptor_sessionwithorg",
-      "community": 48,
+      "community": 71,
       "norm_label": "sessionwithorg"
     },
     {
@@ -9350,7 +9220,7 @@
       "source_location": "L15",
       "_origin": "ast",
       "id": "src_shared_database_rls_interceptor_rlsinterceptor",
-      "community": 48,
+      "community": 71,
       "norm_label": "rlsinterceptor"
     },
     {
@@ -9360,7 +9230,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_shared_database_rls_interceptor_rlsinterceptor_intercept",
-      "community": 48,
+      "community": 71,
       "norm_label": ".intercept()"
     },
     {
@@ -9810,7 +9680,7 @@
       "source_location": "L10",
       "_origin": "ast",
       "id": "src_shared_realtime_realtime_publisher_service_realtimepublisherservice_constructor",
-      "community": 45,
+      "community": 39,
       "norm_label": ".constructor()"
     },
     {
@@ -9830,7 +9700,7 @@
       "source_location": "L16",
       "_origin": "ast",
       "id": "src_shared_realtime_realtime_publisher_service_realtimepublisherservice_publishtoorganizationroom",
-      "community": 43,
+      "community": 45,
       "norm_label": ".publishtoorganizationroom()"
     },
     {
@@ -9840,7 +9710,7 @@
       "source_location": "L38",
       "_origin": "ast",
       "id": "src_shared_realtime_realtime_publisher_service_realtimepublisherservice_publishtouserroom",
-      "community": 43,
+      "community": 45,
       "norm_label": ".publishtouserroom()"
     },
     {
@@ -10160,7 +10030,7 @@
       "source_location": "L46",
       "_origin": "ast",
       "id": "src_shared_realtime_sse_service_sseservice_publishtoorganizationadmins",
-      "community": 46,
+      "community": 27,
       "norm_label": ".publishtoorganizationadmins()"
     },
     {
@@ -10290,7 +10160,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_spec",
-      "community": 17,
+      "community": 1,
       "norm_label": "openapi-merger.util.spec.ts"
     },
     {
@@ -10300,7 +10170,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_spec_minimalbetterauth",
-      "community": 17,
+      "community": 1,
       "norm_label": "minimalbetterauth"
     },
     {
@@ -10310,7 +10180,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_spec_minimalcustom",
-      "community": 17,
+      "community": 1,
       "norm_label": "minimalcustom"
     },
     {
@@ -10320,7 +10190,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util",
-      "community": 17,
+      "community": 1,
       "norm_label": "openapi-merger.util.ts"
     },
     {
@@ -10330,7 +10200,7 @@
       "source_location": "L4",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_httpmethod",
-      "community": 17,
+      "community": 1,
       "norm_label": "httpmethod"
     },
     {
@@ -10340,7 +10210,7 @@
       "source_location": "L6",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_http_methods",
-      "community": 17,
+      "community": 1,
       "norm_label": "http_methods"
     },
     {
@@ -10350,7 +10220,7 @@
       "source_location": "L14",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_pathitemlike",
-      "community": 17,
+      "community": 1,
       "norm_label": "pathitemlike"
     },
     {
@@ -10360,7 +10230,7 @@
       "source_location": "L18",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_mergeoptions",
-      "community": 17,
+      "community": 1,
       "norm_label": "mergeoptions"
     },
     {
@@ -10370,7 +10240,7 @@
       "source_location": "L30",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_mergeopenapispecs",
-      "community": 17,
+      "community": 1,
       "norm_label": "mergeopenapispecs()"
     },
     {
@@ -10380,7 +10250,7 @@
       "source_location": "L102",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_ensurebetterauthpathprefix",
-      "community": 17,
+      "community": 1,
       "norm_label": "ensurebetterauthpathprefix()"
     },
     {
@@ -10390,7 +10260,7 @@
       "source_location": "L108",
       "_origin": "ast",
       "id": "src_utils_openapi_merger_util_prefixbetterauthtags",
-      "community": 17,
+      "community": 1,
       "norm_label": "prefixbetterauthtags()"
     },
     {
@@ -10890,7 +10760,7 @@
       "source_location": "L1",
       "_origin": "ast",
       "id": "docs_anti_patterns_reference_anti_patterns_reference",
-      "community": 60,
+      "community": 95,
       "norm_label": "anti-patterns reference"
     },
     {
@@ -10900,7 +10770,7 @@
       "source_location": "L5",
       "_origin": "ast",
       "id": "docs_anti_patterns_reference_foundation_layer_status_p1",
-      "community": 60,
+      "community": 95,
       "norm_label": "foundation layer status (p1)"
     },
     {
@@ -11200,7 +11070,7 @@
       "source_location": "L542",
       "_origin": "ast",
       "id": "docs_anti_patterns_reference_detection_commands",
-      "community": 60,
+      "community": 95,
       "norm_label": "detection commands"
     },
     {
@@ -11480,7 +11350,7 @@
       "source_location": "L1224",
       "_origin": "ast",
       "id": "docs_anti_patterns_reference_summary_checklist_untuk_project_review",
-      "community": 60,
+      "community": 95,
       "norm_label": "summary checklist untuk project review"
     },
     {
@@ -15220,7 +15090,7 @@
       "source_location": "L41",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_notifications_komponen",
-      "community": 101,
+      "community": 30,
       "norm_label": "komponen"
     },
     {
@@ -15230,7 +15100,7 @@
       "source_location": "L43",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_notifications_notificationservice",
-      "community": 101,
+      "community": 30,
       "norm_label": "`notificationservice`"
     },
     {
@@ -15240,7 +15110,7 @@
       "source_location": "L49",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_notifications_notificationlistener",
-      "community": 101,
+      "community": 30,
       "norm_label": "`notificationlistener`"
     },
     {
@@ -15250,7 +15120,7 @@
       "source_location": "L55",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_notifications_notificationprocessor_opsional_jika_pakai_bullmq",
-      "community": 101,
+      "community": 30,
       "norm_label": "`notificationprocessor` (opsional, jika pakai bullmq)"
     },
     {
@@ -15260,7 +15130,7 @@
       "source_location": "L61",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_notifications_channel_adapters",
-      "community": 101,
+      "community": 30,
       "norm_label": "channel adapters"
     },
     {
@@ -15540,7 +15410,7 @@
       "source_location": "L123",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_solusi_di_drizzle_orm",
-      "community": 19,
+      "community": 23,
       "norm_label": "solusi di drizzle orm"
     },
     {
@@ -15550,7 +15420,7 @@
       "source_location": "L127",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_contoh_1_eager_load_dengan_with_drizzle_relational_query",
-      "community": 19,
+      "community": 23,
       "norm_label": "contoh 1: eager load dengan `with` (drizzle relational query)"
     },
     {
@@ -15560,7 +15430,7 @@
       "source_location": "L149",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_contoh_2_batch_find_dengan_inarray",
-      "community": 19,
+      "community": 23,
       "norm_label": "contoh 2: batch find dengan `inarray`"
     },
     {
@@ -15570,7 +15440,7 @@
       "source_location": "L165",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_contoh_3_aggregation_count_sum_di_database",
-      "community": 19,
+      "community": 23,
       "norm_label": "contoh 3: aggregation (count, sum) di database"
     },
     {
@@ -15580,7 +15450,7 @@
       "source_location": "L179",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_contoh_4_bulk_insert_dengan_drizzle",
-      "community": 19,
+      "community": 23,
       "norm_label": "contoh 4: bulk insert dengan drizzle"
     },
     {
@@ -15590,7 +15460,7 @@
       "source_location": "L193",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_pattern_batch_parallel",
-      "community": 19,
+      "community": 48,
       "norm_label": "pattern: batch & parallel"
     },
     {
@@ -15600,7 +15470,7 @@
       "source_location": "L195",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_parallel_dengan_promise_all",
-      "community": 19,
+      "community": 48,
       "norm_label": "parallel dengan `promise.all`"
     },
     {
@@ -15610,7 +15480,7 @@
       "source_location": "L210",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_parallel_dengan_promise_allsettled_tahan_error",
-      "community": 19,
+      "community": 48,
       "norm_label": "parallel dengan `promise.allsettled` (tahan error)"
     },
     {
@@ -15620,7 +15490,7 @@
       "source_location": "L228",
       "_origin": "ast",
       "id": "home_amirmufid_projects_sevima_docs_performance_n_plus_one_batch_endpoint",
-      "community": 19,
+      "community": 48,
       "norm_label": "batch endpoint"
     },
     {
@@ -20423,7 +20293,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/rbac.module.spec.ts",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0,
       "source": "src_modules_rbac_rbac_module_spec",
       "target": "src_common_cache_cache_service",
@@ -20536,7 +20406,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/rbac.module.spec.ts",
-      "source_location": "L19",
+      "source_location": "L20",
       "weight": 1.0,
       "source": "src_modules_rbac_rbac_module_spec",
       "target": "src_common_cache_cache_service_cacheservice",
@@ -24095,7 +23965,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/rbac.module.spec.ts",
-      "source_location": "L18",
+      "source_location": "L19",
       "weight": 1.0,
       "source": "src_modules_rbac_rbac_module_spec",
       "target": "src_database_database_constants",
@@ -24441,10 +24311,10 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/database/schema/rbac-permission.ts",
+      "source_file": "src/database/schema/pending-member-link.ts",
       "source_location": "L3",
       "weight": 1.0,
-      "source": "src_database_schema_rbac_permission",
+      "source": "src_database_schema_pending_member_link",
       "target": "src_database_schema_base",
       "confidence_score": 1.0
     },
@@ -24452,10 +24322,10 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
+      "source_file": "src/database/schema/rbac-permission.ts",
       "source_location": "L3",
       "weight": 1.0,
-      "source": "src_modules_member_repositories_pending_member_link_schema",
+      "source": "src_database_schema_rbac_permission",
       "target": "src_database_schema_base",
       "confidence_score": 1.0
     },
@@ -24463,21 +24333,10 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/database/schema/rbac-permission.ts",
+      "source_file": "src/database/schema/pending-member-link.ts",
       "source_location": "L3",
       "weight": 1.0,
-      "source": "src_database_schema_rbac_permission",
-      "target": "src_database_schema_base_basecolumns",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_pending_member_link_schema",
+      "source": "src_database_schema_pending_member_link",
       "target": "src_database_schema_base_basecolumns",
       "confidence_score": 1.0
     },
@@ -24489,6 +24348,17 @@
       "source_location": "L3",
       "weight": 1.0,
       "source": "src_database_schema_rbac_permission",
+      "target": "src_database_schema_base_basecolumns",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_database_schema_pending_member_link",
       "target": "src_database_schema_base_baseindexes",
       "confidence_score": 1.0
     },
@@ -24496,10 +24366,10 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
+      "source_file": "src/database/schema/rbac-permission.ts",
       "source_location": "L3",
       "weight": 1.0,
-      "source": "src_modules_member_repositories_pending_member_link_schema",
+      "source": "src_database_schema_rbac_permission",
       "target": "src_database_schema_base_baseindexes",
       "confidence_score": 1.0
     },
@@ -24570,6 +24440,39 @@
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface",
+      "target": "src_database_schema_audit_trail_audittraillog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_create",
+      "target": "src_database_schema_audit_trail_audittraillog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_findmany",
+      "target": "src_database_schema_audit_trail_audittraillog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
       "source_location": "L6",
       "weight": 1.0,
@@ -24582,7 +24485,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L26",
+      "source_location": "L18",
       "weight": 1.0,
       "source": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_create",
       "target": "src_database_schema_audit_trail_audittraillog",
@@ -24593,7 +24496,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L35",
+      "source_location": "L27",
       "weight": 1.0,
       "source": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_findmany",
       "target": "src_database_schema_audit_trail_audittraillog",
@@ -24604,7 +24507,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L3",
+      "source_location": "L6",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service",
       "target": "src_database_schema_audit_trail_audittraillog",
@@ -24615,7 +24518,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L62",
+      "source_location": "L68",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbyentity",
       "target": "src_database_schema_audit_trail_audittraillog",
@@ -24626,7 +24529,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L54",
+      "source_location": "L60",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbymodule",
       "target": "src_database_schema_audit_trail_audittraillog",
@@ -24637,7 +24540,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L20",
+      "source_location": "L26",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_log",
       "target": "src_database_schema_audit_trail_audittraillog",
@@ -24648,7 +24551,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L33",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_logrbacchange",
       "target": "src_database_schema_audit_trail_audittraillog",
@@ -24659,10 +24562,32 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.spec.ts",
-      "source_location": "L4",
+      "source_location": "L7",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_spec",
       "target": "src_database_schema_audit_trail_audittraillog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface",
+      "target": "src_database_schema_audit_trail_newaudittraillog",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_create",
+      "target": "src_database_schema_audit_trail_newaudittraillog",
       "confidence_score": 1.0
     },
     {
@@ -24681,7 +24606,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L26",
+      "source_location": "L18",
       "weight": 1.0,
       "source": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_create",
       "target": "src_database_schema_audit_trail_newaudittraillog",
@@ -24902,17 +24827,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_database_schema_better_auth_member",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
@@ -24929,7 +24843,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L124",
+      "source_location": "L109",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_findbyid",
       "target": "src_database_schema_better_auth_member_member"
@@ -24940,7 +24854,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L149",
+      "source_location": "L134",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_findbyuserid",
       "target": "src_database_schema_better_auth_member_member"
@@ -24951,7 +24865,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L62",
+      "source_location": "L60",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_listbyorganizationpaginated",
       "target": "src_database_schema_better_auth_member_member"
@@ -25022,10 +24936,10 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
+      "source_file": "src/database/schema/pending-member-link.ts",
       "source_location": "L2",
       "weight": 1.0,
-      "source": "src_modules_member_repositories_pending_member_link_schema",
+      "source": "src_database_schema_pending_member_link",
       "target": "src_database_schema_better_auth_organization",
       "confidence_score": 1.0
     },
@@ -25041,6 +24955,17 @@
       "confidence_score": 1.0
     },
     {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_database_schema_pending_member_link",
+      "target": "src_database_schema_better_auth_organization_organization",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "calls",
       "context": "call",
       "confidence": "INFERRED",
@@ -25050,17 +24975,6 @@
       "weight": 1.0,
       "source": "src_modules_auth_auth_buildpluginsconfig",
       "target": "src_database_schema_better_auth_organization_organization"
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_pending_member_link_schema",
-      "target": "src_database_schema_better_auth_organization_organization",
-      "confidence_score": 1.0
     },
     {
       "relation": "imports",
@@ -25376,22 +25290,11 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L6",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_database_schema_better_auth_user",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "imports",
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L6",
+      "source_location": "L5",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository",
       "target": "src_database_schema_better_auth_user_user",
@@ -25403,7 +25306,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L125",
+      "source_location": "L110",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_findbyid",
       "target": "src_database_schema_better_auth_user_user"
@@ -25414,7 +25317,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L150",
+      "source_location": "L135",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_findbyuserid",
       "target": "src_database_schema_better_auth_user_user"
@@ -25425,7 +25328,7 @@
       "confidence": "INFERRED",
       "confidence_score": 0.8,
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L63",
+      "source_location": "L61",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_listbyorganizationpaginated",
       "target": "src_database_schema_better_auth_user_user"
@@ -25466,6 +25369,17 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "src/database/schema/index.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "src_database_schema_index",
+      "target": "src_database_schema_pending_member_link",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/database/schema/index.ts",
       "source_location": "L11",
       "weight": 1.0,
       "source": "src_database_schema_index",
@@ -25492,17 +25406,6 @@
       "weight": 1.0,
       "source": "src_database_schema_index",
       "target": "src_database_schema_regional",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "re_exports",
-      "context": "export",
-      "confidence": "EXTRACTED",
-      "source_file": "src/database/schema/index.ts",
-      "source_location": "L14",
-      "weight": 1.0,
-      "source": "src_database_schema_index",
-      "target": "src_modules_member_repositories_pending_member_link_schema",
       "confidence_score": 1.0
     },
     {
@@ -25542,10 +25445,54 @@
       "relation": "imports_from",
       "context": "import",
       "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_modules_member_interfaces_member_repository_interface",
+      "target": "src_database_schema_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/repositories/member.repository.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_modules_member_repositories_member_repository",
+      "target": "src_database_schema_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/repositories/member.repository.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_modules_member_repositories_member_repository_spec",
+      "target": "src_database_schema_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/dto/rbac-permission-response.dto.ts",
       "source_location": "L2",
       "weight": 1.0,
       "source": "src_modules_rbac_dto_rbac_permission_response_dto",
+      "target": "src_database_schema_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface",
       "target": "src_database_schema_index",
       "confidence_score": 1.0
     },
@@ -25642,7 +25589,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L3",
+      "source_location": "L6",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service",
       "target": "src_database_schema_index",
@@ -25653,7 +25600,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.spec.ts",
-      "source_location": "L4",
+      "source_location": "L7",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_spec",
       "target": "src_database_schema_index",
@@ -25723,6 +25670,124 @@
       "weight": 1.0,
       "source": "src_modules_rbac_utils_rbac_permission_mapper_spec",
       "target": "src_database_schema_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L25",
+      "weight": 1.0,
+      "source": "src_database_schema_pending_member_link",
+      "target": "src_database_schema_pending_member_link_newpendingmemberlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L24",
+      "weight": 1.0,
+      "source": "src_database_schema_pending_member_link",
+      "target": "src_database_schema_pending_member_link_pendingmemberlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/database/schema/pending-member-link.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_database_schema_pending_member_link",
+      "target": "src_database_schema_pending_member_link_pendingmemberlinks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/repositories/member.repository.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_modules_member_repositories_member_repository",
+      "target": "src_database_schema_pending_member_link_pendingmemberlinks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/repositories/member.repository.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_modules_member_repositories_member_repository_spec",
+      "target": "src_database_schema_pending_member_link_pendingmemberlinks",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_modules_member_interfaces_member_repository_interface",
+      "target": "src_database_schema_pending_member_link_pendingmemberlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
+      "source_location": "L36",
+      "weight": 1.0,
+      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findpendinglink",
+      "target": "src_database_schema_pending_member_link_pendingmemberlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
+      "source_location": "L31",
+      "weight": 1.0,
+      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository_upsertpendinglink",
+      "target": "src_database_schema_pending_member_link_pendingmemberlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/repositories/member.repository.ts",
+      "source_location": "L5",
+      "weight": 1.0,
+      "source": "src_modules_member_repositories_member_repository",
+      "target": "src_database_schema_pending_member_link_pendingmemberlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/repositories/member.repository.ts",
+      "source_location": "L173",
+      "weight": 1.0,
+      "source": "src_modules_member_repositories_member_repository_memberrepository_findpendinglink",
+      "target": "src_database_schema_pending_member_link_pendingmemberlink",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "generic_arg",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/member/repositories/member.repository.ts",
+      "source_location": "L148",
+      "weight": 1.0,
+      "source": "src_modules_member_repositories_member_repository_memberrepository_upsertpendinglink",
+      "target": "src_database_schema_pending_member_link_pendingmemberlink",
       "confidence_score": 1.0
     },
     {
@@ -32414,28 +32479,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface",
-      "target": "src_modules_member_dto_list_member_query_dto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_modules_member_dto_list_member_query_dto",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "references",
       "context": "field",
       "confidence": "EXTRACTED",
@@ -32444,50 +32487,6 @@
       "weight": 1.0,
       "source": "src_modules_member_dto_list_member_query_dto_listmemberquerydto",
       "target": "src_modules_member_dto_member_dto_orgmemberrole",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface",
-      "target": "src_modules_member_dto_list_member_query_dto_listmemberquerydto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository_listbyorg",
-      "target": "src_modules_member_dto_list_member_query_dto_listmemberquerydto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L12",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_modules_member_dto_list_member_query_dto_listmemberquerydto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L90",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository_listbyorg",
-      "target": "src_modules_member_dto_list_member_query_dto_listmemberquerydto",
       "confidence_score": 1.0
     },
     {
@@ -32544,28 +32543,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface",
-      "target": "src_modules_member_dto_member_response_dto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_modules_member_dto_member_response_dto",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "references",
       "context": "field",
       "confidence": "EXTRACTED",
@@ -32584,50 +32561,6 @@
       "weight": 1.0,
       "source": "src_modules_member_dto_member_response_dto_memberresponsedto",
       "target": "src_modules_member_dto_member_response_dto_memberresponsedto_fromentity",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface",
-      "target": "src_modules_member_dto_member_response_dto_memberresponsedto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository_listbyorg",
-      "target": "src_modules_member_dto_member_response_dto_memberresponsedto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_modules_member_dto_member_response_dto_memberresponsedto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L90",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository_listbyorg",
-      "target": "src_modules_member_dto_member_response_dto_memberresponsedto",
       "confidence_score": 1.0
     },
     {
@@ -32840,7 +32773,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L33",
+      "source_location": "L19",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository_listbyorganizationpaginated",
       "target": "src_modules_member_dto_member_dto_listmembersoptions",
@@ -32862,7 +32795,7 @@
       "context": "parameter_type",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L23",
+      "source_location": "L21",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_listbyorganizationpaginated",
       "target": "src_modules_member_dto_member_dto_listmembersoptions",
@@ -32959,7 +32892,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L32",
+      "source_location": "L18",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
@@ -32969,7 +32902,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L6",
+      "source_location": "L4",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface",
       "target": "src_modules_member_interfaces_member_repository_interface_member_repository_token",
@@ -32979,42 +32912,10 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface",
-      "target": "src_modules_member_interfaces_member_repository_interface_memberrecord",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L20",
+      "source_location": "L6",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface",
       "target": "src_modules_member_interfaces_member_repository_interface_rawmemberrow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface",
-      "target": "src_modules_member_repositories_pending_member_link_schema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L4",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlink",
       "confidence_score": 1.0
     },
     {
@@ -33033,7 +32934,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L14",
+      "source_location": "L12",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository",
       "target": "src_modules_member_interfaces_member_repository_interface",
@@ -33077,7 +32978,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L14",
+      "source_location": "L12",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository",
       "target": "src_modules_member_interfaces_member_repository_interface_rawmemberrow",
@@ -33088,7 +32989,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L101",
+      "source_location": "L88",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_findbyid",
       "target": "src_modules_member_interfaces_member_repository_interface_rawmemberrow",
@@ -33099,18 +33000,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L163",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository_findbyorganduser",
-      "target": "src_modules_member_interfaces_member_repository_interface_rawmemberrow",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L133",
+      "source_location": "L118",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_findbyuserid",
       "target": "src_modules_member_interfaces_member_repository_interface_rawmemberrow",
@@ -33121,7 +33011,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L23",
+      "source_location": "L21",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository_listbyorganizationpaginated",
       "target": "src_modules_member_interfaces_member_repository_interface_rawmemberrow",
@@ -33131,17 +33021,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L64",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
-      "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_delete",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L62",
+      "source_location": "L40",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_deletependinglink",
@@ -33151,7 +33031,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L37",
+      "source_location": "L23",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findbyid",
@@ -33161,17 +33041,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L45",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
-      "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findbyorganduser",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L41",
+      "source_location": "L27",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findbyuserid",
@@ -33181,7 +33051,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L58",
+      "source_location": "L36",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findpendinglink",
@@ -33191,17 +33061,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
-      "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_listbyorg",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L33",
+      "source_location": "L19",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_listbyorganizationpaginated",
@@ -33211,17 +33071,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L63",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
-      "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_updaterole",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L53",
+      "source_location": "L31",
       "weight": 1.0,
       "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_upsertpendinglink",
@@ -33232,7 +33082,7 @@
       "context": "import",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L14",
+      "source_location": "L12",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
@@ -33243,7 +33093,7 @@
       "context": "type",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L20",
+      "source_location": "L18",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository",
@@ -33303,28 +33153,6 @@
       "weight": 1.0,
       "source": "src_modules_member_services_member_service_memberservice_invitemember",
       "target": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findbyuserid"
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L53",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository_upsertpendinglink",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlink",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/interfaces/member-repository.interface.ts",
-      "source_location": "L58",
-      "weight": 1.0,
-      "source": "src_modules_member_interfaces_member_repository_interface_imemberrepository_findpendinglink",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlink",
-      "confidence_score": 1.0
     },
     {
       "relation": "contains",
@@ -33478,75 +33306,20 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.spec.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_spec",
-      "target": "src_modules_member_repositories_pending_member_link_schema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.spec.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_spec",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlinks",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L20",
+      "source_location": "L18",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository",
       "target": "src_modules_member_repositories_member_repository_memberrepository",
       "confidence_score": 1.0
     },
     {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_modules_member_repositories_pending_member_link_schema",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlink",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L7",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlinks",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L21",
+      "source_location": "L19",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository",
       "target": "src_modules_member_repositories_member_repository_memberrepository_constructor",
@@ -33556,7 +33329,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L214",
+      "source_location": "L192",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository",
       "target": "src_modules_member_repositories_member_repository_memberrepository_deletependinglink",
@@ -33566,7 +33339,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L101",
+      "source_location": "L88",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository",
       "target": "src_modules_member_repositories_member_repository_memberrepository_findbyid",
@@ -33576,17 +33349,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L163",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository",
-      "target": "src_modules_member_repositories_member_repository_memberrepository_findbyorganduser",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L133",
+      "source_location": "L118",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository",
       "target": "src_modules_member_repositories_member_repository_memberrepository_findbyuserid",
@@ -33596,7 +33359,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L195",
+      "source_location": "L173",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository",
       "target": "src_modules_member_repositories_member_repository_memberrepository_findpendinglink",
@@ -33606,17 +33369,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L90",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository",
-      "target": "src_modules_member_repositories_member_repository_memberrepository_listbyorg",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L23",
+      "source_location": "L21",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository",
       "target": "src_modules_member_repositories_member_repository_memberrepository_listbyorganizationpaginated",
@@ -33626,84 +33379,10 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L170",
+      "source_location": "L148",
       "weight": 1.0,
       "source": "src_modules_member_repositories_member_repository_memberrepository",
       "target": "src_modules_member_repositories_member_repository_memberrepository_upsertpendinglink",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L94",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository_listbyorg",
-      "target": "src_modules_member_repositories_member_repository_memberrepository_listbyorganizationpaginated",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L167",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository_findbyorganduser",
-      "target": "src_modules_member_repositories_member_repository_memberrepository_findbyuserid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L170",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository_upsertpendinglink",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlink",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/member.repository.ts",
-      "source_location": "L195",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_member_repository_memberrepository_findpendinglink",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlink",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L25",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_pending_member_link_schema",
-      "target": "src_modules_member_repositories_pending_member_link_schema_newpendingmemberlink",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L24",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_pending_member_link_schema",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlink",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/member/repositories/pending-member-link.schema.ts",
-      "source_location": "L5",
-      "weight": 1.0,
-      "source": "src_modules_member_repositories_pending_member_link_schema",
-      "target": "src_modules_member_repositories_pending_member_link_schema_pendingmemberlinks",
       "confidence_score": 1.0
     },
     {
@@ -36192,11 +35871,226 @@
       "target": "src_modules_rbac_services_permission_scope_cache_service_permissionscopecacheservice_resolvescope"
     },
     {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_audit_trail_repository_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_findauditlogsparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L18",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "confidence_score": 1.0
+    },
+    {
       "relation": "re_exports",
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/interfaces/index.ts",
       "source_location": "L1",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_index",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/rbac.module.ts",
+      "source_location": "L16",
+      "weight": 1.0,
+      "source": "src_modules_rbac_rbac_module",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_audit_trail_repository_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/rbac.module.spec.ts",
+      "source_location": "L14",
+      "weight": 1.0,
+      "source": "src_modules_rbac_rbac_module_spec",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_audit_trail_repository_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_audit_trail_repository_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/services/audit-trail.service.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service_spec",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_audit_trail_repository_token",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_modules_rbac_repositories_audit_trail_repository",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_findauditlogsparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_findmany",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_findauditlogsparams",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L19",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_create",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "method",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/audit-trail-repository.interface.ts",
+      "source_location": "L20",
+      "weight": 1.0,
+      "source": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_findmany",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
+      "source_location": "L7",
+      "weight": 1.0,
+      "source": "src_modules_rbac_repositories_audit_trail_repository",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "implements",
+      "context": "type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
+      "source_location": "L12",
+      "weight": 1.0,
+      "source": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "references",
+      "context": "parameter_type",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
+      "source_location": "L21",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_constructor",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/services/audit-trail.service.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service_spec",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
+      "source_location": "L27",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_log",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_create"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
+      "source_location": "L72",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbyentity",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_findmany"
+    },
+    {
+      "relation": "calls",
+      "context": "call",
+      "confidence": "EXTRACTED",
+      "confidence_score": 1.0,
+      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
+      "source_location": "L65",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbymodule",
+      "target": "src_modules_rbac_interfaces_audit_trail_repository_interface_iaudittrailrepository_findmany"
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/interfaces/index.ts",
+      "source_location": "L2",
       "weight": 1.0,
       "source": "src_modules_rbac_interfaces_index",
       "target": "src_modules_rbac_interfaces_organization_role_repository_interface",
@@ -36207,7 +36101,7 @@
       "context": "export",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/interfaces/index.ts",
-      "source_location": "L2",
+      "source_location": "L3",
       "weight": 1.0,
       "source": "src_modules_rbac_interfaces_index",
       "target": "src_modules_rbac_interfaces_rbac_permission_repository_interface",
@@ -36232,6 +36126,39 @@
       "source_location": "L14",
       "weight": 1.0,
       "source": "src_modules_rbac_rbac_module_spec",
+      "target": "src_modules_rbac_interfaces_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "re_exports",
+      "context": "export",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
+      "source_location": "L9",
+      "weight": 1.0,
+      "source": "src_modules_rbac_repositories_audit_trail_repository",
+      "target": "src_modules_rbac_interfaces_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
+      "source_location": "L2",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service",
+      "target": "src_modules_rbac_interfaces_index",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "imports_from",
+      "context": "import",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/services/audit-trail.service.spec.ts",
+      "source_location": "L3",
+      "weight": 1.0,
+      "source": "src_modules_rbac_services_audit_trail_service_spec",
       "target": "src_modules_rbac_interfaces_index",
       "confidence_score": 1.0
     },
@@ -36914,7 +36841,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/rbac.module.spec.ts",
-      "source_location": "L23",
+      "source_location": "L24",
       "weight": 1.0,
       "source": "src_modules_rbac_rbac_module_spec",
       "target": "src_modules_rbac_rbac_module_spec_fakeauthmodule",
@@ -37067,7 +36994,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/rbac.module.ts",
-      "source_location": "L55",
+      "source_location": "L22",
+      "weight": 1.0,
+      "source": "src_modules_rbac_rbac_module",
+      "target": "src_modules_rbac_rbac_module_audittrailrepositoryprovider",
+      "confidence_score": 1.0
+    },
+    {
+      "relation": "contains",
+      "confidence": "EXTRACTED",
+      "source_file": "src/modules/rbac/rbac.module.ts",
+      "source_location": "L64",
       "weight": 1.0,
       "source": "src_modules_rbac_rbac_module",
       "target": "src_modules_rbac_rbac_module_rbacmodule",
@@ -37330,49 +37267,17 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L20",
+      "source_location": "L12",
       "weight": 1.0,
       "source": "src_modules_rbac_repositories_audit_trail_repository",
       "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
       "confidence_score": 1.0
     },
     {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L8",
-      "weight": 1.0,
-      "source": "src_modules_rbac_repositories_audit_trail_repository",
-      "target": "src_modules_rbac_repositories_audit_trail_repository_findauditlogsparams",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "src_modules_rbac_services_audit_trail_service",
-      "target": "src_modules_rbac_repositories_audit_trail_repository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports_from",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/rbac/services/audit-trail.service.spec.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_modules_rbac_services_audit_trail_service_spec",
-      "target": "src_modules_rbac_repositories_audit_trail_repository",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L21",
+      "source_location": "L13",
       "weight": 1.0,
       "source": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
       "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_constructor",
@@ -37382,7 +37287,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L26",
+      "source_location": "L18",
       "weight": 1.0,
       "source": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
       "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_create",
@@ -37392,77 +37297,11 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/repositories/audit-trail.repository.ts",
-      "source_location": "L35",
+      "source_location": "L27",
       "weight": 1.0,
       "source": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
       "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_findmany",
       "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L2",
-      "weight": 1.0,
-      "source": "src_modules_rbac_services_audit_trail_service",
-      "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "parameter_type",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L18",
-      "weight": 1.0,
-      "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_constructor",
-      "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/rbac/services/audit-trail.service.spec.ts",
-      "source_location": "L3",
-      "weight": 1.0,
-      "source": "src_modules_rbac_services_audit_trail_service_spec",
-      "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L21",
-      "weight": 1.0,
-      "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_log",
-      "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_create"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L66",
-      "weight": 1.0,
-      "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbyentity",
-      "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_findmany"
-    },
-    {
-      "relation": "calls",
-      "context": "call",
-      "confidence": "EXTRACTED",
-      "confidence_score": 1.0,
-      "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L59",
-      "weight": 1.0,
-      "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbymodule",
-      "target": "src_modules_rbac_repositories_audit_trail_repository_audittrailrepository_findmany"
     },
     {
       "relation": "contains",
@@ -37662,7 +37501,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L17",
+      "source_location": "L20",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service",
       "target": "src_modules_rbac_services_audit_trail_service_audittrailservice",
@@ -37672,7 +37511,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L5",
+      "source_location": "L8",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service",
       "target": "src_modules_rbac_services_audit_trail_service_logauditparams",
@@ -37682,7 +37521,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L18",
+      "source_location": "L21",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice",
       "target": "src_modules_rbac_services_audit_trail_service_audittrailservice_constructor",
@@ -37692,7 +37531,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L62",
+      "source_location": "L68",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice",
       "target": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbyentity",
@@ -37702,7 +37541,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L54",
+      "source_location": "L60",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice",
       "target": "src_modules_rbac_services_audit_trail_service_audittrailservice_findbymodule",
@@ -37712,7 +37551,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L20",
+      "source_location": "L26",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice",
       "target": "src_modules_rbac_services_audit_trail_service_audittrailservice_log",
@@ -37722,7 +37561,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L33",
+      "source_location": "L39",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice",
       "target": "src_modules_rbac_services_audit_trail_service_audittrailservice_logrbacchange",
@@ -37733,7 +37572,7 @@
       "context": "call",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/rbac/services/audit-trail.service.ts",
-      "source_location": "L42",
+      "source_location": "L48",
       "weight": 1.0,
       "source": "src_modules_rbac_services_audit_trail_service_audittrailservice_logrbacchange",
       "target": "src_modules_rbac_services_audit_trail_service_audittrailservice_log",
@@ -39411,7 +39250,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L41",
+      "source_location": "L8",
       "weight": 1.0,
       "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findbylevel",
       "target": "src_modules_regional_dto_regional_dto_regionaldatadto",
@@ -39422,7 +39261,7 @@
       "context": "generic_arg",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L42",
+      "source_location": "L9",
       "weight": 1.0,
       "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findchildren",
       "target": "src_modules_regional_dto_regional_dto_regionaldatadto",
@@ -39539,138 +39378,6 @@
       "confidence_score": 1.0
     },
     {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface",
-      "target": "src_modules_regional_dto_regional_dto_provinceitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L50",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findprovincebyid",
-      "target": "src_modules_regional_dto_regional_dto_provinceitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L46",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findprovinces",
-      "target": "src_modules_regional_dto_regional_dto_provinceitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface",
-      "target": "src_modules_regional_dto_regional_dto_regencyitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L47",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findregencies",
-      "target": "src_modules_regional_dto_regional_dto_regencyitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L51",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findregencybyid",
-      "target": "src_modules_regional_dto_regional_dto_regencyitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface",
-      "target": "src_modules_regional_dto_regional_dto_districtitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_finddistrictbyid",
-      "target": "src_modules_regional_dto_regional_dto_districtitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_finddistricts",
-      "target": "src_modules_regional_dto_regional_dto_districtitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "imports",
-      "context": "import",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L1",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface",
-      "target": "src_modules_regional_dto_regional_dto_villageitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L53",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findvillagebyid",
-      "target": "src_modules_regional_dto_regional_dto_villageitemdto",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "references",
-      "context": "generic_arg",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findvillages",
-      "target": "src_modules_regional_dto_regional_dto_villageitemdto",
-      "confidence_score": 1.0
-    },
-    {
       "relation": "re_exports",
       "context": "export",
       "confidence": "EXTRACTED",
@@ -39718,7 +39425,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L40",
+      "source_location": "L7",
       "weight": 1.0,
       "source": "src_modules_regional_interfaces_regional_repository_interface",
       "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
@@ -39728,47 +39435,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L26",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_listdistrictsparams",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L13",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_listprovincesparams",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L19",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_listregenciesparams",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L33",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_listvillagesparams",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "contains",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L9",
+      "source_location": "L3",
       "weight": 1.0,
       "source": "src_modules_regional_interfaces_regional_repository_interface",
       "target": "src_modules_regional_interfaces_regional_repository_interface_regional_repository_token",
@@ -39778,7 +39445,7 @@
       "relation": "contains",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L11",
+      "source_location": "L5",
       "weight": 1.0,
       "source": "src_modules_regional_interfaces_regional_repository_interface",
       "target": "src_modules_regional_interfaces_regional_repository_interface_regionallevel",
@@ -39898,7 +39565,7 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L41",
+      "source_location": "L8",
       "weight": 1.0,
       "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
       "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findbylevel",
@@ -39908,90 +39575,10 @@
       "relation": "method",
       "confidence": "EXTRACTED",
       "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L42",
+      "source_location": "L9",
       "weight": 1.0,
       "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
       "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findchildren",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L52",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_finddistrictbyid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L48",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_finddistricts",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L50",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findprovincebyid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L46",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findprovinces",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L47",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findregencies",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L51",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findregencybyid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L53",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findvillagebyid",
-      "confidence_score": 1.0
-    },
-    {
-      "relation": "method",
-      "confidence": "EXTRACTED",
-      "source_file": "src/modules/regional/interfaces/regional-repository.interface.ts",
-      "source_location": "L49",
-      "weight": 1.0,
-      "source": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository",
-      "target": "src_modules_regional_interfaces_regional_repository_interface_iregionalrepository_findvillages",
       "confidence_score": 1.0
     },
     {
@@ -51090,5 +50677,5 @@
     }
   ],
   "hyperedges": [],
-  "built_at_commit": "090bcc4f6c83f3b212805a3eaaf55b24b671e5a1"
+  "built_at_commit": "5b6a0f02d1f002674a0128edd878f59df028a3d7"
 }

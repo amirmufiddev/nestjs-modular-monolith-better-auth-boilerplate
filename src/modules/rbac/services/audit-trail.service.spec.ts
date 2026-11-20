@@ -1,11 +1,14 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import { AuditTrailService, LogAuditParams } from './audit-trail.service';
-import { AuditTrailRepository } from '../repositories/audit-trail.repository';
+import {
+  AUDIT_TRAIL_REPOSITORY_TOKEN,
+  type IAuditTrailRepository,
+} from '../interfaces';
 import { AuditTrailLog } from '@/database/schema';
 
 describe('AuditTrailService', () => {
   let service: AuditTrailService;
-  let repository: jest.Mocked<AuditTrailRepository>;
+  let repository: jest.Mocked<IAuditTrailRepository>;
 
   const mockAuditLog: AuditTrailLog = {
     id: 'log-123',
@@ -30,14 +33,14 @@ describe('AuditTrailService', () => {
       providers: [
         AuditTrailService,
         {
-          provide: AuditTrailRepository,
+          provide: AUDIT_TRAIL_REPOSITORY_TOKEN,
           useValue: mockRepo,
         },
       ],
     }).compile();
 
     service = module.get<AuditTrailService>(AuditTrailService);
-    repository = module.get(AuditTrailRepository);
+    repository = module.get(AUDIT_TRAIL_REPOSITORY_TOKEN);
   });
 
   it('should be defined', () => {

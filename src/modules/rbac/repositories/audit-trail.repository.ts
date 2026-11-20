@@ -4,20 +4,12 @@ import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { DRIZZLE } from '@/database/database.constants';
 import * as schema from '@/database/schema';
 import { AuditTrailLog, NewAuditTrailLog } from '@/database/schema';
+import type { FindAuditLogsParams, IAuditTrailRepository } from '../interfaces';
 
-export interface FindAuditLogsParams {
-  moduleKey?: string;
-  actorId?: string;
-  entityType?: string;
-  entityId?: string;
-  startDate?: Date;
-  endDate?: Date;
-  limit?: number;
-  offset?: number;
-}
+export type { FindAuditLogsParams };
 
 @Injectable()
-export class AuditTrailRepository {
+export class AuditTrailRepository implements IAuditTrailRepository {
   constructor(
     @Inject(DRIZZLE)
     private readonly db: NodePgDatabase<typeof schema>,

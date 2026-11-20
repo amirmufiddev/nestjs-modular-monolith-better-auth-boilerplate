@@ -1,6 +1,6 @@
 import { MemberRepository } from './member.repository';
 import type { NodePgDatabase } from 'drizzle-orm/node-postgres';
-import { pendingMemberLinks } from './pending-member-link.schema';
+import { pendingMemberLinks } from '@/database/schema';
 
 describe('MemberRepository', () => {
   let repository: MemberRepository;

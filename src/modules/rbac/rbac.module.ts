@@ -14,9 +14,15 @@ import { RbacPermissionService } from './services/rbac-permission.service';
 import { OrganizationRoleService } from './services/organization-role.service';
 import { PermissionScopeInterceptor } from './interceptors/permission-scope.interceptor';
 import {
+  AUDIT_TRAIL_REPOSITORY_TOKEN,
   ORGANIZATION_ROLE_REPOSITORY_TOKEN,
   RBAC_PERMISSION_REPOSITORY_TOKEN,
 } from './interfaces';
+
+const auditTrailRepositoryProvider = {
+  provide: AUDIT_TRAIL_REPOSITORY_TOKEN,
+  useClass: AuditTrailRepository,
+};
 
 @Global()
 @Module({
@@ -31,13 +37,14 @@ import {
       provide: ORGANIZATION_ROLE_REPOSITORY_TOKEN,
       useClass: OrganizationRoleRepository,
     },
+    auditTrailRepositoryProvider,
+    AuditTrailRepository,
     RbacRoleTemplateRepository,
     RbacPermissionService,
     OrganizationRoleService,
     PermissionScopeService,
     PermissionScopeCacheService,
     AuditTrailService,
-    AuditTrailRepository,
     PermissionScopeInterceptor,
   ],
   exports: [
@@ -46,6 +53,8 @@ import {
     AuditTrailService,
     PermissionScopeInterceptor,
     AuditTrailRepository,
+    auditTrailRepositoryProvider,
+    AUDIT_TRAIL_REPOSITORY_TOKEN,
     RbacPermissionService,
     OrganizationRoleService,
     ORGANIZATION_ROLE_REPOSITORY_TOKEN,

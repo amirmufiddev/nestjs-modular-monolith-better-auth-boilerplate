@@ -1,6 +1,6 @@
 import { pgTable, text, varchar, uniqueIndex } from 'drizzle-orm/pg-core';
-import { organization } from '@/database/schema/better-auth-organization';
-import { baseColumns, baseIndexes } from '@/database/schema/_base';
+import { organization } from './better-auth-organization';
+import { baseColumns, baseIndexes } from './_base';
 
 export const pendingMemberLinks = pgTable(
   'pending_member_links',

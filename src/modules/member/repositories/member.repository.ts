@@ -2,15 +2,13 @@ import { Inject, Injectable } from '@nestjs/common';
 import { and, count, eq, ilike, ne, or, desc } from 'drizzle-orm';
 import { NodePgDatabase } from 'drizzle-orm/node-postgres';
 import { DRIZZLE } from '@/database/database.constants';
-import { member } from '@/database/schema/better-auth-member';
-import { user } from '@/database/schema/better-auth-user';
 import {
+  member,
+  user,
   pendingMemberLinks,
   type PendingMemberLink,
-} from './pending-member-link.schema';
+} from '@/database/schema';
 import type { ListMembersOptions } from '../dto/member.dto';
-import type { ListMemberQueryDto } from '../dto/list-member-query.dto';
-import { MemberResponseDto } from '../dto/member-response.dto';
 import type {
   IMemberRepository,
   RawMemberRow,
@@ -87,27 +85,14 @@ export class MemberRepository implements IMemberRepository {
     return { data, total };
   }
 
-  async listByOrg(
-    orgId: string,
-    query: ListMemberQueryDto,
-  ): Promise<{ data: MemberResponseDto[]; total: number }> {
-    const result = await this.listByOrganizationPaginated(orgId, query);
-    return {
-      data: result.data.map(MemberResponseDto.fromEntity),
-      total: result.total,
-    };
-  }
-
   async findById(
-    organizationIdOrId: string,
-    memberId?: string,
+    organizationId: string,
+    memberId: string,
   ): Promise<RawMemberRow | null> {
-    const whereClause = memberId
-      ? and(
-          eq(member.organizationId, organizationIdOrId),
-          eq(member.id, memberId),
-        )
-      : eq(member.id, organizationIdOrId);
+    const whereClause = and(
+      eq(member.organizationId, organizationId),
+      eq(member.id, memberId),
+    );
 
     const rows = (await this.db
       .select({
@@ -158,13 +143,6 @@ export class MemberRepository implements IMemberRepository {
       .execute()) as RawMemberRow[];
 
     return rows[0] ?? null;
-  }
-
-  async findByOrgAndUser(
-    orgId: string,
-    userId: string,
-  ): Promise<RawMemberRow | null> {
-    return this.findByUserId(orgId, userId);
   }
 
   async upsertPendingLink(

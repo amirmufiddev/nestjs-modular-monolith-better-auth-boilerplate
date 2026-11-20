@@ -12,6 +12,7 @@ import { PermissionsController } from './controllers/permissions.controller';
 import { OrganizationRoleService } from './services/organization-role.service';
 import { RbacPermissionService } from './services/rbac-permission.service';
 import {
+  AUDIT_TRAIL_REPOSITORY_TOKEN,
   ORGANIZATION_ROLE_REPOSITORY_TOKEN,
   RBAC_PERMISSION_REPOSITORY_TOKEN,
 } from './interfaces';
@@ -97,5 +98,6 @@ describe('RbacModule', () => {
     ).toBeDefined();
     expect(testingModule.get(ORGANIZATION_ROLE_REPOSITORY_TOKEN)).toBeDefined();
     expect(testingModule.get(RBAC_PERMISSION_REPOSITORY_TOKEN)).toBeDefined();
+    expect(testingModule.get(AUDIT_TRAIL_REPOSITORY_TOKEN)).toBeDefined();
   });
 });

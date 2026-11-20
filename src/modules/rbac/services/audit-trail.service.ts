@@ -1,6 +1,9 @@
-import { Injectable } from '@nestjs/common';
-import { AuditTrailRepository } from '../repositories/audit-trail.repository';
-import { AuditTrailLog } from '@/database/schema';
+import { Inject, Injectable } from '@nestjs/common';
+import {
+  AUDIT_TRAIL_REPOSITORY_TOKEN,
+  type IAuditTrailRepository,
+} from '../interfaces';
+import type { AuditTrailLog } from '@/database/schema';
 
 export interface LogAuditParams {
   moduleKey: string;
@@ -15,10 +18,13 @@ export interface LogAuditParams {
 
 @Injectable()
 export class AuditTrailService {
-  constructor(private readonly repository: AuditTrailRepository) {}
+  constructor(
+    @Inject(AUDIT_TRAIL_REPOSITORY_TOKEN)
+    private readonly auditTrailRepo: IAuditTrailRepository,
+  ) {}
 
   async log(params: LogAuditParams): Promise<AuditTrailLog> {
-    return this.repository.create({
+    return this.auditTrailRepo.create({
       moduleKey: params.moduleKey,
       actorId: params.actorId,
       action: params.action,
@@ -56,13 +62,13 @@ export class AuditTrailService {
     limit = 50,
     offset = 0,
   ): Promise<AuditTrailLog[]> {
-    return this.repository.findMany({ moduleKey, limit, offset });
+    return this.auditTrailRepo.findMany({ moduleKey, limit, offset });
   }
 
   async findByEntity(
     entityType: string,
     entityId: string,
   ): Promise<AuditTrailLog[]> {
-    return this.repository.findMany({ entityType, entityId });
+    return this.auditTrailRepo.findMany({ entityType, entityId });
   }
 }
