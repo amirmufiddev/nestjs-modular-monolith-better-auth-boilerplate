@@ -23,6 +23,7 @@
  */
 import { Pool, type PoolClient } from 'pg';
 import { env } from '@/config/env.validation';
+import type { Seeder, SeederContext } from './seeder.interface';
 
 export type Level = 'province' | 'regency' | 'district' | 'village';
 
@@ -217,7 +218,7 @@ async function applyPostalCodes(client: PoolClient): Promise<number> {
   return result.rowCount ?? 0;
 }
 
-async function seed() {
+export async function seed(poolOverride?: Pool) {
   console.log(`Fetching wilayah.sql from ${WILAYAH_SQL_URL}...`);
   const response = await fetch(WILAYAH_SQL_URL);
   if (!response.ok) {
@@ -232,7 +233,8 @@ async function seed() {
   console.log(`Parsed ${items.length} raw tuples.`);
 
   const start = Date.now();
-  const pool = new Pool({ connectionString: env.DATABASE_URL });
+  const pool = poolOverride ?? new Pool({ connectionString: env.DATABASE_URL });
+  const shouldClosePool = !poolOverride;
 
   const client = await pool.connect();
   try {
@@ -312,7 +314,9 @@ async function seed() {
     throw err;
   } finally {
     client.release();
-    await pool.end();
+    if (shouldClosePool) {
+      await pool.end();
+    }
   }
 
   const totalSec = ((Date.now() - start) / 1000).toFixed(1);
@@ -320,6 +324,13 @@ async function seed() {
     `\nDone in ${totalSec}s — full regional dataset + postal codes projected into regional_addresses.`,
   );
 }
+
+export const regionalSeeder: Seeder = {
+  name: 'regional',
+  async run({ pool }: SeederContext): Promise<void> {
+    await seed(pool);
+  },
+};
 
 function isDirectExecution(): boolean {
   // CommonJS entrypoint (Nest/tsc watch, ts-node)

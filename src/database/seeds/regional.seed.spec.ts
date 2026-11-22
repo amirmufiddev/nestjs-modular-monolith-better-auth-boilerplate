@@ -80,3 +80,13 @@ VALUES
     expect(res).toEqual([{ code: '11', name: 'Aceh' }]);
   });
 });
+
+describe('regionalSeeder', () => {
+  it('should export regionalSeeder with name "regional" and a run method', async () => {
+    const { regionalSeeder } = await import('./regional.seed');
+    expect(regionalSeeder).toBeDefined();
+    expect(regionalSeeder.name).toBe('regional');
+    expect(typeof regionalSeeder.run).toBe('function');
+  });
+});
+
