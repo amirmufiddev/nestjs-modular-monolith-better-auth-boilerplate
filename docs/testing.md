@@ -225,7 +225,7 @@ import { describe, it, expect } from 'bun:test';
 import { RlsContext } from '@/shared/database/rls-context';
 
 describe('InventoryService (with RlsContext)', () => {
-  it('scopes query to depot ctx', async () => {
+  it('scopes query to organization ctx', async () => {
     let captured: string | undefined;
     const fakeRepo = {
       find: () => {
@@ -237,10 +237,10 @@ describe('InventoryService (with RlsContext)', () => {
     // await new InventoryService(fakeRepo as any).list();
 
     // ✅ Good — bungkus dengan run() meniru RlsInterceptor
-    await RlsContext.run('depot-42', async () => {
+    await RlsContext.run('organization-42', async () => {
       await new InventoryService(fakeRepo as any).list();
     });
-    expect(captured).toBe('depot-42');
+    expect(captured).toBe('organization-42');
   });
 });
 ```
@@ -296,15 +296,15 @@ Coverage threshold umum:
 
 > **Aturan:** Coverage dihitung bermakna bila berasal dari **business logic (service layer)** — yang menjalankan business flow end-to-end dengan dependency repository ter-mock via DIP. Entity/Schema/DTO cukup diverifikasi oleh type-check, bukan line coverage.
 
-| Layer                | Wajib di-test? | Alasan |
-| -------------------- | -------------- | ------ |
-| `services/` (business logic) | Ya, ≥90% | Business logic utama; paling banyak branch & edge case |
-| `repositories/` (adapter, data access) | Ya, fokus pada error path & RLS context | I/O boundary; query filter & tenant context |
-| `controllers/` (HTTP endpoints) | Ya, minimal 1 happy-path + 1 error-path per endpoint | Verifikasi routing HTTP, guards, DTO validation |
-| `interfaces/`        | Tidak (hanya type/token) | Kontrak murni & Symbol tokens |
-| `*.module.ts`       | Tidak           | Hanya wiring DI |
-| `*.dto.ts`          | Tidak           | Schema class-validator, cukup type-check |
-| `main.ts`           | Tidak (e2e cover) | Bootstrap |
+| Layer                                  | Wajib di-test?                                       | Alasan                                                 |
+| -------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------ |
+| `services/` (business logic)           | Ya, ≥90%                                             | Business logic utama; paling banyak branch & edge case |
+| `repositories/` (adapter, data access) | Ya, fokus pada error path & RLS context              | I/O boundary; query filter & tenant context            |
+| `controllers/` (HTTP endpoints)        | Ya, minimal 1 happy-path + 1 error-path per endpoint | Verifikasi routing HTTP, guards, DTO validation        |
+| `interfaces/`                          | Tidak (hanya type/token)                             | Kontrak murni & Symbol tokens                          |
+| `*.module.ts`                          | Tidak                                                | Hanya wiring DI                                        |
+| `*.dto.ts`                             | Tidak                                                | Schema class-validator, cukup type-check               |
+| `main.ts`                              | Tidak (e2e cover)                                    | Bootstrap                                              |
 
 ### File yang Dikecualikan dari Coverage
 
@@ -331,15 +331,15 @@ Lihat skill `superpowers:test-driven-development` untuk detail lengkap dan pair 
 
 ### Coverage Red Flags
 
-| Pattern                 | Severity    | Impact                             |
-| ----------------------- | ----------- | ---------------------------------- |
-| Service tanpa spec file | 🟡 Warning  | Business logic tidak terverifikasi |
-| Test yang hit real DB   | 🔴 Critical | Slow tests, flake                  |
-| Test yang hit real HTTP | 🔴 Critical | External dep, flake                |
-| Test tanpa assertions   | 🟡 Warning  | False positive coverage            |
-| Shared state antar test | 🟡 Warning  | Test saling interfere              |
-| Missing edge cases      | 🟡 Warning  | Bug tidak terdeteksi               |
-| No mocking setup        | 🟡 Warning  | Test tidak isolated                |
+| Pattern                           | Severity    | Impact                                                       |
+| --------------------------------- | ----------- | ------------------------------------------------------------ |
+| Service tanpa spec file           | 🟡 Warning  | Business logic tidak terverifikasi                           |
+| Test yang hit real DB             | 🔴 Critical | Slow tests, flake                                            |
+| Test yang hit real HTTP           | 🔴 Critical | External dep, flake                                          |
+| Test tanpa assertions             | 🟡 Warning  | False positive coverage                                      |
+| Shared state antar test           | 🟡 Warning  | Test saling interfere                                        |
+| Missing edge cases                | 🟡 Warning  | Bug tidak terdeteksi                                         |
+| No mocking setup                  | 🟡 Warning  | Test tidak isolated                                          |
 | Build sukses dianggap test sukses | 🔴 Critical | `tsconfig.build.json` exclude spec; build hijau ≠ test hijau |
 
 ### Test Isolation

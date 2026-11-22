@@ -74,7 +74,7 @@ try {
 
 ```typescript
 // ❌ Bad — 1 + N queries
-const orders = await this.orderRepo.findByDepot(depotId);
+const orders = await this.orderRepo.findByorganization(organizationId);
 for (const order of orders) {
   order.customer = await this.userRepo.findById(order.customerId);
 }
@@ -83,35 +83,35 @@ for (const order of orders) {
 ```typescript
 // ✅ Good — single query dengan eager loading (Drizzle `with`)
 const orders = await this.db.query.orders.findMany({
-  where: eq(ordersTable.depotId, depotId),
+  where: eq(ordersTable.organizationId, organizationId),
   with: { customer: true, items: { with: { product: true } } },
 });
 ```
 
-**Foundation Layer note:** Pola query Drizzle sudah ter-eager-load by `with`; repository method yang menerima `depotId` **wajib** menyertakan `depotId` di WHERE/RLS (lihat anti-pattern #4) sehingga tidak terjadi data leak antar depot. Pola batching detail lihat `backend/docs/performance-n-plus-one.md` dan `backend/docs/database.md`.
+**Foundation Layer note:** Pola query Drizzle sudah ter-eager-load by `with`; repository method yang menerima `organizationId` **wajib** menyertakan `organizationId` di WHERE/RLS (lihat anti-pattern #4) sehingga tidak terjadi data leak antar organization. Pola batching detail lihat `backend/docs/performance-n-plus-one.md` dan `backend/docs/database.md`.
 
 ### 4. Missing `RlsContext.run` (Tenant Leak)
 
-**Symptom:** Query multi-tenant dieksekusi di luar AsyncLocalStorage context, sehingga `current_setting('app.current_depot_id')` kosong dan RLS di DB tidak menyaring baris.
+**Symptom:** Query multi-tenant dieksekusi di luar AsyncLocalStorage context, sehingga `current_setting('app.current_organization_id')` kosong dan RLS di DB tidak menyaring baris.
 
 ```typescript
-// ❌ Bad — background job tanpa depot context
+// ❌ Bad — background job tanpa organization context
 @Cron('*/5 * * * *')
-async syncDepotInventory() {
-  const allDepots = await this.depotRepo.findAll();
-  for (const depot of allDepots) {
-    await this.inventoryService.recalculate(depot.id); // depot.id tidak masuk RLS!
+async syncorganizationInventory() {
+  const allorganizations = await this.organizationRepo.findAll();
+  for (const organization of allorganizations) {
+    await this.inventoryService.recalculate(organization.id); // organization.id tidak masuk RLS!
   }
 }
 ```
 
 ```typescript
-// ✅ Good — bungkus dengan RlsContext.run per depot
+// ✅ Good — bungkus dengan RlsContext.run per organization
 @Cron('*/5 * * * *')
-async syncDepotInventory() {
-  const allDepots = await this.depotRepo.findAll();
-  for (const depot of allDepots) {
-    await RlsContext.run(depot.id, () =>
+async syncorganizationInventory() {
+  const allorganizations = await this.organizationRepo.findAll();
+  for (const organization of allorganizations) {
+    await RlsContext.run(organization.id, () =>
       this.inventoryService.recalculate(),
     );
   }
@@ -2137,7 +2137,7 @@ async handle(payload: OrderCreatedEvent) {
   const order = await this.orderRepo.findById(payload.orderId);
   this.logger.log('Order detail', {
     customerPhone: order.customer.phone, // data PII dari modul lain!
-    depotId: order.depotId,
+    organizationId: order.organizationId,
   });
 }
 ```
@@ -2150,7 +2150,7 @@ async handle(payload: OrderCreatedEvent) {
   // oleh modul 'order'. Tidak ada field yang keluar dari api/DTO publik.
   this.logger.log('Order created', {
     orderId: payload.orderId,
-    depotId: payload.depotId, // sudah merupakan bagian payload
+    organizationId: payload.organizationId, // sudah merupakan bagian payload
   });
 }
 ```

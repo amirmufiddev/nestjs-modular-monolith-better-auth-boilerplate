@@ -1,6 +1,6 @@
 services:
   postgres:
-    container_name: postgres
+    container_name: myapp_postgres
     image: postgres:16-alpine
     env_file:
       - .env
@@ -22,8 +22,8 @@ services:
       timeout: 5s
       retries: 20
   minio:
-    container_name: minio
-    image: minio/minio:latest
+    container_name: myapp_minio
+    image: pgsty/silo:RELEASE.2026-10-26T00-00-00Z
     command: server /data --console-address ":9001"
     ports:
       - '${S3_PORT:-9000}:9000'
@@ -34,7 +34,7 @@ services:
     volumes:
       - myapp_minio_data:/data
   mailpit:
-    container_name: mailpit
+    container_name: myapp_mailpit
     image: axllent/mailpit:v1.27
     ports:
       - '${MAILPIT_UI_PORT:-8025}:8025'
@@ -42,7 +42,7 @@ services:
     volumes:
       - myapp_mailpit_data:/data
   redis:
-    container_name: redis
+    container_name: myapp_redis
     image: redis:7-alpine
     env_file:
       - .env

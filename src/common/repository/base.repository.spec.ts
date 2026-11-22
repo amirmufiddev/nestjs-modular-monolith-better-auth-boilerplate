@@ -180,9 +180,14 @@ describe('BaseRepository', () => {
   });
 
   describe('findPaginatedByOrganization', () => {
-    it('should query data and count in parallel with depotId, deletedAt filter, search conditions, limit, offset and orderBy desc(createdAt)', async () => {
+    it('should query data and count in parallel with organizationId, deletedAt filter, search conditions, limit, offset and orderBy desc(createdAt)', async () => {
       const rows = [
-        { id: '1', depotId: 'depot-1', name: 'Test', phone: '123' },
+        {
+          id: '1',
+          organizationId: 'organization-1',
+          name: 'Test',
+          phone: '123',
+        },
       ];
       const countResult = [{ count: 1 }];
 

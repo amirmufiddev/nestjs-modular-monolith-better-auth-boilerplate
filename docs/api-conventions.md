@@ -78,7 +78,7 @@ GET /api/realtime/sse/:userId
 Content-Type: text/event-stream
 ```
 
-`SseController` mengembalikan stream `text/event-stream` yang dikelola oleh `SseService`. Channel internal mengikuti konteks subscriber, misalnya `admin:userId` atau `admin:userId:depotId`. Auth guard untuk endpoint SSE masih menjadi tindak lanjut P2; jangan menganggap endpoint saat ini sudah memiliki proteksi tersebut.
+`SseController` mengembalikan stream `text/event-stream` yang dikelola oleh `SseService`. Channel internal mengikuti konteks subscriber, misalnya `admin:userId` atau `admin:userId:organizationId`. Auth guard untuk endpoint SSE masih menjadi tindak lanjut P2; jangan menganggap endpoint saat ini sudah memiliki proteksi tersebut.
 
 ## Event Envelope Realtime
 

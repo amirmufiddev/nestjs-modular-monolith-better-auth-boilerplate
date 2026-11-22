@@ -59,7 +59,7 @@ export class MemberController {
   @ApiBearerAuth()
   @OrgRoles([MEMBER_ROLES.OWNER])
   @RequirePermission('member:read')
-  @ApiOperation({ summary: 'Mendapatkan daftar anggota depot aktif' })
+  @ApiOperation({ summary: 'Mendapatkan daftar anggota organization aktif' })
   @ApiResponse({
     status: HttpStatus.OK,
     schema: {

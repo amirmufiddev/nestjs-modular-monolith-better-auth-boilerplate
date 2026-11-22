@@ -2,7 +2,7 @@
 
 ## Foundation Layer Status (P1)
 
-Foundation Layer P1 sudah selesai. Integrasi Better Auth menggunakan plugin `organization()` untuk multi-tenant; session membawa `activeOrganizationId` yang dipetakan sebagai `depot_id` pada konteks data. `RlsInterceptor` mengekstrak nilai tersebut dari session dan mengisinya ke `AsyncLocalStorage` melalui `RlsContext`. Detail implementasi aktual tersedia di [`src/shared/README.md`](../src/shared/README.md).
+Foundation Layer P1 sudah selesai. Integrasi Better Auth menggunakan plugin `organization()` untuk multi-tenant; session membawa `activeOrganizationId` yang dipetakan sebagai `organization_id` pada konteks data. `RlsInterceptor` mengekstrak nilai tersebut dari session dan mengisinya ke `AsyncLocalStorage` melalui `RlsContext`. Detail implementasi aktual tersedia di [`src/shared/README.md`](../src/shared/README.md).
 
 ## Overview
 
@@ -44,7 +44,7 @@ Tersedia di `/api/v1/auth/*`. Dokumentasi lengkap via OpenAPI plugin Better Auth
 
 ## Multi-Tenancy
 
-Plugin Better Auth `organization()` menyediakan konteks organisasi aktif melalui `activeOrganizationId` pada session. Dalam boilerplate multi-org, nilai ini adalah konteks organisasi/depot (`depot_id` di banyak skema). Setiap request tenant-scoped harus memiliki organisasi aktif.
+Plugin Better Auth `organization()` menyediakan konteks organisasi aktif melalui `activeOrganizationId` pada session. Dalam boilerplate multi-org, nilai ini adalah konteks organisasi/organization (`organization_id` di banyak skema). Setiap request tenant-scoped harus memiliki organisasi aktif.
 
 Pada request HTTP, `RlsInterceptor` membaca `session.activeOrganizationId` lalu menjalankan handler dalam `RlsContext` berbasis `AsyncLocalStorage`. Service dan repository tetap wajib menerapkan filter tenant eksplisit; context tidak menggantikan predicate query.
 
@@ -55,7 +55,7 @@ RlsInterceptor
         ↓
 RlsContext (AsyncLocalStorage)
         ↓
-service/repository menggunakan depot_id
+service/repository menggunakan organization_id
 ```
 
 ### Better Auth Organization Plugin
@@ -65,7 +65,7 @@ Konfigurasi multi-tenant menggunakan pola plugin berikut:
 ```typescript
 import { organization } from 'better-auth/plugins';
 
-plugins: [organization()]
+plugins: [organization()];
 ```
 
 Gunakan API organisasi untuk memilih organisasi aktif sehingga `activeOrganizationId` tersimpan pada session.
@@ -144,8 +144,8 @@ Ketika terjadi error di endpoint Better Auth (`/api/v1/auth/*`), response akan b
 
 Pemeriksaan izin dipecah menjadi dua tahap:
 
-- **Allow / Deny** — apakah user *boleh* melakukan aksi (`product:create`) terhadap resource tertentu.
-- **Scope Resolution** — *seberapa jauh* cakupan akses user (`global` / `organization` / `outlet` / `own`).
+- **Allow / Deny** — apakah user _boleh_ melakukan aksi (`product:create`) terhadap resource tertentu.
+- **Scope Resolution** — _seberapa jauh_ cakupan akses user (`global` / `organization` / `outlet` / `own`).
 
 Scope yang ter-resolve akan otomatis di-inject ke controller via `@PermissionScope()` untuk dipakai service/repository dalam melakukan filter data (`WHERE` clause).
 
@@ -155,14 +155,14 @@ Scope yang ter-resolve akan otomatis di-inject ke controller via `@PermissionSco
 
 Setiap permission mengikuti format `resource:action`. Daftar master permission didefinisikan sebagai konstanta di kode (bukan di database) di `src/modules/rbac/constants/permissions.constant.ts` agar ter-type-safe dan menjadi sumber kebenaran tunggal.
 
-| Resource       | Actions                                                                |
-| -------------- | ---------------------------------------------------------------------- |
-| `transaction`  | `read`, `create`, `update`, `delete`, `approve`, `cancel`, `export`    |
-| `product`      | `read`, `create`, `update`, `delete`                                    |
-| `outlet`       | `read`, `create`, `update`, `delete`                                    |
-| `member`       | `read`, `invite`, `update`, `remove`, `change_role`                     |
-| `report`       | `read`, `export`                                                        |
-| `ac`           | `view_audit_trail`, `manage_audit_retention`                           |
+| Resource      | Actions                                                             |
+| ------------- | ------------------------------------------------------------------- |
+| `transaction` | `read`, `create`, `update`, `delete`, `approve`, `cancel`, `export` |
+| `product`     | `read`, `create`, `update`, `delete`                                |
+| `outlet`      | `read`, `create`, `update`, `delete`                                |
+| `member`      | `read`, `invite`, `update`, `remove`, `change_role`                 |
+| `report`      | `read`, `export`                                                    |
+| `ac`          | `view_audit_trail`, `manage_audit_retention`                        |
 
 Daftar lengkap dan struktur DTO tersedia di:
 
@@ -172,26 +172,26 @@ Daftar lengkap dan struktur DTO tersedia di:
 
 #### 2. Scope Hierarchy (Prioritas Tertinggi ke Terendah)
 
-Scope mendefinisikan **batasan data** yang boleh diakses user ketika ia *sudah* lolos allow/deny check.
+Scope mendefinisikan **batasan data** yang boleh diakses user ketika ia _sudah_ lolos allow/deny check.
 
-| Scope           | Deskripsi                                                                 | Contoh Filter `WHERE`                              |
-| --------------- | ------------------------------------------------------------------------- | -------------------------------------------------- |
-| `global`        | Akses tanpa batasan organisasi. Hanya `superadmin` / `admin`.              | (tanpa filter organisasi)                          |
-| `organization`  | Akses ke semua record milik organisasi aktif user.                        | `WHERE organization_id = :activeOrgId`             |
-| `outlet`        | Akses ke semua record milik outlet user (perlu module outlet).            | `WHERE outlet_id = :userOutletId`                  |
-| `own`           | Akses hanya ke record yang dibuat/dimiliki user tersebut.                 | `WHERE created_by = :userId`                       |
+| Scope          | Deskripsi                                                      | Contoh Filter `WHERE`                  |
+| -------------- | -------------------------------------------------------------- | -------------------------------------- |
+| `global`       | Akses tanpa batasan organisasi. Hanya `superadmin` / `admin`.  | (tanpa filter organisasi)              |
+| `organization` | Akses ke semua record milik organisasi aktif user.             | `WHERE organization_id = :activeOrgId` |
+| `outlet`       | Akses ke semua record milik outlet user (perlu module outlet). | `WHERE outlet_id = :userOutletId`      |
+| `own`          | Akses hanya ke record yang dibuat/dimiliki user tersebut.      | `WHERE created_by = :userId`           |
 
-**Aturan pewarisan:** jika user memiliki beberapa role (misal `superadmin` + `owner` di org tertentu), scope tertinggi yang *miliknya* yang dipakai. Contoh: user dengan `superadmin` sistem akan selalu `global`, meskipun juga member `owner`.
+**Aturan pewarisan:** jika user memiliki beberapa role (misal `superadmin` + `owner` di org tertentu), scope tertinggi yang _miliknya_ yang dipakai. Contoh: user dengan `superadmin` sistem akan selalu `global`, meskipun juga member `owner`.
 
 #### 3. System vs Organization Roles
 
-| Tipe Role          | Diset di       | Bisa dibuat via UI? | Default Scope     |
-| ------------------ | -------------- | ------------------- | ----------------- |
-| `superadmin`       | `user.role`    | Tidak               | `global`          |
-| `admin`            | `user.role`    | Tidak               | `global`          |
-| `user`             | `user.role`    | Tidak               | Turun ke org role |
-| `owner`            | `orgRole.role` | Ya (default)        | `organization`    |
-| Custom (mis. `admin_outlet`, `staff_gudang`, `customer`) | `orgRole.role` | Ya              | Tergantung `permissionScopes` |
+| Tipe Role                                                | Diset di       | Bisa dibuat via UI? | Default Scope                 |
+| -------------------------------------------------------- | -------------- | ------------------- | ----------------------------- |
+| `superadmin`                                             | `user.role`    | Tidak               | `global`                      |
+| `admin`                                                  | `user.role`    | Tidak               | `global`                      |
+| `user`                                                   | `user.role`    | Tidak               | Turun ke org role             |
+| `owner`                                                  | `orgRole.role` | Ya (default)        | `organization`                |
+| Custom (mis. `admin_outlet`, `staff_gudang`, `customer`) | `orgRole.role` | Ya                  | Tergantung `permissionScopes` |
 
 Owner sebuah organisasi dapat membuat role-role baru lengkap dengan daftar permission dan scope masing-masing. Ini memungkinkan:
 
@@ -226,25 +226,25 @@ Owner sebuah organisasi dapat membuat role-role baru lengkap dengan daftar permi
 
 #### Komponen Kunci
 
-| Komponen                                  | Lokasi                                                       | Fungsi                                                                                            |
-| ----------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------------------------------------------- |
-| `MASTER_PERMISSIONS` (constant)           | `src/modules/rbac/constants/permissions.constant.ts`         | Definisi master resource & actions — sumber kebenaran tunggal untuk format `resource:action`.     |
-| `getBetterAuthStatement()`                 | sama                                                          | Mengkonversi `MASTER_PERMISSIONS` menjadi statement yang dipahami `createAccessControl()`.        |
-| `RequirePermission(perm)` decorator       | `src/modules/rbac/decorators/require-permission.decorator.ts` | Menggabungkan `@MemberHasPermission` + metadata `ScopeMeta` + `PermissionScopeInterceptor`.       |
-| `PermissionScope()` param decorator        | `src/modules/rbac/decorators/permission-scope.decorator.ts`  | Mengambil `request.permissionScope` dan inject ke method parameter.                              |
-| `PermissionScopeInterceptor`               | `src/modules/rbac/interceptors/permission-scope.interceptor.ts` | Memanggil `PermissionScopeService` dan menempelkan scope ke request.                              |
-| `PermissionScopeService`                   | `src/modules/rbac/services/permission-scope.service.ts`      | Resolusi scope efektif user (system / org / outlet / own) berdasarkan role + `permissionScopes`.   |
-| `AuditTrailService` + `AuditTrailRepository` | `src/modules/rbac/services/audit-trail.service.ts`        | Mencatat setiap perubahan RBAC (role, permission, assignment) ke tabel `audit_trail_logs`.        |
-| `PermissionsController`                    | `src/modules/rbac/controllers/permissions.controller.ts`     | API master data untuk UI superadmin.                                                              |
+| Komponen                                     | Lokasi                                                          | Fungsi                                                                                           |
+| -------------------------------------------- | --------------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
+| `MASTER_PERMISSIONS` (constant)              | `src/modules/rbac/constants/permissions.constant.ts`            | Definisi master resource & actions — sumber kebenaran tunggal untuk format `resource:action`.    |
+| `getBetterAuthStatement()`                   | sama                                                            | Mengkonversi `MASTER_PERMISSIONS` menjadi statement yang dipahami `createAccessControl()`.       |
+| `RequirePermission(perm)` decorator          | `src/modules/rbac/decorators/require-permission.decorator.ts`   | Menggabungkan `@MemberHasPermission` + metadata `ScopeMeta` + `PermissionScopeInterceptor`.      |
+| `PermissionScope()` param decorator          | `src/modules/rbac/decorators/permission-scope.decorator.ts`     | Mengambil `request.permissionScope` dan inject ke method parameter.                              |
+| `PermissionScopeInterceptor`                 | `src/modules/rbac/interceptors/permission-scope.interceptor.ts` | Memanggil `PermissionScopeService` dan menempelkan scope ke request.                             |
+| `PermissionScopeService`                     | `src/modules/rbac/services/permission-scope.service.ts`         | Resolusi scope efektif user (system / org / outlet / own) berdasarkan role + `permissionScopes`. |
+| `AuditTrailService` + `AuditTrailRepository` | `src/modules/rbac/services/audit-trail.service.ts`              | Mencatat setiap perubahan RBAC (role, permission, assignment) ke tabel `audit_trail_logs`.       |
+| `PermissionsController`                      | `src/modules/rbac/controllers/permissions.controller.ts`        | API master data untuk UI superadmin.                                                             |
 
 ### Master Permissions API
 
 Endpoint publik (tanpa otentikasi) untuk kebutuhan UI frontend saat membangun halaman manajemen role/permission. Data yang dikembalikan adalah **master permission list** (read-only), bukan data spesifik user.
 
-| Method | Path                                  | Deskripsi                                                    |
-| ------ | ------------------------------------- | ------------------------------------------------------------ |
-| `GET`  | `/api/v1/rbac/permissions`            | Master permissions lengkap per resource + actions.            |
-| `GET`  | `/api/v1/rbac/permissions/codes`       | Daftar flat kode permission (`string[]`) format `resource:action`. |
+| Method | Path                             | Deskripsi                                                          |
+| ------ | -------------------------------- | ------------------------------------------------------------------ |
+| `GET`  | `/api/v1/rbac/permissions`       | Master permissions lengkap per resource + actions.                 |
+| `GET`  | `/api/v1/rbac/permissions/codes` | Daftar flat kode permission (`string[]`) format `resource:action`. |
 
 Contoh response `GET /api/v1/rbac/permissions`:
 
@@ -253,7 +253,15 @@ Contoh response `GET /api/v1/rbac/permissions`:
   "resources": [
     {
       "resource": "transaction",
-      "actions": ["read", "create", "update", "delete", "approve", "cancel", "export"],
+      "actions": [
+        "read",
+        "create",
+        "update",
+        "delete",
+        "approve",
+        "cancel",
+        "export"
+      ],
       "count": 7
     },
     {
@@ -405,12 +413,12 @@ await this.auditTrailService.logRbacChange({
 
 Pemeriksaan via `AuditTrailService`:
 
-| Method                                                | Kegunaan                                                  |
-| ----------------------------------------------------- | --------------------------------------------------------- |
-| `log(params)`                                         | Generic log event.                                        |
-| `logRbacChange(params)`                               | Shorthand untuk event RBAC (`moduleKey='rbac'` otomatis). |
-| `findByModule('rbac', { limit, offset })`             | List log RBAC (untuk halaman audit).                      |
-| `findByEntity('organizationRole', roleId)`            | Histori perubahan satu role spesifik.                     |
+| Method                                     | Kegunaan                                                  |
+| ------------------------------------------ | --------------------------------------------------------- |
+| `log(params)`                              | Generic log event.                                        |
+| `logRbacChange(params)`                    | Shorthand untuk event RBAC (`moduleKey='rbac'` otomatis). |
+| `findByModule('rbac', { limit, offset })`  | List log RBAC (untuk halaman audit).                      |
+| `findByEntity('organizationRole', roleId)` | Histori perubahan satu role spesifik.                     |
 
 ### Caching & Performance
 
@@ -449,7 +457,11 @@ Ada 2 mode untuk permission context di background job:
      'transaction',
      'approve',
    );
-   await this.transactionQueue.add('process', { transactionId }, { scope: userScope });
+   await this.transactionQueue.add(
+     'process',
+     { transactionId },
+     { scope: userScope },
+   );
    ```
 
 ### Edge Cases & Aturan Penting

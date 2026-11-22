@@ -17,7 +17,7 @@ export class InvitationResponseDto {
   @Expose()
   role!: string;
 
-  @ApiProperty({ example: 'depot-123' })
+  @ApiProperty({ example: 'organization-123' })
   @Expose()
   organizationId!: string;
 

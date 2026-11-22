@@ -33,7 +33,7 @@ Contoh label router API:
 
 ```yaml
 labels:
-  - "traefik.http.routers.api.rule=Host(`api.example.com`)"
+  - 'traefik.http.routers.api.rule=Host(`api.example.com`)'
 ```
 
 Nilai host, credential, secret, dan konfigurasi environment lain harus berasal dari `.env` atau secret manager deployment, bukan hardcoded di source maupun Compose file.
@@ -54,25 +54,25 @@ Semua env vars divalidasi oleh Zod saat startup. Lihat `src/config/env.validatio
 
 ### Optional (dengan default)
 
-| Variable               | Default                 | Keterangan                                     |
-| ---------------------- | ----------------------- | ---------------------------------------------- |
-| `NODE_ENV`             | `development`           | `production` / `development` / `test`          |
-| `PORT`                 | `2001`                  | Port HTTP server                               |
-| `DATABASE_SSL`         | `false`                 | Enable SSL untuk PostgreSQL                    |
-| `REDIS_HOST`           | `localhost`             | Host Redis                                     |
-| `REDIS_PORT`           | `6379`                  | Port Redis                                     |
-| `REDIS_PASSWORD`       | —                       | Password Redis (opsional)                      |
-| `REDIS_DB`             | `0`                     | Redis DB index                                 |
-| `CORS_ORIGINS`         | —                       | Comma-separated list origin yang diizinkan     |
-| `SCALAR_AGENT_KEY`     | —                       | Agent key Scalar Cloud deployment              |
-| `GOOGLE_CLIENT_ID`     | —                       | Google OAuth client ID (opsional)              |
-| `GOOGLE_CLIENT_SECRET` | —                       | Google OAuth client secret                     |
-| `AI_KEY_ENCRYPTION_SECRET` | —                   | Base64 32 byte — enkripsi kunci per depot |
-| `UPLOAD_DRIVER`        | `local`                 | `local` atau `s3`                              |
-| `AWS_S3_BUCKET`        | —                       | S3 bucket name (jika driver s3)                |
-| `AUTH_URL`             | `http://localhost:2001` | Override BETTER_AUTH_URL (port benar)          |
-| `LOG_LEVEL`            | `info`                  | `debug` / `info` / `warn` / `error`            |
-| `FALLBACK_LANGUAGE`    | `id`                    | Bahasa default i18n                            |
+| Variable                   | Default                 | Keterangan                                       |
+| -------------------------- | ----------------------- | ------------------------------------------------ |
+| `NODE_ENV`                 | `development`           | `production` / `development` / `test`            |
+| `PORT`                     | `2001`                  | Port HTTP server                                 |
+| `DATABASE_SSL`             | `false`                 | Enable SSL untuk PostgreSQL                      |
+| `REDIS_HOST`               | `localhost`             | Host Redis                                       |
+| `REDIS_PORT`               | `6379`                  | Port Redis                                       |
+| `REDIS_PASSWORD`           | —                       | Password Redis (opsional)                        |
+| `REDIS_DB`                 | `0`                     | Redis DB index                                   |
+| `CORS_ORIGINS`             | —                       | Comma-separated list origin yang diizinkan       |
+| `SCALAR_AGENT_KEY`         | —                       | Agent key Scalar Cloud deployment                |
+| `GOOGLE_CLIENT_ID`         | —                       | Google OAuth client ID (opsional)                |
+| `GOOGLE_CLIENT_SECRET`     | —                       | Google OAuth client secret                       |
+| `AI_KEY_ENCRYPTION_SECRET` | —                       | Base64 32 byte — enkripsi kunci per organization |
+| `UPLOAD_DRIVER`            | `local`                 | `local` atau `s3`                                |
+| `AWS_S3_BUCKET`            | —                       | S3 bucket name (jika driver s3)                  |
+| `AUTH_URL`                 | `http://localhost:2001` | Override BETTER_AUTH_URL (port benar)            |
+| `LOG_LEVEL`                | `info`                  | `debug` / `info` / `warn` / `error`              |
+| `FALLBACK_LANGUAGE`        | `id`                    | Bahasa default i18n                              |
 
 ### Jika Menggunakan BullMQ
 
@@ -85,15 +85,15 @@ Semua env vars divalidasi oleh Zod saat startup. Lihat `src/config/env.validatio
 
 Env vars untuk modul `whatsapp` (P5). Lihat `src/config/env.validation.ts`.
 
-| Variable                      | Default                 | Keterangan                                           |
-| ----------------------------- | ----------------------- | ---------------------------------------------------- |
-| `WAHA_API_URL`                | `http://localhost:3000` | Base URL instance WAHA                               |
-| `WAHA_API_KEY`                | —                       | API key untuk outgoing HTTP ke WAHA                  |
-| `WAHA_WEBHOOK_SECRET`         | —                       | Secret verifikasi webhook (wajib di production)      |
-| `WAHA_SESSION_NAME`           | `default`               | Nama sesi WAHA                                       |
-| `WHATSAPP_DEFAULT_DEPOT_ID`   | —                       | Depot default untuk order dari WhatsApp              |
-| `WHATSAPP_PARSER_ENABLED`     | `true`                  | Aktifkan parser order intent dari pesan masuk        |
-| `WHATSAPP_NOTIFY_STATUS_CHANGE` | `true`                | Notifikasi saat status sesi WAHA berubah             |
+| Variable                           | Default                 | Keterangan                                      |
+| ---------------------------------- | ----------------------- | ----------------------------------------------- |
+| `WAHA_API_URL`                     | `http://localhost:3000` | Base URL instance WAHA                          |
+| `WAHA_API_KEY`                     | —                       | API key untuk outgoing HTTP ke WAHA             |
+| `WAHA_WEBHOOK_SECRET`              | —                       | Secret verifikasi webhook (wajib di production) |
+| `WAHA_SESSION_NAME`                | `default`               | Nama sesi WAHA                                  |
+| `WHATSAPP_DEFAULT_organization_ID` | —                       | organization default untuk order dari WhatsApp  |
+| `WHATSAPP_PARSER_ENABLED`          | `true`                  | Aktifkan parser order intent dari pesan masuk   |
+| `WHATSAPP_NOTIFY_STATUS_CHANGE`    | `true`                  | Notifikasi saat status sesi WAHA berubah        |
 
 > **Catatan**: env vars WAJIB di-deklarasikan di `.env.example` (tanpa nilai).
 

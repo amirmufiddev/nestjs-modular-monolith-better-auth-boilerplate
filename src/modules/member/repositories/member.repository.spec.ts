@@ -17,11 +17,11 @@ describe('MemberRepository', () => {
 
   describe('listByOrganizationPaginated', () => {
     it('should query members with join, filters, and pagination', async () => {
-      const depotId = 'depot-123';
+      const organizationId = 'organization-123';
       const mockResultRows = [
         {
           id: 'mem-1',
-          organizationId: depotId,
+          organizationId: organizationId,
           userId: 'user-1',
           role: 'admin',
           createdAt: new Date('2026-01-01'),
@@ -58,7 +58,7 @@ describe('MemberRepository', () => {
         return selectChain;
       });
 
-      const res = await repository.listByOrganizationPaginated(depotId, {
+      const res = await repository.listByOrganizationPaginated(organizationId, {
         role: 'admin',
         search: 'john',
         limit: 10,
@@ -70,7 +70,7 @@ describe('MemberRepository', () => {
     });
 
     it('should always exclude owner role from listing', async () => {
-      const depotId = 'depot-123';
+      const organizationId = 'organization-123';
       const mockResultRows: any[] = [];
       const mockCountRows = [{ total: 0 }];
 
@@ -98,7 +98,7 @@ describe('MemberRepository', () => {
         return selectChain;
       });
 
-      await repository.listByOrganizationPaginated(depotId, {
+      await repository.listByOrganizationPaginated(organizationId, {
         limit: 10,
         offset: 0,
       });
@@ -128,11 +128,11 @@ describe('MemberRepository', () => {
 
   describe('findById', () => {
     it('should return member raw row if found', async () => {
-      const depotId = 'depot-123';
+      const organizationId = 'organization-123';
       const memberId = 'mem-1';
       const mockRow = {
         id: memberId,
-        organizationId: depotId,
+        organizationId: organizationId,
         userId: 'user-1',
         role: 'admin',
         createdAt: new Date('2026-01-01'),
@@ -151,7 +151,7 @@ describe('MemberRepository', () => {
 
       dbMock.select.mockReturnValue(selectChain);
 
-      const res = await repository.findById(depotId, memberId);
+      const res = await repository.findById(organizationId, memberId);
       expect(res).toEqual(mockRow);
     });
 
@@ -165,18 +165,18 @@ describe('MemberRepository', () => {
 
       dbMock.select.mockReturnValue(selectChain);
 
-      const res = await repository.findById('depot-123', 'non-existent');
+      const res = await repository.findById('organization-123', 'non-existent');
       expect(res).toBeNull();
     });
   });
 
   describe('findByUserId', () => {
     it('should return member raw row if found', async () => {
-      const depotId = 'depot-123';
+      const organizationId = 'organization-123';
       const userId = 'user-1';
       const mockRow = {
         id: 'mem-1',
-        organizationId: depotId,
+        organizationId: organizationId,
         userId,
         role: 'owner',
         createdAt: new Date('2026-01-01'),
@@ -195,7 +195,7 @@ describe('MemberRepository', () => {
 
       dbMock.select.mockReturnValue(selectChain);
 
-      const res = await repository.findByUserId(depotId, userId);
+      const res = await repository.findByUserId(organizationId, userId);
       expect(res).toEqual(mockRow);
     });
 
@@ -209,7 +209,10 @@ describe('MemberRepository', () => {
 
       dbMock.select.mockReturnValue(selectChain);
 
-      const res = await repository.findByUserId('depot-123', 'missing-user');
+      const res = await repository.findByUserId(
+        'organization-123',
+        'missing-user',
+      );
       expect(res).toBeNull();
     });
   });

@@ -4,9 +4,9 @@ import type { OrganizationInvitationProps } from '../types';
 describe('buildOrganizationInvitationEmail', () => {
   const defaultProps: OrganizationInvitationProps = {
     inviterName: 'Budi Santoso',
-    organizationName: 'Depot Aqua Sejahtera',
-    organizationLogo: '/logo/depot.png',
-    role: 'depot_admin',
+    organizationName: 'organization Aqua Sejahtera',
+    organizationLogo: '/logo/organization.png',
+    role: 'organization_admin',
     inviteUrl: 'https://example.com/accept-invite?token=xyz123',
     appName: 'MyApp',
     baseUrl: 'https://example.com',
@@ -16,12 +16,12 @@ describe('buildOrganizationInvitationEmail', () => {
     const html = buildOrganizationInvitationEmail(defaultProps);
 
     expect(html).toContain(
-      '<title>Undangan Bergabung - Depot Aqua Sejahtera</title>',
+      '<title>Undangan Bergabung - organization Aqua Sejahtera</title>',
     );
     expect(html).toContain('Undangan Bergabung');
     expect(html).toContain('Halo,');
     expect(html).toContain(
-      'Budi Santoso mengundang Anda untuk bergabung dengan organisasi &quot;Depot Aqua Sejahtera&quot; di MyApp sebagai Depot Admin.',
+      'Budi Santoso mengundang Anda untuk bergabung dengan organisasi &quot;organization Aqua Sejahtera&quot; di MyApp sebagai organization Admin.',
     );
     expect(html).toContain(
       'href="https://example.com/accept-invite?token=xyz123"',
@@ -31,16 +31,18 @@ describe('buildOrganizationInvitationEmail', () => {
 
   it('should resolve absolute logo URL when relative logo path is provided', () => {
     const html = buildOrganizationInvitationEmail(defaultProps);
-    expect(html).toContain('src="https://example.com/logo/depot.png"');
+    expect(html).toContain('src="https://example.com/logo/organization.png"');
   });
 
   it('should preserve absolute logo URL if already full HTTP/HTTPS URL', () => {
     const propsWithFullLogoUrl: OrganizationInvitationProps = {
       ...defaultProps,
-      organizationLogo: 'https://cdn.example.com/logos/depot.png',
+      organizationLogo: 'https://cdn.example.com/logos/organization.png',
     };
     const html = buildOrganizationInvitationEmail(propsWithFullLogoUrl);
-    expect(html).toContain('src="https://cdn.example.com/logos/depot.png"');
+    expect(html).toContain(
+      'src="https://cdn.example.com/logos/organization.png"',
+    );
   });
 
   it('should handle undefined or null organizationLogo gracefully', () => {
@@ -50,26 +52,26 @@ describe('buildOrganizationInvitationEmail', () => {
     };
     const html = buildOrganizationInvitationEmail(propsWithoutLogo);
     expect(html).not.toContain('<img');
-    expect(html).toContain('Depot Aqua Sejahtera');
+    expect(html).toContain('organization Aqua Sejahtera');
   });
 
   it('should humanize roles correctly in invitation text', () => {
     const propsWithRole: OrganizationInvitationProps = {
       ...defaultProps,
-      role: 'depot-manager',
+      role: 'organization-manager',
     };
     const html = buildOrganizationInvitationEmail(propsWithRole);
-    expect(html).toContain('sebagai Depot Manager.');
+    expect(html).toContain('sebagai organization Manager.');
   });
 
   it('should set header displayName to organizationName and logoUrl to resolved logo', () => {
     const html = buildOrganizationInvitationEmail(defaultProps);
-    expect(html).toContain('Depot Aqua Sejahtera');
+    expect(html).toContain('organization Aqua Sejahtera');
   });
 
   it('should set footer senderName as "${organizationName} via ${appName}"', () => {
     const html = buildOrganizationInvitationEmail(defaultProps);
-    expect(html).toContain('Depot Aqua Sejahtera via MyApp');
+    expect(html).toContain('organization Aqua Sejahtera via MyApp');
   });
 
   it('should escape HTML sensitive characters in props to prevent XSS', () => {

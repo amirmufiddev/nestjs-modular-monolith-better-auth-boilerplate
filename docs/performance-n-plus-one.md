@@ -7,9 +7,9 @@ Dokumen ini membahas pola-pola query database yang sering menyebabkan masalah pe
 Foundation Layer P1 sudah ter-deliver. Beberapa implikasi performa utama:
 
 - **`RlsContext` (AsyncLocalStorage) biaya sangat rendah** — `getStore()` di V8 hanya baca dari TLS slot (~50–200ns per call, jauh di bawah `Date.now()` atau syscalls). Memanggil `RlsContext.getCurrentOrganizationId()` di tiap query **tidak** menambah overhead terukur.
-- **SSE pub/sub berbasis channel-map (`SseService`)** — `subscribe`/`publishToChannel` O(1) per channel. Biaya memori: 1 `Subject<RealtimeEvent>` per channel aktif, dan 1 entry `depotAdmins` per depot. Cocok untuk ~ratusan admin concurrent; untuk ribuan, perlu Redis pub/sub.
+- **SSE pub/sub berbasis channel-map (`SseService`)** — `subscribe`/`publishToChannel` O(1) per channel. Biaya memori: 1 `Subject<RealtimeEvent>` per channel aktif, dan 1 entry `organizationAdmins` per organization. Cocok untuk ~ratusan admin concurrent; untuk ribuan, perlu Redis pub/sub.
 - **Domain event bus (`@nestjs/event-emitter`)** — in-process, tanpa network hop. Emisi 1 event = sync walk over listener Map di process yang sama. Cocok untuk komunikasi antar-modul dalam monolith; jangan dipakai untuk cross-service (perlu message broker).
-- **RLS menggunakan `current_setting('app.current_depot_id')`** — dieksekusi sekali per request (lihat `RlsInterceptor`). Policy `USING (depot_id = current_setting('app.current_depot_id'))` akan memakai **index pada kolom `depot_id`** — pastikan index ada di semua tabel tenant-scoped. Tanpa index, RLS menyaring dengan full-table scan.
+- **RLS menggunakan `current_setting('app.current_organization_id')`** — dieksekusi sekali per request (lihat `RlsInterceptor`). Policy `USING (organization_id = current_setting('app.current_organization_id'))` akan memakai **index pada kolom `organization_id`** — pastikan index ada di semua tabel tenant-scoped. Tanpa index, RLS menyaring dengan full-table scan.
 
 Detail: `backend/src/shared/README.md` adalah sumber tunggal pola pemakaian aktual.
 
@@ -243,27 +243,27 @@ const users = await fetch(`/users?ids=${ids.join(',')}`);
 
 Detail biaya/runtime komponen Foundation Layer P1 yang relevan untuk keputusan performa — lihat juga `backend/src/shared/README.md`.
 
-| Komponen | Mekanisme | Biaya per call | Kompleksitas | Catatan |
-| --- | --- | --- | --- | --- |
-| `RlsContext.getCurrentOrganizationId()` | `AsyncLocalStorage.getStore()` (TLS slot) | ~50–200 ns | O(1) | Overhead di bawah `Date.now()`; aman dipanggil di tiap query tanpa pengukuran |
-| `RlsInterceptor` (per request) | 1x `SET LOCAL app.current_depot_id = '<depot>'` di TX | 1 round-trip DB | O(1) | Hanya sekali per request (bukan per query); pastikan TX masih hidup saat query tenant-scoped |
-| `SseService.subscribe` / `publishToChannel` | `Map<channel, Subject<RealtimeEvent>>` + 1 entry `depotAdmins` per depot | O(1) per channel | O(1) | Channel unsubscribe: handler `OnModuleDestroy` membersihkan subject. Skala nyaman sampai ~ratusan concurrent admin per depot |
-| Domain event bus (`EventEmitter2.emit`) | Sync walk over listener Map, in-process | Mikrosekon per listener | O(L) untuk L listener | Cocok untuk komunikasi antar-modul monolith. Untuk >ratusan listener per event atau lintas proses, pakai message broker |
-| RLS Postgres policy `USING (depot_id = current_setting(...))` | Filter di planner dengan index pada `depot_id` | Sama dengan WHERE biasa | O(log N) dengan index, O(N) tanpa | **WAJIB:** setiap tabel tenant-scoped punya index `depot_id`; tanpa index, policy RLS memaksa full-table scan |
-| `FcmAdapter.sendToToken` | HTTP call ke FCM (lazy-init; no-op jika belum dikonfigurasi) | Network-bound | O(1) per token | Saat mengirim ke banyak driver paralel, pakai `Promise.allSettled`; lihat `backend/src/shared/README.md` bagian 4 |
+| Komponen                                                             | Mekanisme                                                                              | Biaya per call          | Kompleksitas                      | Catatan                                                                                                                             |
+| -------------------------------------------------------------------- | -------------------------------------------------------------------------------------- | ----------------------- | --------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------- |
+| `RlsContext.getCurrentOrganizationId()`                              | `AsyncLocalStorage.getStore()` (TLS slot)                                              | ~50–200 ns              | O(1)                              | Overhead di bawah `Date.now()`; aman dipanggil di tiap query tanpa pengukuran                                                       |
+| `RlsInterceptor` (per request)                                       | 1x `SET LOCAL app.current_organization_id = '<organization>'` di TX                    | 1 round-trip DB         | O(1)                              | Hanya sekali per request (bukan per query); pastikan TX masih hidup saat query tenant-scoped                                        |
+| `SseService.subscribe` / `publishToChannel`                          | `Map<channel, Subject<RealtimeEvent>>` + 1 entry `organizationAdmins` per organization | O(1) per channel        | O(1)                              | Channel unsubscribe: handler `OnModuleDestroy` membersihkan subject. Skala nyaman sampai ~ratusan concurrent admin per organization |
+| Domain event bus (`EventEmitter2.emit`)                              | Sync walk over listener Map, in-process                                                | Mikrosekon per listener | O(L) untuk L listener             | Cocok untuk komunikasi antar-modul monolith. Untuk >ratusan listener per event atau lintas proses, pakai message broker             |
+| RLS Postgres policy `USING (organization_id = current_setting(...))` | Filter di planner dengan index pada `organization_id`                                  | Sama dengan WHERE biasa | O(log N) dengan index, O(N) tanpa | **WAJIB:** setiap tabel tenant-scoped punya index `organization_id`; tanpa index, policy RLS memaksa full-table scan                |
+| `FcmAdapter.sendToToken`                                             | HTTP call ke FCM (lazy-init; no-op jika belum dikonfigurasi)                           | Network-bound           | O(1) per token                    | Saat mengirim ke banyak driver paralel, pakai `Promise.allSettled`; lihat `backend/src/shared/README.md` bagian 4                   |
 
 ### Index Wajib untuk Tabel Tenant-Scoped
 
 ```sql
--- Pola default: composite index (depot_id, ...) untuk query umum
-CREATE INDEX idx_orders_depot_created
-  ON orders (depot_id, created_at DESC);
+-- Pola default: composite index (organization_id, ...) untuk query umum
+CREATE INDEX idx_orders_organization_created
+  ON orders (organization_id, created_at DESC);
 
-CREATE INDEX idx_inventory_depot_product
-  ON inventory (depot_id, product_id);
+CREATE INDEX idx_inventory_organization_product
+  ON inventory (organization_id, product_id);
 ```
 
-Tanpa index pada kolom `depot_id`, policy RLS akan menyaring dengan **sequential scan** — efeknya query list sederhana menjadi 10–100× lebih lambat seiring membesarnya tabel. Tambahkan index di migrasi bersamaan dengan pembuatan tabel tenant-scoped.
+Tanpa index pada kolom `organization_id`, policy RLS akan menyaring dengan **sequential scan** — efeknya query list sederhana menjadi 10–100× lebih lambat seiring membesarnya tabel. Tambahkan index di migrasi bersamaan dengan pembuatan tabel tenant-scoped.
 
 ### Dampak Batch Endpoint
 

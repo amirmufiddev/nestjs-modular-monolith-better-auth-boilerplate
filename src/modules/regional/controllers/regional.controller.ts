@@ -20,8 +20,8 @@ import {
  *
  * Exposes read-only endpoints for Indonesian regions
  * (provinces/regencies/districts/villages). Endpoints are anonymous so the
- * application forms (registration, depot profile setup) can pre-load region
- * pickers before a user has an active organization/depot context.
+ * application forms (registration, organization profile setup) can pre-load region
+ * pickers before a user has an active organization/organization context.
  *
  * Response shape: each handler returns the DTO array directly. The global
  * `ResponseEnvelopeInterceptor` wraps it into `{ success, data, meta }` —

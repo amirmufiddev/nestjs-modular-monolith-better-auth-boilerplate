@@ -6,7 +6,7 @@
  * - Anything else is returned cleaned of non-digits (used for non-ID phones)
  *
  * This is the single source of truth shared by every module so that
- * customer/supplier/depot/contact lookup stays consistent with WhatsApp's
+ * customer/supplier/organization/contact lookup stays consistent with WhatsApp's
  * `628xxx@c.us` chatId format.
  */
 export function normalizePhone(

@@ -7,7 +7,7 @@ Standar logging, correlation ID, log levels, metrics, dan health check untuk bac
 Foundation Layer P1 sudah ter-deliver. Implikasi logging & observability utama:
 
 - **Pino structured JSON logger** — output JSON per entry (timestamp, level, msg, context, correlationId, dsb.); siap ingest ke Loki/Elasticsearch. Hindari formatter ad-hoc yang menulis string biasa karena sulit di-query.
-- **Domain event correlation via `withMetadata()`** — saat emit/listen domain event (lihat `backend/src/shared/README.md` bagian 1), gunakan helper metadata `withMetadata()` untuk menempelkan `correlationId`, `depotId`, `actorId` ke payload event. Memudahkan trace lintas-modul tanpa harus coupling ke `requestContextStorage`.
+- **Domain event correlation via `withMetadata()`** — saat emit/listen domain event (lihat `backend/src/shared/README.md` bagian 1), gunakan helper metadata `withMetadata()` untuk menempelkan `correlationId`, `organizationId`, `actorId` ke payload event. Memudahkan trace lintas-modul tanpa harus coupling ke `requestContextStorage`.
 - **Module isolation:** log hanya dari **modul pemilik**. Satu modul **tidak boleh** meng-inspect internal state modul lain (termasuk untuk kepentingan log). Contoh: module `audit` boleh log event `order.created` yang diterima via `@OnEvent`, tapi **tidak boleh** import `OrderEntity` untuk log field internal.
 - **Correlation ID via `AsyncLocalStorage`** — pola `getCorrelationId()` (lihat sub-bab "Pakai AsyncLocalStorage") tersedia di foundation; pakai helper ini, jangan membaca `req.correlationId` manual di service layer yang tidak punya akses request object.
 - **Tidak ada `console.log`** — pakai Pino/NestJS `Logger` dengan level; lihat juga `backend/src/shared/README.md` untuk komponen foundation yang sudah ter-wired.
@@ -243,7 +243,7 @@ export class CorrelationIdMiddleware implements NestMiddleware {
 
 ### Propagate via Domain Event (Lintas Modul)
 
-Untuk propagasi `correlationId` (dan metadata lain seperti `depotId`, `actorId`) ke listener di **modul lain** tanpa coupling langsung, gunakan `withMetadata()` ketika emit event — lihat `backend/src/shared/README.md` bagian 1.
+Untuk propagasi `correlationId` (dan metadata lain seperti `organizationId`, `actorId`) ke listener di **modul lain** tanpa coupling langsung, gunakan `withMetadata()` ketika emit event — lihat `backend/src/shared/README.md` bagian 1.
 
 ```typescript
 // Producer (modul order)
@@ -259,7 +259,7 @@ this.events.emit(
 // Listener (modul audit, di proses yang sama)
 @OnEvent('order.created')
 async handle(payload: EventPayload<'order.created'>) {
-  // payload.correlationId, payload.depotId, payload.actorId tersedia
+  // payload.correlationId, payload.organizationId, payload.actorId tersedia
   this.logger.log('Audit received order.created', { correlationId: payload.correlationId });
 }
 ```
@@ -467,11 +467,11 @@ async function processOrder(orderId: string) {
 
 ## Audit Log vs Application Log
 
-| Tipe            | Tujuan                               | Disimpan di           | Retention            |
-| --------------- | ------------------------------------ | --------------------- | -------------------- |
+| Tipe            | Tujuan                               | Disimpan di             | Retention            |
+| --------------- | ------------------------------------ | ----------------------- | -------------------- |
 | Application log | Debug, observability, error tracking | File (Pino JSON rotate) | 14-30 hari           |
-| Audit log       | Compliance, security investigation   | DB (`trx_audit_log`)  | Permanen / 1-5 tahun |
-| Error log       | Error tracking + aggregation         | Sentry / setara       | 90 hari              |
+| Audit log       | Compliance, security investigation   | DB (`trx_audit_log`)    | Permanen / 1-5 tahun |
+| Error log       | Error tracking + aggregation         | Sentry / setara         | 90 hari              |
 
 ### Audit Log Pattern
 

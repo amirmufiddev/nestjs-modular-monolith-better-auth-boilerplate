@@ -32,20 +32,20 @@ Detail: `backend/src/shared/README.md` adalah sumber tunggal pola pemakaian aktu
 
 ## Security Red Flags
 
-| Pattern                     | Severity    | Example                                              |
-| --------------------------- | ----------- | ---------------------------------------------------- |
-| Hardcoded secret/API key    | 🔴 Critical | `const apiKey = "sk-xxx..."`                         |
-| Password/credential di code | 🔴 Critical | `password = "admin123"`                              |
-| Raw SQL string concat       | 🔴 Critical | `db.query(\`SELECT * FROM users WHERE id='${id}'\`)` |
-| Sensitive data di log       | 🟡 Warning  | `logger.log(user.password)`                          |
-| Missing input validation    | 🟡 Warning  | `req.body` langsung dipakai tanpa validation         |
-| Missing auth/guards         | 🔴 Critical | Endpoint tanpa `@UseGuards()`                        |
-| Missing RlsContext.run di background job | 🔴 Critical | Query multi-tenant tanpa tenant context |
-| FCM token disimpan plain text | 🔴 Critical | Plaintext di kolom `driver_token` (akan di-fix P5)   |
-| Permissive CORS             | 🟡 Warning  | `app.enableCors({ origin: '*' })`                    |
-| Eval / unsafe execution     | 🔴 Critical | `eval(userInput)`                                    |
-| Insecure random             | 🟡 Warning  | `Math.random()` untuk token                          |
-| Default value untuk SECRET  | 🔴 Critical | `JWT_SECRET                                          |     | 'default-secret'` |
+| Pattern                                  | Severity    | Example                                              |
+| ---------------------------------------- | ----------- | ---------------------------------------------------- |
+| Hardcoded secret/API key                 | 🔴 Critical | `const apiKey = "sk-xxx..."`                         |
+| Password/credential di code              | 🔴 Critical | `password = "admin123"`                              |
+| Raw SQL string concat                    | 🔴 Critical | `db.query(\`SELECT * FROM users WHERE id='${id}'\`)` |
+| Sensitive data di log                    | 🟡 Warning  | `logger.log(user.password)`                          |
+| Missing input validation                 | 🟡 Warning  | `req.body` langsung dipakai tanpa validation         |
+| Missing auth/guards                      | 🔴 Critical | Endpoint tanpa `@UseGuards()`                        |
+| Missing RlsContext.run di background job | 🔴 Critical | Query multi-tenant tanpa tenant context              |
+| FCM token disimpan plain text            | 🔴 Critical | Plaintext di kolom `driver_token` (akan di-fix P5)   |
+| Permissive CORS                          | 🟡 Warning  | `app.enableCors({ origin: '*' })`                    |
+| Eval / unsafe execution                  | 🔴 Critical | `eval(userInput)`                                    |
+| Insecure random                          | 🟡 Warning  | `Math.random()` untuk token                          |
+| Default value untuk SECRET               | 🔴 Critical | `JWT_SECRET                                          |     | 'default-secret'` |
 
 ---
 
@@ -291,7 +291,10 @@ export function maskEmail(email: string): string {
 // ✅ Future implementation (sketsa, bukan API final)
 import { encrypt, decrypt } from '@/common/crypto/field-encryption';
 
-const stored = encrypt(plainToken, configService.get('FCM_TOKEN_ENCRYPTION_KEY'));
+const stored = encrypt(
+  plainToken,
+  configService.get('FCM_TOKEN_ENCRYPTION_KEY'),
+);
 await this.driverTokenRepo.insert({ driverId, token: stored, keyVersion: 1 });
 
 // Saat kirim
@@ -494,7 +497,7 @@ Setiap PR yang menyentuh auth/data/endpoint WAJIB melewati checklist ini:
 
 - [ ] Background job / cron / event handler yang query tabel RLS dibungkus `RlsContext.run(...)`
 - [ ] HTTP path diasumsikan sudah ter-handle `RlsInterceptor`; jika ada endpoint yang skip, dokumentasikan alasannya
-- [ ] Tidak ada filter manual `where: { depotId }` di repository — RLS adalah single source of truth
+- [ ] Tidak ada filter manual `where: { organizationId }` di repository — RLS adalah single source of truth
 - [ ] Migrasi DB baru yang menambah tabel tenant-scoped menyertakan policy RLS
 
 ### FCM / Push
@@ -506,7 +509,7 @@ Setiap PR yang menyentuh auth/data/endpoint WAJIB melewati checklist ini:
 ### SSE / Realtime
 
 - [ ] Endpoint SSE memakai guard (P2 — saat ini `SseController` belum pakai `@UseGuards`)
-- [ ] Channel subscription di-validate terhadap `depotId` user (admin channel A tidak boleh dapat event depot B)
+- [ ] Channel subscription di-validate terhadap `organizationId` user (admin channel A tidak boleh dapat event organization B)
 
 ### Module Isolation
 
