@@ -151,4 +151,87 @@ describe('Environment Validation', () => {
       expect(result.success).toBe(false);
     });
   });
+
+  describe('postgres environment variables', () => {
+    const baseEnv = {
+      PORT: '2001',
+      DATABASE_URL: 'postgres://user:pass@localhost:5432/db',
+      BETTER_AUTH_SECRET: 'a-very-long-secret-key-that-is-at-least-32-chars',
+      BETTER_AUTH_URL: 'http://localhost:2001',
+      BETTER_AUTH_CLIENT_URL: 'http://localhost:3000',
+    };
+
+    it('should apply defaults for postgres fields when omitted', () => {
+      const result = envSchema.safeParse(baseEnv);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.POSTGRES_HOST).toBe('localhost');
+        expect(result.data.POSTGRES_PORT).toBe(5432);
+        expect(result.data.POSTGRES_USER).toBe('postgres');
+        expect(result.data.POSTGRES_PASSWORD).toBe('');
+        expect(result.data.POSTGRES_DB).toBe('myapp');
+      }
+    });
+
+    it('should coerce POSTGRES_PORT and accept custom values', () => {
+      const result = envSchema.safeParse({
+        ...baseEnv,
+        POSTGRES_HOST: 'db.internal',
+        POSTGRES_PORT: '5433',
+        POSTGRES_USER: 'admin',
+        POSTGRES_PASSWORD: 'secretpassword',
+        POSTGRES_DB: 'customdb',
+      });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.POSTGRES_HOST).toBe('db.internal');
+        expect(result.data.POSTGRES_PORT).toBe(5433);
+        expect(result.data.POSTGRES_USER).toBe('admin');
+        expect(result.data.POSTGRES_PASSWORD).toBe('secretpassword');
+        expect(result.data.POSTGRES_DB).toBe('customdb');
+      }
+    });
+  });
+
+  describe('s3 and redis additional variables', () => {
+    const baseEnv = {
+      PORT: '2001',
+      DATABASE_URL: 'postgres://user:pass@localhost:5432/db',
+      BETTER_AUTH_SECRET: 'a-very-long-secret-key-that-is-at-least-32-chars',
+      BETTER_AUTH_URL: 'http://localhost:2001',
+      BETTER_AUTH_CLIENT_URL: 'http://localhost:3000',
+    };
+
+    it('should support S3_PORT, S3_CONSOLE_PORT, and EMAIL_UI_PORT', () => {
+      const result = envSchema.safeParse(baseEnv);
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.S3_PORT).toBe(9000);
+        expect(result.data.S3_CONSOLE_PORT).toBe(9001);
+        expect(result.data.EMAIL_UI_PORT).toBe(8025);
+        expect(result.data.BETTER_AUTH_INVITE_PATH).toBe(
+          '/auth/accept-invitation',
+        );
+      }
+    });
+
+    it('should coerce ports and accept REDIS_URL', () => {
+      const result = envSchema.safeParse({
+        ...baseEnv,
+        S3_PORT: '9100',
+        S3_CONSOLE_PORT: '9101',
+        EMAIL_UI_PORT: '8026',
+        REDIS_URL: 'redis://default:secret@localhost:6379',
+      });
+      expect(result.success).toBe(true);
+      if (result.success) {
+        expect(result.data.S3_PORT).toBe(9100);
+        expect(result.data.S3_CONSOLE_PORT).toBe(9101);
+        expect(result.data.EMAIL_UI_PORT).toBe(8026);
+        expect(result.data.REDIS_URL).toBe(
+          'redis://default:secret@localhost:6379',
+        );
+      }
+    });
+  });
 });
