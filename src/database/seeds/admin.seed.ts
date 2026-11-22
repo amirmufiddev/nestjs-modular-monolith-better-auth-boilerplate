@@ -62,7 +62,13 @@ export const adminSeeder: Seeder = {
         )
         VALUES ($1, $2, $3, true, 'admin', $4, $4, $5, true, now(), now());
         `,
-        [userId, config.name, config.email, config.username, config.phoneNumber],
+        [
+          userId,
+          config.name,
+          config.email,
+          config.username,
+          config.phoneNumber,
+        ],
       );
 
       await client.query(

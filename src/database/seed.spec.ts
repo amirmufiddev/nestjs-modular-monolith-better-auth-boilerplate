@@ -9,17 +9,19 @@ import {
 } from './seed';
 
 describe('Seed Runner Core', () => {
-  it('ensureSeedsTable should create _seeds table if not exists', async () => {
+  it('should create _seeds table if not exists in ensureSeedsTable', async () => {
     const queryMock = mock(() => Promise.resolve({ rows: [] }));
     const fakePool = { query: queryMock } as unknown as any;
 
     await ensureSeedsTable(fakePool);
 
     expect(queryMock).toHaveBeenCalledTimes(1);
-    expect(queryMock.mock.calls[0][0]).toContain('CREATE TABLE IF NOT EXISTS "_seeds"');
+    expect(queryMock.mock.calls[0][0]).toContain(
+      'CREATE TABLE IF NOT EXISTS "_seeds"',
+    );
   });
 
-  it('getExecutedSeeds should return a set of executed seed names', async () => {
+  it('should return a set of executed seed names in getExecutedSeeds', async () => {
     const queryMock = mock(() =>
       Promise.resolve({
         rows: [{ name: 'rbac' }, { name: 'admin' }],
@@ -34,7 +36,7 @@ describe('Seed Runner Core', () => {
     expect(result.has('regional')).toBe(false);
   });
 
-  it('getNextBatchNumber should return 1 when table is empty or max is null', async () => {
+  it('should return 1 when table is empty or max is null in getNextBatchNumber', async () => {
     const queryMock = mock(() =>
       Promise.resolve({
         rows: [{ max_batch: null }],
@@ -46,7 +48,7 @@ describe('Seed Runner Core', () => {
     expect(batch).toBe(1);
   });
 
-  it('recordExecutedSeed should insert seed name and batch into _seeds', async () => {
+  it('should insert seed name and batch into _seeds in recordExecutedSeed', async () => {
     const queryMock = mock(() => Promise.resolve({ rows: [] }));
     const fakePool = { query: queryMock } as unknown as any;
 
@@ -58,18 +60,20 @@ describe('Seed Runner Core', () => {
     );
   });
 
-  it('runSeeders should skip already executed seeders when force is false', async () => {
+  it('should skip already executed seeders when force is false in runSeeders', async () => {
     const executedLogs: string[] = [];
     const seeder1: Seeder = {
       name: 'rbac',
-      run: async () => {
+      run: () => {
         executedLogs.push('rbac');
+        return Promise.resolve();
       },
     };
     const seeder2: Seeder = {
       name: 'admin',
-      run: async () => {
+      run: () => {
         executedLogs.push('admin');
+        return Promise.resolve();
       },
     };
 
@@ -85,19 +89,24 @@ describe('Seed Runner Core', () => {
     const fakePool = { query: queryMock } as unknown as any;
     const fakeContext: SeederContext = { db: {} as any, pool: fakePool };
 
-    const result = await runSeeders([seeder1, seeder2], { force: false }, fakeContext);
+    const result = await runSeeders(
+      [seeder1, seeder2],
+      { force: false },
+      fakeContext,
+    );
 
     expect(result.skipped).toEqual(['rbac']);
     expect(result.executed).toEqual(['admin']);
     expect(executedLogs).toEqual(['admin']);
   });
 
-  it('runSeeders should re-run executed seeders when force is true', async () => {
+  it('should re-run executed seeders when force is true in runSeeders', async () => {
     const executedLogs: string[] = [];
     const seeder1: Seeder = {
       name: 'rbac',
-      run: async () => {
+      run: () => {
         executedLogs.push('rbac');
+        return Promise.resolve();
       },
     };
 
@@ -120,18 +129,20 @@ describe('Seed Runner Core', () => {
     expect(executedLogs).toEqual(['rbac']);
   });
 
-  it('runSeeders should only run targeted seeder when target option is specified', async () => {
+  it('should only run targeted seeder when target option is specified in runSeeders', async () => {
     const executedLogs: string[] = [];
     const seeder1: Seeder = {
       name: 'rbac',
-      run: async () => {
+      run: () => {
         executedLogs.push('rbac');
+        return Promise.resolve();
       },
     };
     const seeder2: Seeder = {
       name: 'admin',
-      run: async () => {
+      run: () => {
         executedLogs.push('admin');
+        return Promise.resolve();
       },
     };
 
@@ -147,9 +158,22 @@ describe('Seed Runner Core', () => {
     const fakePool = { query: queryMock } as unknown as any;
     const fakeContext: SeederContext = { db: {} as any, pool: fakePool };
 
-    const result = await runSeeders([seeder1, seeder2], { target: 'admin' }, fakeContext);
+    const result = await runSeeders(
+      [seeder1, seeder2],
+      { target: 'admin' },
+      fakeContext,
+    );
 
     expect(result.executed).toEqual(['admin']);
     expect(executedLogs).toEqual(['admin']);
+  });
+});
+
+describe('defaultSeeders registry', () => {
+  it('should contain rbac, admin, and regional seeders in correct order', async () => {
+    const { defaultSeeders } = await import('./seed');
+    expect(defaultSeeders).toBeDefined();
+    const names = defaultSeeders.map((s) => s.name);
+    expect(names).toEqual(['rbac', 'admin', 'regional']);
   });
 });

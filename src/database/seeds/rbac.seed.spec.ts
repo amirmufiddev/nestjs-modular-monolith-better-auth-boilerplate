@@ -6,7 +6,7 @@ import {
 } from './rbac.seed';
 
 describe('RBAC Seeder', () => {
-  it('buildRbacPermissionRows should generate rows for all actions in bootstrap statement', () => {
+  it('should generate rows for all actions in bootstrap statement from buildRbacPermissionRows', () => {
     const rows = buildRbacPermissionRows();
     expect(rows.length).toBeGreaterThan(0);
 
@@ -18,7 +18,7 @@ describe('RBAC Seeder', () => {
     expect(memberRead?.actionDisplayName).toBe('read');
   });
 
-  it('buildRbacRoleTemplateRows should produce templates for owner, admin, and member', () => {
+  it('should produce templates for owner, admin, and member from buildRbacRoleTemplateRows', () => {
     const templates = buildRbacRoleTemplateRows();
     const roleNames = templates.map((t) => t.roleName);
 
@@ -32,7 +32,7 @@ describe('RBAC Seeder', () => {
     }
   });
 
-  it('rbacSeeder.run should execute inserts into rbac_permission and rbac_role_template', async () => {
+  it('should execute inserts into rbac_permission and rbac_role_template in rbacSeeder.run', async () => {
     const executedQueries: string[] = [];
     const queryMock = mock((sql: string) => {
       executedQueries.push(sql);
@@ -48,7 +48,9 @@ describe('RBAC Seeder', () => {
       executedQueries.some((q) => q.includes('INSERT INTO "rbac_permission"')),
     ).toBe(true);
     expect(
-      executedQueries.some((q) => q.includes('INSERT INTO "rbac_role_template"')),
+      executedQueries.some((q) =>
+        q.includes('INSERT INTO "rbac_role_template"'),
+      ),
     ).toBe(true);
   });
 });

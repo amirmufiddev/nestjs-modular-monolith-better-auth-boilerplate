@@ -89,4 +89,3 @@ describe('regionalSeeder', () => {
     expect(typeof regionalSeeder.run).toBe('function');
   });
 });
-

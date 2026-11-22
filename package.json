@@ -26,7 +26,7 @@
     "db:migrate": "bun run src/database/migrate.ts",
     "db:studio": "drizzle-kit studio",
     "db:seed": "bun run src/database/seed.ts",
-    "db:seed:regional": "bun run src/infrastructure/database/seeds/regional.seed.ts",
+    "db:seed:regional": "bun run src/database/seeds/regional.seed.ts",
     "db:seed:org-members": "bun run src/database/seed-org-members.ts",
     "db:seed:org-invitations": "bun run src/database/seed-org-invitations.ts"
   },

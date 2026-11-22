@@ -2,6 +2,15 @@ import { Pool } from 'pg';
 import { drizzle } from 'drizzle-orm/node-postgres';
 import { env } from '../config/env.validation';
 import type { Seeder, SeederContext } from './seeds/seeder.interface';
+import { rbacSeeder } from './seeds/rbac.seed';
+import { adminSeeder } from './seeds/admin.seed';
+import { regionalSeeder } from './seeds/regional.seed';
+
+export const defaultSeeders: Seeder[] = [
+  rbacSeeder,
+  adminSeeder,
+  regionalSeeder,
+];
 
 export interface RunSeedersOptions {
   force?: boolean;
@@ -104,7 +113,7 @@ async function main() {
   const db = drizzle(pool);
 
   try {
-    const seeders: Seeder[] = [];
+    const seeders: Seeder[] = defaultSeeders;
     console.log('🌱 Starting database seeding...');
     const result = await runSeeders(seeders, options, { db, pool });
     console.log(
@@ -123,7 +132,15 @@ if (
   typeof module !== 'undefined' &&
   require.main === module
 ) {
-  main();
-} else if (process.argv[1]?.replace(/\\/g, '/').endsWith('src/database/seed.ts')) {
-  main();
+  void main().catch((err) => {
+    console.error('Seed runner failed:', err);
+    process.exit(1);
+  });
+} else if (
+  process.argv[1]?.replace(/\\/g, '/').endsWith('src/database/seed.ts')
+) {
+  void main().catch((err) => {
+    console.error('Seed runner failed:', err);
+    process.exit(1);
+  });
 }

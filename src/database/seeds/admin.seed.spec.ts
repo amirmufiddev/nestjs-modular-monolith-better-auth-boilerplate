@@ -3,7 +3,7 @@ import { getAdminSeedConfig, adminSeeder } from './admin.seed';
 import * as argon2 from 'argon2';
 
 describe('Admin Seeder', () => {
-  it('getAdminSeedConfig should return env overrides or default values', () => {
+  it('should return env overrides or default values in getAdminSeedConfig', () => {
     const config = getAdminSeedConfig();
     expect(config.email).toBeTruthy();
     expect(config.password).toBeTruthy();
@@ -12,7 +12,7 @@ describe('Admin Seeder', () => {
     expect(config.phoneNumber).toBeTruthy();
   });
 
-  it('adminSeeder.run should skip if user already exists', async () => {
+  it('should skip run when admin user already exists', async () => {
     const executedQueries: string[] = [];
     const queryMock = mock((sql: string) => {
       executedQueries.push(sql);
@@ -27,15 +27,15 @@ describe('Admin Seeder', () => {
 
     await adminSeeder.run(fakeContext);
 
-    expect(
-      executedQueries.some((q) => q.includes('INSERT INTO "user"')),
-    ).toBe(false);
+    expect(executedQueries.some((q) => q.includes('INSERT INTO "user"'))).toBe(
+      false,
+    );
     expect(
       executedQueries.some((q) => q.includes('INSERT INTO "account"')),
     ).toBe(false);
   });
 
-  it('adminSeeder.run should create user and account with hashed password if user does not exist', async () => {
+  it('should create user and account with hashed password when admin user does not exist', async () => {
     let insertedPasswordHash = '';
     const clientQueryMock = mock((sql: string, params?: any[]) => {
       if (sql.includes('INSERT INTO "account"')) {
