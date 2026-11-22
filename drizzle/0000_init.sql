@@ -121,6 +121,27 @@ CREATE TABLE "audit_trail_logs" (
 	"created_at" timestamp DEFAULT now() NOT NULL
 );
 --> statement-breakpoint
+CREATE TABLE "rbac_permission" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	"deleted_at" timestamp,
+	"resource" text NOT NULL,
+	"action" text NOT NULL,
+	"action_display_name" text NOT NULL,
+	"action_description" text,
+	"resource_display_name" text NOT NULL,
+	"resource_description" text
+);
+--> statement-breakpoint
+CREATE TABLE "rbac_role_template" (
+	"role_name" text PRIMARY KEY NOT NULL,
+	"permission" text NOT NULL,
+	"permission_scopes" text DEFAULT '{}' NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL
+);
+--> statement-breakpoint
 CREATE TABLE "regional_addresses" (
 	"code" bigint PRIMARY KEY NOT NULL,
 	"name" text NOT NULL,
@@ -185,6 +206,10 @@ CREATE INDEX "idx_audit_trail_logs_module_key" ON "audit_trail_logs" USING btree
 CREATE INDEX "idx_audit_trail_logs_actor_id" ON "audit_trail_logs" USING btree ("actor_id");--> statement-breakpoint
 CREATE INDEX "idx_audit_trail_logs_entity" ON "audit_trail_logs" USING btree ("entity_type","entity_id");--> statement-breakpoint
 CREATE INDEX "idx_audit_trail_logs_created_at" ON "audit_trail_logs" USING btree ("created_at");--> statement-breakpoint
+CREATE INDEX "rbac_permission_created_at_index" ON "rbac_permission" USING btree ("created_at");--> statement-breakpoint
+CREATE INDEX "rbac_permission_deleted_at_index" ON "rbac_permission" USING btree ("deleted_at");--> statement-breakpoint
+CREATE INDEX "idx_rbac_permission_resource" ON "rbac_permission" USING btree ("resource");--> statement-breakpoint
+CREATE UNIQUE INDEX "uq_rbac_permission_resource_action_active" ON "rbac_permission" USING btree ("resource","action") WHERE "rbac_permission"."deleted_at" is null;--> statement-breakpoint
 CREATE INDEX "idx_regional_parent_code" ON "regional_addresses" USING btree ("parent_code");--> statement-breakpoint
 CREATE INDEX "idx_regional_level" ON "regional_addresses" USING btree ("level");--> statement-breakpoint
 CREATE INDEX "pending_member_links_created_at_index" ON "pending_member_links" USING btree ("created_at");--> statement-breakpoint
