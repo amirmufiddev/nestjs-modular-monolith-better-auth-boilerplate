@@ -95,6 +95,7 @@
   "93": "Modul contoh (WhatsApp & AI)",
   "94": "tsconfig.build.json",
   "95": "Duplication Anti-Patterns",
+  "96": "rbac-permission.mapper.ts",
   "97": "Prinsip SOLID",
   "98": "Multi-Tenant Isolation (RLS)",
   "99": "Tier modul: Core vs Optional",
@@ -105,5 +106,13 @@
   "104": "Module Isolation (ESLint)",
   "105": "CORS & Transport",
   "106": "Hardcoded Credentials",
-  "107": "SQL Injection"
+  "107": "SQL Injection",
+  "108": "Design Document: Database Seeder System (Admin, RBAC, Regional)",
+  "109": "HttpMetricsInterceptor",
+  "110": "IMemberRepository",
+  "111": "Global Constraints",
+  "112": "package.json",
+  "113": "3. Server-Sent Events (SSE) untuk Realtime",
+  "114": "CorrelationIdMiddleware",
+  "115": "ListMembersOptions"
 }
