@@ -76,8 +76,6 @@ graphify-out/20*/
 testsprite_tests/tmp
 testsprite_tests/__pycache__
 
-Makefile
-
 uploads/
 logs/
 
