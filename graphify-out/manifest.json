@@ -1668,5 +1668,10 @@
     "mtime": 1795366007.5993521,
     "ast_hash": "7fb25cd44623475c303b5a0cc106f9aa",
     "semantic_hash": ""
+  },
+  "docs/superpowers/plans/2026-11-22-makefile.md": {
+    "mtime": 1795368075.3863368,
+    "ast_hash": "964ef1f8358bc35b7e8575833617cab6",
+    "semantic_hash": ""
   }
 }

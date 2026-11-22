@@ -95,7 +95,6 @@
   "93": "Modul contoh (WhatsApp & AI)",
   "94": "tsconfig.build.json",
   "95": "Duplication Anti-Patterns",
-  "96": "Checklist Code Review",
   "97": "Prinsip SOLID",
   "98": "Multi-Tenant Isolation (RLS)",
   "99": "Tier modul: Core vs Optional",
@@ -106,6 +105,5 @@
   "104": "Module Isolation (ESLint)",
   "105": "CORS & Transport",
   "106": "Hardcoded Credentials",
-  "107": "SQL Injection",
-  "108": "🚨 Aturan Penggunaan"
+  "107": "SQL Injection"
 }

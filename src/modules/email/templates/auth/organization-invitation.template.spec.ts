@@ -21,7 +21,7 @@ describe('buildOrganizationInvitationEmail', () => {
     expect(html).toContain('Undangan Bergabung');
     expect(html).toContain('Halo,');
     expect(html).toContain(
-      'Budi Santoso mengundang Anda untuk bergabung dengan organisasi &quot;organization Aqua Sejahtera&quot; di MyApp sebagai organization Admin.',
+      'Budi Santoso mengundang Anda untuk bergabung dengan organisasi &quot;organization Aqua Sejahtera&quot; di MyApp sebagai Organization Admin.',
     );
     expect(html).toContain(
       'href="https://example.com/accept-invite?token=xyz123"',
@@ -61,7 +61,7 @@ describe('buildOrganizationInvitationEmail', () => {
       role: 'organization-manager',
     };
     const html = buildOrganizationInvitationEmail(propsWithRole);
-    expect(html).toContain('sebagai organization Manager.');
+    expect(html).toContain('sebagai Organization Manager.');
   });
 
   it('should set header displayName to organizationName and logoUrl to resolved logo', () => {
